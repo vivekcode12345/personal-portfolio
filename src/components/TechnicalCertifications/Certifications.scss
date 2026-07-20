@@ -1,0 +1,172 @@
+.pin-section {
+  position: relative;
+  z-index: 10;
+  isolation: isolate;
+}
+
+.certification-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 30px;
+  margin: 0px auto;
+  font-family: "Inter", sans-serif;
+
+  .sub-heading {
+    text-align: center;
+    font-family: "Inter";
+    width: 20%;
+    letter-spacing: 0.35em;
+    font-size: 0.75rem;
+    color: var(--hs-accent, #c46b1f);
+    font-weight: 500;
+    margin-top: 30px;
+  }
+
+  h2 {
+    font-size: 84px;
+    line-height: 0.95;
+    color: #fff;
+  }
+
+  .certification-description {
+    margin: 0;
+    max-width: 62ch;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 16px;
+    line-height: 1.7;
+    text-align: center;
+  }
+}
+
+.content {
+  width: 80%;
+  margin: 80px auto 0;
+  display: flex;
+  padding: 40px 10px;
+  position: relative;
+  font-family: "Inter", sans-serif;
+}
+
+.content ul {
+  font-size: 30px;
+  color: var(--color-surface-white);
+  margin: 0;
+  padding: 0;
+  padding-right: 10px;
+  list-style: none;
+}
+
+.content .fill {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 5px;
+  height: 70%;
+  background-color: #c46b1f;
+  z-index: 2;
+}
+
+.content .right {
+  flex-grow: 1;
+  position: relative;
+}
+
+.right .slide {
+  position: absolute;
+  top: -60px;
+  left: 45px;
+  opacity: 0;
+  visibility: hidden;
+
+  img {
+    width: 100%;
+    border-radius: 5px;
+  }
+}
+
+.slide:nth-child(3) {
+  top: -10px;
+}
+
+.certification-list li {
+  color: #fffce1;
+  font-size: 48px;
+  margin: 15px 0 15px 25px;
+}
+
+.certification-list li.active {
+  color: #c46b1f;
+}
+
+
+@media (max-width: 900px) {
+  .content {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .certification-header {
+    h2 {
+      text-align: center;
+      font-size: 2rem;
+    }
+
+    .sub-heading {
+      width: 50%;
+    }
+
+    .certification-description {
+      margin: 0 auto;
+      width: 80%;
+    }
+  }
+
+  .content ul {
+    flex: none;
+    width: 100%;
+  }
+
+  .content .fill {
+    left: 0;
+    right: 0;
+    top: 0;
+
+    width: 100%;
+    height: 3px;
+    transform-origin: left center;
+    transform: scaleX(0.99);
+  }
+
+  .certification-list {
+    display: none;
+  }
+
+  .certification-list li {
+    padding-left: 0;
+  }
+
+  .content .right {
+    width: 100%;
+    height: clamp(260px, 64vw, 520px);
+
+    .slide {
+      left: 0;
+      top: 0;
+    }
+  }
+}
+
+@media (max-width: 420px) {
+
+  .content .right {
+    height: 260px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .right .slide img {
+    transform: none !important;
+  }
+}

@@ -1,0 +1,3 @@
+export const aboutmeDescription ="I am Vivek Verma, a B.Tech Computer Science student at SRM University AP with a strong interest in Full Stack Development, Artificial Intelligence, Backend Engineering, Cloud Computing, and System Design. I enjoy solving Data Structures & Algorithms problems, building scalable web applications, and learning modern software engineering practices. Currently, I am working on a Transformer-based Sentiment Analysis project using the Amazon Polarity dataset while continuously improving my development skills."
+export const tagline = "I'm mostly the following"
+export const tags = ["I DESIGN", "I DEVELOP", "I GET THINGS DONE"]
