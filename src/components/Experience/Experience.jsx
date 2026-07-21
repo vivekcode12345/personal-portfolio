@@ -8,48 +8,44 @@ import "./Experience.scss";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const TIMELINE = [
+const EDUCATION = [
   {
-    date: "JUN 2018 – MAY 2022",
-    title: "B.Tech. in Information Technology",
-    org: "Velammal Institute of Technology",
+    date: "2024 – 2028 (Expected)",
+    title: "Bachelor of Technology (B.Tech)",
+    org: "SRM University AP",
     desc:
-      "Graduated with CGPA 8.45/10. Core coursework: DSA, Operating Systems, Database Systems, Cloud Computing.",
+      "Computer Science and Engineering. Expected Graduation: 2028. Current CGPA: 9.62. Building strong foundations in Full Stack Development, AI/ML, Backend Engineering, Cloud Computing, System Design, and Data Structures & Algorithms.",
   },
   {
-    date: "FEB 2022 – JUN 2022",
-    title: "Software Engineer Intern",
-    org: "CDW Corporation, India",
+    date: "2022 – 2024",
+    title: "Senior Secondary (Class XII)",
+    org: "VidyaGyan School",
     desc:
-      "Built full-stack features (React + Java + Spring Boot) for an internal social network, including an automated birthday scheduler that boosted daily engagement by 40%.",
+      "Completed Higher Secondary Education. Percentage: 91.8%",
   },
   {
-    date: "JUN 2022 – OCT 2023",
-    title: "Software Engineer Trainee",
-    org: "CDW Corporation, India",
+    date: "2020 – 2022",
+    title: "Secondary (Class X)",
+    org: "VidyaGyan School",
     desc:
-      "Built scalable React modules with 92% unit/component test coverage; modernized 5+ microservices (1800-Flowers) reducing latency from 2s → 0.5s; improved CI/CD reliability by 15%; delivered backend APIs for judiciary e-filing + PDF automation (State of Utah).",
+      "Completed Secondary Education. Percentage: 98%",
+  },
+];
+
+const EXPERIENCE = [
+  {
+    date: "Aug 2023 – Sep 2023",
+    title: "Web Development Intern",
+    org: "Bharat Intern",
+    desc:
+      "Developed a responsive Netflix clone using HTML, CSS, and JavaScript. Implemented UI components including navigation bar, banner section, and movie cards. Strengthened frontend development skills and understanding of project structuring.",
   },
   {
-    date: "OCT 2023 – OCT 2024",
-    title: "Software Engineer",
-    org: "CDW Corporation, India",
+    date: "June 2022 – July 2022",
+    title: "Sustainability Intern",
+    org: "Blue Planet Environmental Solutions",
     desc:
-      "Engineered IDN Accelerator plugin (Vanilla JS) cutting API calls by 35% and improving workflow efficiency by 30%; owned onsite Spring Boot + PrimeFaces module delivery for NY Presbyterian Hospital; refactored UI into reusable React components improving load time by 20% and reducing redundant code by 30%; mentored 2 engineers (25% faster ramp-up).",
-  },
-  {
-    date: "2025",
-    title: "AWS Certified Developer – Associate",
-    org: "Amazon Web Services",
-    desc:
-      "Earned AWS DVA-C02 certification validating skills in developing and deploying cloud-native applications on AWS.",
-  },
-  {
-    date: "SEP 2025 – PRESENT",
-    title: "M.S. in Computer Science",
-    org: "New York University (NYU), New York, NY",
-    desc:
-      "Coursework: Design & Analysis of Algorithms, Human Computer Interaction, Big Data, Cloud Computing. Seeking Software Engineering Internship roles.",
+      "Completed the 'Sustainability Heroes' internship under the Blue Nudge initiative. Participated in community engagement and environmental awareness activities. Gained exposure to research work, industrial visits, and sustainable development practices.",
   },
 ];
 
@@ -59,81 +55,164 @@ const TIMELINE = [
  */
 export default function Experience() {
   const sectionRef = useRef(null);
-  const timelineRef = useRef(null);
-  const lineFillRef = useRef(null);
+  const eduTimelineRef = useRef(null);
+  const expTimelineRef = useRef(null);
 
   useGSAP(
     () => {
       const root = sectionRef.current;
-      const wrap = timelineRef.current;
-      const items = gsap.utils.toArray(".tl-item", wrap);
+      
+      // Animate Education Timeline
+      const eduTimeline = eduTimelineRef.current;
+      if (eduTimeline) {
+        const eduItems = gsap.utils.toArray(".tl-item", eduTimeline);
+        const eduLineFill = eduTimeline.querySelector(".timeline-line-fill");
 
-      // Initial states
-      items.forEach((item) => {
-        const card = item.querySelector(".tl-card");
-        const dot = item.querySelector(".tl-dot");
+        // Initial states
+        eduItems.forEach((item) => {
+          const card = item.querySelector(".tl-card");
+          const dot = item.querySelector(".tl-dot");
 
-        gsap.set(card, { opacity: 0.18, y: 60, filter: "blur(10px)" });
-        gsap.set(dot, { scale: 0.9, opacity: 0.55 });
-      });
-
-      // Line fill (grows as you scroll through the timeline)
-      gsap.set(lineFillRef.current, { scaleY: 0, transformOrigin: "top" });
-      gsap.to(lineFillRef.current, {
-        scaleY: 1,
-        ease: "none",
-        scrollTrigger: {
-          trigger: wrap,
-          start: "top 60%",
-          end: "bottom 60%",
-          scrub: true,
-        },
-      });
-
-      // Activate item when it hits center-ish
-      items.forEach((item) => {
-        const card = item.querySelector(".tl-card");
-        const dot = item.querySelector(".tl-dot");
-
-        ScrollTrigger.create({
-          trigger: item,
-          start: "top 55%",
-          end: "bottom 45%",
-          onToggle: (self) => {
-            if (self.isActive) {
-              gsap.to(card, {
-                opacity: 1,
-                y: 0,
-                filter: "blur(0px)",
-                duration: 0.9,
-                ease: "power3.out",
-              });
-              gsap.to(dot, {
-                scale: 1,
-                opacity: 1,
-                duration: 0.4,
-                ease: "power3.out",
-              });
-              item.classList.add("is-active");
-            } else {
-              gsap.to(card, {
-                opacity: 0.18,
-                y: 60,
-                filter: "blur(10px)",
-                duration: 0.7,
-                ease: "power3.out",
-              });
-              gsap.to(dot, {
-                scale: 0.9,
-                opacity: 0.55,
-                duration: 0.35,
-                ease: "power3.out",
-              });
-              item.classList.remove("is-active");
-            }
-          },
+          gsap.set(card, { opacity: 0.18, y: 60, filter: "blur(10px)" });
+          gsap.set(dot, { scale: 0.9, opacity: 0.55 });
         });
-      });
+
+        // Line fill
+        if (eduLineFill) {
+          gsap.set(eduLineFill, { scaleY: 0, transformOrigin: "top" });
+          gsap.to(eduLineFill, {
+            scaleY: 1,
+            ease: "none",
+            scrollTrigger: {
+              trigger: eduTimeline,
+              start: "top 60%",
+              end: "bottom 60%",
+              scrub: true,
+            },
+          });
+        }
+
+        // Activate items
+        eduItems.forEach((item) => {
+          const card = item.querySelector(".tl-card");
+          const dot = item.querySelector(".tl-dot");
+
+          ScrollTrigger.create({
+            trigger: item,
+            start: "top 55%",
+            end: "bottom 45%",
+            onToggle: (self) => {
+              if (self.isActive) {
+                gsap.to(card, {
+                  opacity: 1,
+                  y: 0,
+                  filter: "blur(0px)",
+                  duration: 0.9,
+                  ease: "power3.out",
+                });
+                gsap.to(dot, {
+                  scale: 1,
+                  opacity: 1,
+                  duration: 0.4,
+                  ease: "power3.out",
+                });
+                item.classList.add("is-active");
+              } else {
+                gsap.to(card, {
+                  opacity: 0.18,
+                  y: 60,
+                  filter: "blur(10px)",
+                  duration: 0.7,
+                  ease: "power3.out",
+                });
+                gsap.to(dot, {
+                  scale: 0.9,
+                  opacity: 0.55,
+                  duration: 0.35,
+                  ease: "power3.out",
+                });
+                item.classList.remove("is-active");
+              }
+            },
+          });
+        });
+      }
+
+      // Animate Experience Timeline
+      const expTimeline = expTimelineRef.current;
+      if (expTimeline) {
+        const expItems = gsap.utils.toArray(".tl-item", expTimeline);
+        const expLineFill = expTimeline.querySelector(".timeline-line-fill");
+
+        // Initial states
+        expItems.forEach((item) => {
+          const card = item.querySelector(".tl-card");
+          const dot = item.querySelector(".tl-dot");
+
+          gsap.set(card, { opacity: 0.18, y: 60, filter: "blur(10px)" });
+          gsap.set(dot, { scale: 0.9, opacity: 0.55 });
+        });
+
+        // Line fill
+        if (expLineFill) {
+          gsap.set(expLineFill, { scaleY: 0, transformOrigin: "top" });
+          gsap.to(expLineFill, {
+            scaleY: 1,
+            ease: "none",
+            scrollTrigger: {
+              trigger: expTimeline,
+              start: "top 60%",
+              end: "bottom 60%",
+              scrub: true,
+            },
+          });
+        }
+
+        // Activate items
+        expItems.forEach((item) => {
+          const card = item.querySelector(".tl-card");
+          const dot = item.querySelector(".tl-dot");
+
+          ScrollTrigger.create({
+            trigger: item,
+            start: "top 55%",
+            end: "bottom 45%",
+            onToggle: (self) => {
+              if (self.isActive) {
+                gsap.to(card, {
+                  opacity: 1,
+                  y: 0,
+                  filter: "blur(0px)",
+                  duration: 0.9,
+                  ease: "power3.out",
+                });
+                gsap.to(dot, {
+                  scale: 1,
+                  opacity: 1,
+                  duration: 0.4,
+                  ease: "power3.out",
+                });
+                item.classList.add("is-active");
+              } else {
+                gsap.to(card, {
+                  opacity: 0.18,
+                  y: 60,
+                  filter: "blur(10px)",
+                  duration: 0.7,
+                  ease: "power3.out",
+                });
+                gsap.to(dot, {
+                  scale: 0.9,
+                  opacity: 0.55,
+                  duration: 0.35,
+                  ease: "power3.out",
+                });
+                item.classList.remove("is-active");
+              }
+            },
+          });
+        });
+      }
       
       ScrollTrigger.refresh();
     },
@@ -147,50 +226,101 @@ export default function Experience() {
         <p className="journey-kicker">02. JOURNEY</p>
         <h2 className="journey-title">Professional Path</h2>
         <p className="journey-sub">
-          A timeline of key milestones—training, internships, and production roles
-          focused on scalable web platforms.
+          A timeline of key milestones—education, internships, and projects
+          focused on building scalable web platforms.
         </p>
       </div>
 
-      {/* Timeline */}
-      <div className="timeline" ref={timelineRef}>
-        <div className="timeline-line">
-          <span className="timeline-line-bg" />
-          <span className="timeline-line-fill" ref={lineFillRef} />
+      {/* Education Timeline */}
+      <div className="timeline-section">
+        <div className="timeline-heading">
+          <h3 className="timeline-section-title">📚 EDUCATION</h3>
         </div>
+        <div className="timeline">
+          <div className="timeline-line">
+            <span className="timeline-line-bg" />
+            <span className="timeline-line-fill" />
+          </div>
 
-        {TIMELINE.map((t, i) => {
-          const side = i % 2 === 0 ? "left" : "right";
-          return (
-            <div className={`tl-item ${side}`} key={`${t.date}-${i}`}>
-              <div className="tl-side tl-left">
-                {side === "left" ? (
-                  <article className="tl-card">
-                    <div className="tl-date">{t.date}</div>
-                    <h3 className="tl-h">{t.title}</h3>
-                    <div className="tl-org">{t.org}</div>
-                    <p className="tl-desc">{t.desc}</p>
-                  </article>
-                ) : null}
-              </div>
+          {EDUCATION.map((t, i) => {
+            const side = i % 2 === 0 ? "left" : "right";
+            return (
+              <div className={`tl-item ${side}`} key={`edu-${t.date}-${i}`}>
+                <div className="tl-side tl-left">
+                  {side === "left" ? (
+                    <article className="tl-card">
+                      <div className="tl-date">{t.date}</div>
+                      <h3 className="tl-h">{t.title}</h3>
+                      <div className="tl-org">{t.org}</div>
+                      <p className="tl-desc">{t.desc}</p>
+                    </article>
+                  ) : null}
+                </div>
 
-              <div className="tl-center">
-                <span className="tl-dot" aria-hidden="true" />
-              </div>
+                <div className="tl-center">
+                  <span className="tl-dot" aria-hidden="true" />
+                </div>
 
-              <div className="tl-side tl-right">
-                {side === "right" ? (
-                  <article className="tl-card">
-                    <div className="tl-date">{t.date}</div>
-                    <h3 className="tl-h">{t.title}</h3>
-                    <div className="tl-org">{t.org}</div>
-                    <p className="tl-desc">{t.desc}</p>
-                  </article>
-                ) : null}
+                <div className="tl-side tl-right">
+                  {side === "right" ? (
+                    <article className="tl-card">
+                      <div className="tl-date">{t.date}</div>
+                      <h3 className="tl-h">{t.title}</h3>
+                      <div className="tl-org">{t.org}</div>
+                      <p className="tl-desc">{t.desc}</p>
+                    </article>
+                  ) : null}
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Experience Timeline */}
+      <div className="timeline-section">
+        <div className="timeline-heading">
+          <h3 className="timeline-section-title">💼 EXPERIENCE</h3>
+        </div>
+        <div className="timeline">
+          <div className="timeline-line">
+            <span className="timeline-line-bg" />
+            <span className="timeline-line-fill" />
+          </div>
+
+          {EXPERIENCE.map((t, i) => {
+            const side = i % 2 === 0 ? "left" : "right";
+            return (
+              <div className={`tl-item ${side}`} key={`exp-${t.date}-${i}`}>
+                <div className="tl-side tl-left">
+                  {side === "left" ? (
+                    <article className="tl-card">
+                      <div className="tl-date">{t.date}</div>
+                      <h3 className="tl-h">{t.title}</h3>
+                      <div className="tl-org">{t.org}</div>
+                      <p className="tl-desc">{t.desc}</p>
+                    </article>
+                  ) : null}
+                </div>
+
+                <div className="tl-center">
+                  <span className="tl-dot" aria-hidden="true" />
+                </div>
+
+                <div className="tl-side tl-right">
+                  {side === "right" ? (
+                    <article className="tl-card">
+                      <div className="tl-date">{t.date}</div>
+                      <h3 className="tl-h">{t.title}</h3>
+                      <div className="tl-org">{t.org}</div>
+                      <p className="tl-desc">{t.desc}</p>
+                    </article>
+                  ) : null}
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

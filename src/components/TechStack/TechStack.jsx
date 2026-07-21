@@ -12,133 +12,124 @@ const htmlIcon = "/assets/images/tech-icons/htmlIcon.svg";
 const cssIcon = "/assets/images/tech-icons/cssIcon.svg";
 const jsIcon = "/assets/images/tech-icons/javascriptIcon.svg";
 const tsIcon = "/assets/images/tech-icons/typescriptIcon.svg";
-const jqueryIcon = "/assets/images/tech-icons/jqueryIcon.svg";
 const tailwindIcon = "/assets/images/tech-icons/tailwindIcon.svg";
-const gsapIcon = "/assets/images/tech-icons/gsapIcon.svg";
-const sassIcon = "/assets/images/tech-icons/sassIcon.svg";
 
 // Backend icons
-const javaIcon = "/assets/images/tech-icons/javaIcon.svg";
-const springIcon = "/assets/images/tech-icons/springIcon.svg";
+const nodeIcon = "/assets/images/tech-icons/javascriptIcon.svg";
+const expressIcon = "/assets/images/tech-icons/apiIcon.svg";
+const djangoIcon = "/assets/images/tech-icons/pythonIcon.svg";
 const apiIcon = "/assets/images/tech-icons/apiIcon.svg";
-const junitIcon = "/assets/images/tech-icons/junitIcon.svg";
-const swaggerIcon = "/assets/images/tech-icons/swaggerIcon.svg";
-const microservicesIcon = "/assets/images/tech-icons/microservicesIcon.svg";
 
 // Database icons
 const postgresIcon = "/assets/images/tech-icons/postgresIcon.svg";
 const mongoIcon = "/assets/images/tech-icons/mongoIcon.svg";
-const redisIcon = "/assets/images/tech-icons/redisIcon.svg";
 const mysqlIcon = "/assets/images/tech-icons/mysqlIcon.svg";
-const h2Icon = "/assets/images/tech-icons/h2Icon.svg";
+
+// AI/ML icons
+const pythonIcon = "/assets/images/tech-icons/pythonIcon.svg";
 
 // Cloud & DevOps icons
 const awsIcon = "/assets/images/tech-icons/awsIcon.svg";
-const s3Icon = "/assets/images/tech-icons/s3Icon.svg";
-const ec2Icon = "/assets/images/tech-icons/ec2Icon.svg";
-const lambdaIcon = "/assets/images/tech-icons/lambdaIcon.svg";
-const cloudfrontIcon = "/assets/images/tech-icons/cloudfrontIcon.svg";
-const dynamoDbIcon = "/assets/images/tech-icons/dynamodbIcon.svg";
 const dockerIcon = "/assets/images/tech-icons/dockerIcon.svg";
 const githubActionsIcon = "/assets/images/tech-icons/githubActionsIcon.svg";
-const ciCdIcon = "/assets/images/tech-icons/ciCdIcon.svg";
 
 // Tools icons
-const postmanIcon = "/assets/images/tech-icons/postmanIcon.svg";
-const eclipseIcon = "/assets/images/tech-icons/eclipseIcon.svg";
+const gitIcon = "/assets/images/tech-icons/githubActionsIcon.svg";
+const githubIcon = "/assets/images/tech-icons/githubActionsIcon.svg";
 const vscodeIcon = "/assets/images/tech-icons/vscodeIcon.svg";
-const figmaIcon = "/assets/images/tech-icons/figmaIcon.svg";
-const msOfficeIcon = "/assets/images/tech-icons/msOfficeIcon.svg";
-const jiraIcon = "/assets/images/tech-icons/jiraIcon.svg";
+const postmanIcon = "/assets/images/tech-icons/postmanIcon.svg";
+const dbeaverIcon = "/assets/images/tech-icons/postgresIcon.svg";
 
 const SECTIONS = [
     {
         label: "FRONTEND",
         techs: [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "TypeScript",
             "React.js",
-            "HTML",
-            "CSS",
-            "Java Script",
-            "Type Script",
-            "JQuery",
-            "Tailwind",
-            "GSAP",
-            "SASS",
+            "Next.js",
+            "Tailwind CSS",
         ],
     },
     {
         label: "BACKEND",
         techs: [
-            "Java",
-            "Spring Boot",
-            "Spring MVC",
-            "Spring Security",
-            "REST APIs",
-            "JUnit",
-            "Micro services",
-            "Swagger",
+            "Node.js",
+            "Express.js",
+            "Django",
+            "Django REST Framework",
         ],
     },
-    { label: "DATABASE", techs: ["Postgre SQL", "MongoDB", "Redis", "MySQL", "H2"] },
+    { label: "DATABASES", techs: ["PostgreSQL", "MongoDB", "MySQL"] },
+    {
+        label: "AI / ML",
+        techs: [
+            "Python",
+            "Pandas",
+            "NumPy",
+            "Matplotlib",
+            "Scikit-learn",
+            "Hugging Face",
+            "PyTorch",
+            "spaCy",
+        ],
+    },
     {
         label: "CLOUD & DEVOPS",
         techs: [
             "AWS",
-            "S3",
-            "EC2",
-            "Lambda",
-            "CloudFront",
-            "Dynamo DB",
             "Docker",
             "GitHub Actions",
-            "CI/CD",
         ],
     },
-    { label: "Tools", techs: ["Postman", "Eclipse", "Visual Studio Code", "Figma", "MS Office", "JIRA"] },
+    { label: "TOOLS", techs: ["Git", "GitHub", "VS Code", "Postman", "DBeaver", "Linux"] },
 ];
 
 const TECH_ICONS = {
+    // Frontend
+    "HTML5": htmlIcon,
+    "CSS3": cssIcon,
+    "JavaScript": jsIcon,
+    "TypeScript": tsIcon,
     "React.js": reactIcon,
-    HTML: htmlIcon,
-    CSS: cssIcon,
-    "Java Script": jsIcon,
-    "Type Script": tsIcon,
-    JQuery: jqueryIcon,
-    Tailwind: tailwindIcon,
-    GSAP: gsapIcon,
-    SASS: sassIcon,
-
-    Java: javaIcon,
-    "Spring Boot": springIcon,
-    "Spring MVC": springIcon,
-    "Spring Security": springIcon,
-    "REST APIs": apiIcon,
-    JUnit: junitIcon,
-    "Micro services": microservicesIcon,
-    Swagger: swaggerIcon,
-
-    "Postgre SQL": postgresIcon,
-    MongoDB: mongoIcon,
-    Redis: redisIcon,
-    MySQL: mysqlIcon,
-    H2: h2Icon,
-
-    AWS: awsIcon,
-    S3: s3Icon,
-    EC2: ec2Icon,
-    Lambda: lambdaIcon,
-    CloudFront: cloudfrontIcon,
-    "Dynamo DB": dynamoDbIcon,
-    Docker: dockerIcon,
+    "Next.js": reactIcon, // Reusing React icon
+    "Tailwind CSS": tailwindIcon,
+    
+    // Backend
+    "Node.js": nodeIcon,
+    "Express.js": expressIcon,
+    "Django": djangoIcon,
+    "Django REST Framework": apiIcon, // Reusing API icon
+    
+    // Databases
+    "PostgreSQL": postgresIcon,
+    "MongoDB": mongoIcon,
+    "MySQL": mysqlIcon,
+    
+    // AI/ML
+    "Python": pythonIcon,
+    "Pandas": pythonIcon,
+    "NumPy": pythonIcon,
+    "Matplotlib": pythonIcon,
+    "Scikit-learn": pythonIcon,
+    "Hugging Face": pythonIcon,
+    "PyTorch": pythonIcon,
+    "spaCy": pythonIcon,
+    
+    // Cloud & DevOps
+    "AWS": awsIcon,
+    "Docker": dockerIcon,
     "GitHub Actions": githubActionsIcon,
-    "CI/CD": ciCdIcon,
-
-    Postman: postmanIcon,
-    Eclipse: eclipseIcon,
-    "Visual Studio Code": vscodeIcon,
-    Figma: figmaIcon,
-    "MS Office": msOfficeIcon,
-    JIRA: jiraIcon,
+    
+    // Tools
+    "Git": gitIcon,
+    "GitHub": githubIcon,
+    "VS Code": vscodeIcon,
+    "Postman": postmanIcon,
+    "DBeaver": dbeaverIcon,
+    "Linux": pythonIcon,
 };
 
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));

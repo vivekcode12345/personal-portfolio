@@ -88,16 +88,22 @@ const Hero = () => {
             <span className="tag-line">{tagline}</span>
             <span className="line" />
           </div>
-          {/* <a
+          <p className="hero-description">
+            Full Stack Developer specializing in scalable web applications, AI/ML solutions, and cloud-native architectures. 
+            Building robust backend systems and intuitive user interfaces with modern technologies.
+          </p>
+          <div className="hero-buttons">
+            <a
               className="download-button"
-              href="/assets/files/Sisvanthkumar_Sathivadivel__SweResume.pdf"
-              download="Sisvanthkumar_Sathivadivel__SweResume.pdf"
-              onClick={(e) => {
-                console.log("ASFAFS") // Prevent the click from propagating to the scroll trigger
-              }}
+              href="/assets/files/vivek_verma_resume.pdf"
+              download="vivek_verma_resume.pdf"
             >
-              Download
-            </a> */}
+              Download Resume
+            </a>
+            <a className="view-projects-button" href="#projects">
+              View Projects
+            </a>
+          </div>
           <div className="scroll-down-indicator">
             <img src="/assets/images/common/scroll-down.png" alt="scroll" />
             <p>{scrollIndicator}</p>

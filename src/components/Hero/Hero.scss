@@ -2,7 +2,7 @@
   position: relative;
   height: 100svh;
   overflow: hidden;
-  padding: 0 1.25rem;
+  padding: 120px 1.25rem 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -69,6 +69,73 @@
   color: rgb(174, 160, 149);
   opacity: 0.6;
   text-transform: uppercase;
+}
+
+.hero-description {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  color: rgb(200, 190, 180);
+  max-width: 650px;
+  margin: clamp(1.5rem, 3vw, 2.5rem) auto 0;
+  line-height: 1.6;
+  opacity: 0.85;
+  padding: 0 1rem;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: clamp(0.75rem, 2vw, 1.25rem);
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.download-button {
+  display: inline-block;
+  padding: clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2.5rem);
+  background: transparent;
+  color: rgb(231, 219, 207);
+  border: 2px solid rgb(196, 107, 31);
+  font-family: "Inter", sans-serif;
+  font-size: clamp(0.75rem, 1.2vw, 0.9rem);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  pointer-events: auto;
+
+  &:hover {
+    background: rgb(196, 107, 31);
+    color: rgb(10, 10, 10);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(196, 107, 31, 0.3);
+  }
+}
+
+.view-projects-button {
+  display: inline-block;
+  padding: clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2.5rem);
+  background: rgb(196, 107, 31);
+  color: rgb(10, 10, 10);
+  border: 2px solid rgb(196, 107, 31);
+  font-family: "Inter", sans-serif;
+  font-size: clamp(0.75rem, 1.2vw, 0.9rem);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  pointer-events: auto;
+
+  &:hover {
+    background: transparent;
+    color: rgb(196, 107, 31);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(196, 107, 31, 0.2);
+  }
 }
 
 .scroll-down-indicator {

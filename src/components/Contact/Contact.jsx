@@ -108,12 +108,12 @@ export default function Contact() {
       <div className="contact__footer">
         <div className="contact__footerInner">
           <div className="contact__copyright">
-            © {new Date().getFullYear()} Sisvanthkumar Sathivadivel. All rights reserved.
+            © {new Date().getFullYear()} Vivek Verma. All rights reserved.
           </div>
 
           <div className="contact__links">
             <a
-              href="https://www.linkedin.com/in/sisvanth-kumar-96a29418a/"
+              href="https://www.linkedin.com/in/vivekcode12345/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
@@ -121,7 +121,7 @@ export default function Contact() {
               LinkedIn
             </a>
             <a
-              href="https://github.com/SisvanthkumarS?tab=repositories&q=&type=public&language=&sort="
+              href="https://github.com/vivekcode12345"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"

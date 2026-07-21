@@ -1,3 +1,3 @@
 export const name = 'VIVEK VERMA'
-export const tagline = 'FULL STACK DEVELOPER • AI/ML ENTHUSIAST'
+export const tagline = 'Full Stack Developer • AI/ML Enthusiast • Backend Engineer'
 export const scrollIndicator = 'Scroll down to explore'

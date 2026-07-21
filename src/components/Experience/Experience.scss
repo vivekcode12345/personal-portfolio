@@ -43,7 +43,6 @@
   width: 100%;
   padding: 0 clamp(14px, 4vw, 60px);
 
-  
   &-line {
     position: absolute;
     left: 50%;
@@ -155,6 +154,61 @@
   color: rgba(255, 255, 255, 0.45);
   line-height: 1.8;
   font-size: 0.95rem;
+}
+
+.tl-section-heading {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  padding: clamp(20px, 4vw, 40px) 0 clamp(10px, 2vw, 20px);
+  z-index: 2;
+  width: 100%;
+  pointer-events: none;
+}
+
+.tl-section-title {
+  display: inline-block;
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--hs-accent, #c46b1f);
+  margin: 0;
+  padding: 8px 24px;
+  border: 2px solid var(--hs-accent, #c46b1f);
+  border-radius: 4px;
+  background: rgba(196, 107, 31, 0.1);
+  text-transform: uppercase;
+}
+
+.timeline-section {
+  position: relative;
+  margin-bottom: clamp(60px, 10vw, 120px);
+}
+
+.timeline-section:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-heading {
+  text-align: center;
+  margin-bottom: clamp(40px, 6vw, 80px);
+  position: relative;
+  z-index: 2;
+}
+
+.timeline-section-title {
+  display: inline-block;
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--hs-accent, #c46b1f);
+  margin: 0;
+  padding: 12px 32px;
+  border: 2px solid var(--hs-accent, #c46b1f);
+  border-radius: 4px;
+  background: rgba(196, 107, 31, 0.1);
+  text-transform: uppercase;
 }
 
 @media (max-width: 900px) {
