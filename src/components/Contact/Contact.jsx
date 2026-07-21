@@ -48,7 +48,7 @@ export default function Contact() {
         <div className="contact__card">
           <form
             className="contact__form"
-            action="https://formspree.io/f/YOUR_FORMSPREE_ID"  // TODO: Replace with your Formspree endpoint
+            action="https://formspree.io/f/xdaqdlej"
             method="POST"
             onKeyDownCapture={(e) => {
               const isField =
