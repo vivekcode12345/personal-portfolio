@@ -92,12 +92,10 @@
 
 .tl-left {
   justify-content: flex-end;
-  padding-right: clamp(18px, 4vw, 52px);
 }
 
 .tl-right {
   justify-content: flex-start;
-  padding-left: clamp(18px, 4vw, 52px);
 }
 
 .tl-center {
@@ -126,6 +124,7 @@
   max-width: 560px;
   text-align: center;
   will-change: transform, filter, opacity;
+  padding: 0 clamp(18px, 4vw, 52px);
 }
 
 .tl-date {
