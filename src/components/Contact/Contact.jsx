@@ -3,7 +3,7 @@ import "./Contact.scss";
 import { mobileNumber, email } from "../../constants/contactConstants";
 
 /**
- * @author Sisvanthkumar Sathivadivel
+ * @author Vivek Verma
  * @description Contact component for the portfolio website. This section includes a form for visitors to get in touch, as well as contact information and social media links.
  * @returns Contact section with a form to get in touch, including contact information and social links.
  * The form submits to Formspree for handling contact messages.
@@ -40,6 +40,7 @@ export default function Contact() {
               {email}
             </a>
             <div className="contact__phone">{mobileNumber}</div>
+            <div className="contact__location">Ballia, Uttar Pradesh, India</div>
           </div>
         </div>
 
@@ -47,7 +48,7 @@ export default function Contact() {
         <div className="contact__card">
           <form
             className="contact__form"
-            action="https://formspree.io/f/mqedddzp"  // 👈 replace with your Formspree endpoint
+            action="https://formspree.io/f/YOUR_FORMSPREE_ID"  // TODO: Replace with your Formspree endpoint
             method="POST"
             onKeyDownCapture={(e) => {
               const isField =
@@ -108,7 +109,8 @@ export default function Contact() {
       <div className="contact__footer">
         <div className="contact__footerInner">
           <div className="contact__copyright">
-            © {new Date().getFullYear()} Vivek Verma. All rights reserved.
+            © {new Date().getFullYear()} Vivek Verma. <br />
+            Designed & Developed by Vivek Verma.
           </div>
 
           <div className="contact__links">
