@@ -82,8 +82,18 @@
 
   img {
     width: 100%;
+    max-width: 700px;
+    height: auto;
+    object-fit: contain;
     border-radius: 5px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
   }
+}
+
+.right {
+  width: 65%;
+  max-width: 800px;
+  min-height: 500px;
 }
 
 .slide:nth-child(3) {
