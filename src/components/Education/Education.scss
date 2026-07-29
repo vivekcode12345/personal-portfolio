@@ -1,0 +1,33 @@
+// Education-specific styles (imported from Experience.scss)
+// All timeline styles are in Experience.scss which is imported by Experience.jsx
+// This file can be used for Education-specific overrides if needed in the future
+
+.timeline-section {
+  position: relative;
+  margin-bottom: clamp(60px, 10vw, 120px);
+}
+
+.timeline-section:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-heading {
+  text-align: center;
+  margin-bottom: clamp(40px, 6vw, 80px);
+  position: relative;
+  z-index: 2;
+}
+
+.timeline-section-title {
+  display: inline-block;
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--hs-accent, #c46b1f);
+  margin: 0;
+  padding: 12px 32px;
+  border: 2px solid var(--hs-accent, #c46b1f);
+  border-radius: 4px;
+  background: rgba(196, 107, 31, 0.1);
+  text-transform: uppercase;
+}

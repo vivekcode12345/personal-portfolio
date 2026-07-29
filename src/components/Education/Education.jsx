@@ -1,14 +1,14 @@
 import React, { useRef } from "react";
 import TimelineSection from "../Journey/TimelineSection";
 import useTimelineAnimation from "../Journey/useTimelineAnimation";
-import { EXPERIENCE } from "./experienceData";
-import "./Experience.scss";
+import { EDUCATION } from "./educationData";
+import "./Education.scss";
 
 /**
- * Experience timeline – owns its own ref and animation hook.
- * No props required. Completely independent from Education.
+ * Education timeline – owns its own ref and animation hook.
+ * No props required. Completely independent.
  */
-const Experience = () => {
+const Education = () => {
   const timelineRef = useRef(null);
 
   useTimelineAnimation(timelineRef);
@@ -16,10 +16,10 @@ const Experience = () => {
   return (
     <TimelineSection
       ref={timelineRef}
-      title="💼 EXPERIENCE"
-      items={EXPERIENCE}
+      title="📚 EDUCATION"
+      items={EDUCATION}
     />
   );
 };
 
-export default Experience;
+export default Education;

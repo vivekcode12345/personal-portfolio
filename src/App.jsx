@@ -6,7 +6,7 @@ import Cursor from "./ui/cursor/Cursor";
 import Navbar from "./components/NavBar/Navbar";
 import Hero from "./components/Hero/Hero";
 import WhoAmI from "./components/WhoAmI/WhoAmI";
-import Experience from "./components/Experience/Experience";
+import Journey from "./components/Journey/Journey";
 import Warp from "./components/Warp/Warp";
 import Certifications from "./components/TechnicalCertifications/Certifications";
 import TechStack from "./components/TechStack/TechStack";
@@ -37,7 +37,7 @@ const App = () => {
           <Hero />
           <WhoAmI/>
           {/* <DirectionalMarquee /> */}
-          <Experience />
+          <Journey />
           <TechStack/>
           <Projects />
           <Certifications />

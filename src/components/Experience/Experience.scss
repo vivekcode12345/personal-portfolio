@@ -81,6 +81,7 @@
   position: relative;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: clamp(26px, 4vw, 44px) 0;
 }
 
@@ -94,14 +95,29 @@
   justify-content: flex-end;
 }
 
+.tl-item.right .tl-left {
+  display: none;
+}
+
 .tl-right {
   justify-content: flex-start;
 }
 
+.tl-item.left .tl-right {
+  display: none;
+}
+
 .tl-center {
-  width: clamp(56px, 6vw, 80px);
-  flex: 0 0 clamp(56px, 6vw, 80px);
-  position: relative;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 20px;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .tl-dot {
@@ -110,21 +126,17 @@
   border-radius: 999px;
   border: 2px solid var(--hs-accent, #c46b1f);
   background: rgba(5, 5, 5, 0.9);
-
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  flex-shrink: 0;
 
   box-shadow: 0 0 0 6px rgba(196, 107, 31, 0.08);
 }
 
 .tl-card {
   width: 100%;
-  max-width: 560px;
+  max-width: 380px;
   text-align: center;
   will-change: transform, filter, opacity;
-  padding: 0 clamp(18px, 4vw, 52px);
+  padding: 0 clamp(24px, 4vw, 60px);
 }
 
 .tl-date {
