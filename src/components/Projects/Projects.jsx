@@ -1,66 +1,64 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Projects.scss";
 
 const PROJECTS = [
   {
-    title: "CareerClarity — AI-Powered Career Guidance",
-    desc: "An AI-driven full-stack platform that empowers students to make data-informed career decisions. The system analyzes skills, interests, and academic profiles to generate personalized career recommendations, AI roadmaps, CV gap analysis, and real-time opportunity alerts — all within a unified dashboard.",
-    subtitle: "AI-Powered Career Guidance for Students",
+    title: "CareerClarity",
+    subtitle: "AI-Powered Career Guidance Platform",
+    desc: "Full-stack platform pairing a React frontend with a Django REST API and PostgreSQL database, secured by JWT authentication and Google OAuth. Uses EasyOCR and spaCy to extract skills from uploaded CVs, then runs a recommendation engine that maps detected skills to career paths. Implements RESTful CRUD operations for user profiles, assessments, alerts, and college data with pagination and role-based access.",
     image: "/assets/images/common/career-clarity.png",
-    tags: ["React", "Django", "PostgreSQL", "Tailwind CSS", "REST API", "JWT", "Python", "Vite", "Axios"],
+    tags: ["React", "Django", "PostgreSQL", "Tailwind CSS", "JWT"],
     links: [
-      { label: "Live Demo", href: "https://career-clarity-three.vercel.app/", icon: "↗" },
-      { label: "Source Code", href: "https://github.com/vivekcode12345/career-clarity", icon: "⌂" },
+      { label: "Live Demo", href: "https://career-clarity-three.vercel.app/" },
+      { label: "GitHub", href: "https://github.com/vivekcode12345/career-clarity" },
     ],
-    isTeamProject: true,
-    contributions: [
-      "Architected and developed the React frontend — built 15+ reusable components including auth flows, dynamic dashboards, AI chatbot UI, and alert management system",
-      "Implemented Google OAuth + JWT authentication pipeline connecting React frontend to Django REST backend, securing user sessions across the platform",
-      "Designed and integrated the CV Analysis module, leveraging EasyOCR + spaCy for automated skill extraction, and built the front-end visualization for skill-gap reporting",
-      "Engineered real-time opportunity alerts module with full CRUD operations, connecting the alerts dashboard to Django REST endpoints with pagination and filters"
-    ]
   },
   {
-    title: "GSAP Portfolio — React + GSAP",
-    desc: "Designed and built a high-performance animated portfolio using React and GSAP. Implemented ScrollTrigger-based section pinning, scrubbed timelines, parallax/zoom effects, and smooth anchor navigation. Built reusable motion patterns, responsive layouts, and optimized rendering with will-change, transform-based animations, and cleanup-safe GSAP hooks for consistent behavior across refresh/resize.",
+    title: "FoodXpress",
+    subtitle: "Food Delivery Management System",
+    desc: "Engineered a secure full-stack monolith featuring JWT authentication with separate middleware for two user roles, a normalized MySQL schema spanning six tables with foreign-key constraints, and RESTful CRUD endpoints for restaurants, menus, orders, and payments. The backend follows an MVC architecture with six controller modules and supports a six-stage order lifecycle from placement to delivery. Deployed on Render.",
+    image: "/assets/images/common/foodxpress.png",
+    tags: ["Node.js", "Express.js", "MySQL", "JWT", "HTML/CSS"],
+    links: [
+      { label: "Live Demo", href: "https://foodxpress-platform.onrender.com" },
+      { label: "GitHub", href: "https://github.com/vivekcode12345/foodxpress-platform" },
+    ],
+  },
+  {
+    title: "GSAP Portfolio",
+    subtitle: "High-Performance Animated Portfolio",
+    desc: "React application driven by GSAP ScrollTrigger for section-based pinning, scrubbed timeline animations, and parallax transforms triggered by scroll position. Uses will-change hints and transform-based rendering to maintain 60 fps during complex timeline sequences. Implements cleanup-safe GSAP hooks to prevent memory leaks on unmount and respects prefers-reduced-motion for accessibility.",
     image: "/assets/images/common/portfolio-image.png",
     tags: ["React", "GSAP", "ScrollTrigger", "SCSS", "Vite"],
     links: [
-      { label: "Live Demo", href: "https://sisvanth-gsap-portfolio.vercel.app/", icon: "↗" },
-      { label: "Source Code", href: "https://github.com/SisvanthkumarS/GSAP-Portfolio", icon: "⌂" },
-    ]
+      { label: "Live Demo", href: "https://sisvanth-gsap-portfolio.vercel.app/" },
+      { label: "GitHub", href: "https://github.com/SisvanthkumarS/GSAP-Portfolio" },
+    ],
   },
   {
-    title: "Dining Concierge Chatbot — AWS",
-    desc: "Built a production-style serverless dining recommendation system leveraging AWS cloud-native services. Implemented a decoupled microservices architecture using API Gateway, Lex, Lambda, SQS, OpenSearch, DynamoDB, SES, and EventBridge.",
+    title: "Dining Concierge Chatbot",
+    subtitle: "Serverless AWS Chatbot",
+    desc: "Serverless microservices pipeline on AWS — API Gateway receives user input, Amazon Lex handles intent classification and slot filling, then an SQS FIFO queue decouples the conversation handler from a Lambda function that queries OpenSearch for restaurant data. DynamoDB persists session state across turns, and SES delivers confirmation emails on successful bookings.",
     image: "/assets/images/common/chatbot-cover.png",
-    tags: ["AWS", "Lex", "Lambda", "API Gateway", "SQS", "DynamoDB", "OpenSearch"],
+    tags: ["AWS", "Lex", "Lambda", "API Gateway", "DynamoDB"],
     links: [
-      { label: "Live Demo", href: "https://amanns-dining-concierge-nyc.s3.us-east-1.amazonaws.com/index.html", icon: "↗" },
-      { label: "Source Code", href: "https://github.com/SisvanthkumarS/dining-concierge-chatbot", icon: "⌂" },
+      { label: "Live Demo", href: "https://amanns-dining-concierge-nyc.s3.us-east-1.amazonaws.com/index.html" },
+      { label: "GitHub", href: "https://github.com/SisvanthkumarS/dining-concierge-chatbot" },
     ],
   },
 ];
 
 export default function Projects() {
-  const [expanded, setExpanded] = useState({});
-
-  const toggleExpand = (title) => {
-    setExpanded((prev) => ({ ...prev, [title]: !prev[title] }));
-  };
-
   return (
     <section className="projects" id="projects">
-      {/* Header */}
       <div className="sectionHeader">
         <p className="sectionKicker">04. PROJECTS</p>
-        <h2 className="sectionTitle">PROJECTS </h2>
+        <h2 className="sectionTitle">Projects</h2>
         <p className="sectionSub">
-          A selection of builds that showcase frontend motion craft and cloud-first architecture.
+          A selection of builds showcasing full-stack development, cloud architecture, and motion design.
         </p>
       </div>
 
-      {/* Cards */}
       <div className="projectsGrid">
         {PROJECTS.map((p) => (
           <article className="projectCard" key={p.title}>
@@ -71,11 +69,7 @@ export default function Projects() {
 
             <div className="projectBody">
               <h3 className="projectTitle">{p.title}</h3>
-
-              {p.subtitle && (
-                <p className="projectSubtitle">{p.subtitle}</p>
-              )}
-
+              <p className="projectSubtitle">{p.subtitle}</p>
               <p className="projectDesc">{p.desc}</p>
 
               <div className="projectTags">
@@ -86,46 +80,13 @@ export default function Projects() {
                 ))}
               </div>
 
-              {/* Team Project: My Contributions */}
-              {p.isTeamProject && p.contributions && (
-                <div className="projectContributions">
-                  <button
-                    className="contribToggle"
-                    onClick={() => toggleExpand(p.title)}
-                    aria-expanded={expanded[p.title]}
-                  >
-                    {expanded[p.title] ? "▲" : "▼"} My Contributions
-                  </button>
-                  {expanded[p.title] && (
-                    <div className="contribContent">
-                      <p className="contribNote">
-                        Team project — what I built:
-                      </p>
-                      <ul className="contribList">
-                        {p.contributions.map((c, i) => (
-                          <li key={i} className="contribItem">
-                            {c}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </div>
-              )}
-
               <div className="projectFooter">
-                {p.links.map((l) => (
-                  <a
-                    key={l.label}
-                    className="projectLink"
-                    href={l.href}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <span className="icon">{l.icon}</span>
-                    {l.label}
-                  </a>
-                ))}
+                <a className="projectLink" href={p.links[0].href} target="_blank" rel="noreferrer">
+                  ↗ Live Demo
+                </a>
+                <a className="projectLink" href={p.links[1].href} target="_blank" rel="noreferrer">
+                  {"</>"} GitHub
+                </a>
               </div>
             </div>
           </article>
