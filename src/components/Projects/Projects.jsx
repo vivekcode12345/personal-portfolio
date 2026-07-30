@@ -24,28 +24,6 @@ const PROJECTS = [
       { label: "GitHub", href: "https://github.com/vivekcode12345/foodxpress-platform" },
     ],
   },
-  {
-    title: "GSAP Portfolio",
-    subtitle: "High-Performance Animated Portfolio",
-    desc: "React application driven by GSAP ScrollTrigger for section-based pinning, scrubbed timeline animations, and parallax transforms triggered by scroll position. Uses will-change hints and transform-based rendering to maintain 60 fps during complex timeline sequences. Implements cleanup-safe GSAP hooks to prevent memory leaks on unmount and respects prefers-reduced-motion for accessibility.",
-    image: "/assets/images/common/portfolio-image.png",
-    tags: ["React", "GSAP", "ScrollTrigger", "SCSS", "Vite"],
-    links: [
-      { label: "Live Demo", href: "https://sisvanth-gsap-portfolio.vercel.app/" },
-      { label: "GitHub", href: "https://github.com/SisvanthkumarS/GSAP-Portfolio" },
-    ],
-  },
-  {
-    title: "Dining Concierge Chatbot",
-    subtitle: "Serverless AWS Chatbot",
-    desc: "Serverless microservices pipeline on AWS — API Gateway receives user input, Amazon Lex handles intent classification and slot filling, then an SQS FIFO queue decouples the conversation handler from a Lambda function that queries OpenSearch for restaurant data. DynamoDB persists session state across turns, and SES delivers confirmation emails on successful bookings.",
-    image: "/assets/images/common/chatbot-cover.png",
-    tags: ["AWS", "Lex", "Lambda", "API Gateway", "DynamoDB"],
-    links: [
-      { label: "Live Demo", href: "https://amanns-dining-concierge-nyc.s3.us-east-1.amazonaws.com/index.html" },
-      { label: "GitHub", href: "https://github.com/SisvanthkumarS/dining-concierge-chatbot" },
-    ],
-  },
 ];
 
 export default function Projects() {
