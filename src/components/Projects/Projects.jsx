@@ -24,6 +24,16 @@ const PROJECTS = [
       { label: "GitHub", href: "https://github.com/vivekcode12345/foodxpress-platform" },
     ],
   },
+  {
+    title: "LearnHub LMS",
+    subtitle: "Full-Stack Learning Management System",
+    desc: "Architected a full-stack Learning Management System with 3 role-based access tiers, 22 backend modules, and 121 REST API endpoints using Node.js, Express, and MongoDB/Mongoose. Engineered real-time collaboration via Socket.io (37 event types) and Agora RTC SDK for video calls and messaging. Designed 21 normalized MongoDB schemas with a React 19 + Redux Toolkit frontend spanning 46 role-specific pages. Implemented JWT authentication, Google OAuth 2.0, bcrypt hashing, RBAC middleware, and Helmet security hardening.",
+    image: "/assets/images/common/lms.png",
+    tags: ["React 19", "Node.js", "Express", "MongoDB", "Socket.io", "Redux Toolkit"],
+    links: [
+      { label: "GitHub", href: "#" },
+    ],
+  },
 ];
 
 export default function Projects() {
@@ -59,10 +69,12 @@ export default function Projects() {
               </div>
 
               <div className="projectFooter">
-                <a className="projectLink" href={p.links[0].href} target="_blank" rel="noreferrer">
-                  ↗ Live Demo
-                </a>
-                <a className="projectLink" href={p.links[1].href} target="_blank" rel="noreferrer">
+                {p.links[0].label === "Live Demo" && (
+                  <a className="projectLink" href={p.links[0].href} target="_blank" rel="noreferrer">
+                    ↗ Live Demo
+                  </a>
+                )}
+                <a className="projectLink" href={p.links[p.links[0].label === "Live Demo" ? 1 : 0].href} target="_blank" rel="noreferrer">
                   {"</>"} GitHub
                 </a>
               </div>
