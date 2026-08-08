@@ -2,8 +2,8 @@ import { useEffect, useRef } from "react";
 import "./Warp.scss";
 
 /**
- * @author Sisvanthkumar Sathivadivel
- * @returns WarpSpeed component that creates a starfield animation on a canvas. The stars move towards the center of the screen, creating a warp speed effect. The animation responds to user input, allowing them to control the speed and direction of the warp using keyboard arrows or mouse/touch interactions. The component uses requestAnimationFrame for smooth animations and handles resizing to maintain the effect across different screen sizes.
+ * Creates a canvas-based warp-speed starfield animation with
+ * keyboard, mouse, and touch interactions.
  */
 export default function WarpSpeed() {
     const canvasRef = useRef(null);
