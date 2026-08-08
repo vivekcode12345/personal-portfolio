@@ -7,7 +7,7 @@ import "./Certifications.scss";
 gsap.registerPlugin(ScrollTrigger);
 
 /**
- * @author Sisvanthkumar Sathivadivel
+ * @author Vivek Verma
  * Certifications component that showcases professional certifications with an interactive scroll experience.
  * @returns {JSX.Element} The rendered Certifications component.
  */
@@ -131,26 +131,14 @@ const Certifications = () => {
 
       <div className="content">
         <ul className="certification-list">
-          <li>Dynamic Programming</li>
-          <li>MongoDB Associate Developer</li>
-          <li>Naukri Campus</li>
-          <li>Oracle Certified Foundations Associate</li>
+          <li>MongoDB Certified Developer, Associate</li>
         </ul>
 
         <div className="fill" />
 
         <div className="right">
           <div className="slide center">
-            <img src="/assets/images/certificates/dynamic-programming.jpeg" alt="Dynamic Programming" />
-          </div>
-          <div className="slide center">
-            <img src="/assets/images/certificates/mongodb-associate-developer.jpg" alt="MongoDB Associate Developer" />
-          </div>
-          <div className="slide center">
-            <img src="/assets/images/certificates/naukri-campus.jpg" alt="Naukri Campus" />
-          </div>
-          <div className="slide center">
-            <img src="/assets/images/certificates/oracel-certified-foundations-associate.jpg" alt="Oracle Certified Foundations Associate" />
+            <img src="/assets/images/certificates/mongodb-associate-developer.jpg" alt="MongoDB Certified Developer, Associate (C100DEV) certification badge" />
           </div>
         </div>
       </div>
