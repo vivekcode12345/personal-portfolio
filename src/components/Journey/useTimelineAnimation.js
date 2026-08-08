@@ -89,7 +89,18 @@ const useTimelineAnimation = (timelineRef) => {
 
     // ── Cleanup ──
     return () => {
-      ScrollTrigger.getAll().forEach((st) => st.kill());
+      // Only kill ScrollTriggers created by this timeline
+      items.forEach((item) => {
+        const card = item.querySelector(".tl-card");
+        const dot = item.querySelector(".tl-dot");
+        
+        gsap.killTweensOf(card);
+        gsap.killTweensOf(dot);
+      });
+      
+      if (lineFill) {
+        gsap.killTweensOf(lineFill);
+      }
     };
   }, [timelineRef]);
 };
