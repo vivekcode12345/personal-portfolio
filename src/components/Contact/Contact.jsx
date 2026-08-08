@@ -18,7 +18,7 @@ export default function Contact() {
         <p className="contact-sub-heading">06. Contact</p>
         <h2>GET IN TOUCH</h2>
         <p className="contact-description">
-          I’m always open to discussing product ideas, creative strategies, or potential collaborations. Actively looking for summer internships.
+          I’m open to discussing product ideas, collaborations, and internship opportunities.
         </p>
       </div>
 
@@ -32,15 +32,19 @@ export default function Contact() {
           </h2>
 
           <p className="contact__desc">
-            Actively seeking summer internship opportunities. Feel free to reach out if you have a project in mind or just want to say hi! I’m always open to discussing product ideas, creative strategies, or potential collaborations.
+            Actively seeking summer internship opportunities. Feel free to reach out with a role, project, or collaboration idea.
           </p>
 
           <div className="contact__info">
             <a className="contact__email" href={`mailto:${email}`}>
               {email}
             </a>
-            <div className="contact__phone">{mobileNumber}</div>
-            <div className="contact__location">Ballia, Uttar Pradesh, India</div>
+            <a className="contact__phone" href={`tel:${mobileNumber}`}>
+              {mobileNumber}
+            </a>
+            <address className="contact__location">
+              Ballia, Uttar Pradesh, India
+            </address>
           </div>
         </div>
 
@@ -50,6 +54,7 @@ export default function Contact() {
             className="contact__form"
             action="https://formspree.io/f/xdaqdlej"
             method="POST"
+            aria-label="Contact form"
             onKeyDownCapture={(e) => {
               const isField =
                 e.target instanceof HTMLInputElement ||
