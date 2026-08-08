@@ -11,7 +11,7 @@ import { scrollIndicator } from "../../constants/landingPageConstants";
 gsap.registerPlugin(ScrollTrigger);
 
 /**
- * @author Sisvanthkumar Sathivadivel
+ * @author Vivek Verma
  * @returns Hero component that serves as the landing section of the portfolio website. It features a zoom-out animation on the hero title and tagline as the user scrolls down. The animation is responsive, with different scaling factors and scroll distances for mobile, tablet, and desktop screens. The component uses GSAP for scroll-triggered animations, creating an engaging introduction to the portfolio.
  */
 const Hero = () => {
@@ -89,8 +89,7 @@ const Hero = () => {
             <span className="line" />
           </div>
           <p className="hero-description">
-            Full Stack Developer specializing in scalable web applications, AI/ML solutions, and cloud-native architectures. 
-            Building robust backend systems and intuitive user interfaces with modern technologies.
+            Computer Science undergraduate and Full Stack Developer focused on building scalable web applications, AI-powered solutions, and production-ready systems. I combine strong foundations in software engineering, data structures, and modern web technologies to turn ideas into impactful products.
           </p>
           <div className="hero-buttons">
             <a
