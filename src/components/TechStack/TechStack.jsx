@@ -15,13 +15,15 @@ const tsIcon = "/assets/images/tech-icons/typescriptIcon.svg";
 const tailwindIcon = "/assets/images/tech-icons/tailwindIcon.svg";
 
 // Backend icons
-const nodeIcon = "/assets/images/tech-icons/javascriptIcon.svg";
+const nodeIcon = "/assets/images/tech-icons/apiIcon.svg";
 const expressIcon = "/assets/images/tech-icons/apiIcon.svg";
+const socketIcon = "/assets/images/tech-icons/apiIcon.svg";
 
 // Database icons
 const postgresIcon = "/assets/images/tech-icons/postgresIcon.svg";
 const mongoIcon = "/assets/images/tech-icons/mongoIcon.svg";
 const mysqlIcon = "/assets/images/tech-icons/mysqlIcon.svg";
+const sqlIcon = "/assets/images/tech-icons/postgresIcon.svg";
 
 // AI/ML icons
 const pythonIcon = "/assets/images/tech-icons/pythonIcon.svg";
@@ -36,25 +38,31 @@ const gitIcon = "/assets/images/tech-icons/githubActionsIcon.svg";
 const githubIcon = "/assets/images/tech-icons/githubActionsIcon.svg";
 const vscodeIcon = "/assets/images/tech-icons/vscodeIcon.svg";
 const postmanIcon = "/assets/images/tech-icons/postmanIcon.svg";
+const intellijIcon = "/assets/images/tech-icons/vscodeIcon.svg";
 
 const SECTIONS = [
     {
-        label: "FRONTEND",
+        label: "LANGUAGES",
         techs: [
-            "HTML5",
-            "CSS3",
+            "Java",
+            "C++",
+            "Python",
             "JavaScript",
             "TypeScript",
-            "React.js",
-            "Next.js",
-            "Tailwind CSS",
+            "SQL",
+            "HTML5",
+            "CSS3",
         ],
     },
     {
-        label: "BACKEND",
+        label: "FRAMEWORKS",
         techs: [
+            "React.js",
+            "Next.js",
             "Node.js",
             "Express.js",
+            "Tailwind CSS",
+            "Socket.IO",
         ],
     },
     { label: "DATABASES", techs: ["PostgreSQL", "MongoDB", "MySQL"] },
@@ -72,25 +80,31 @@ const SECTIONS = [
         techs: [
             "AWS",
             "Docker",
+            "Git",
             "GitHub Actions",
         ],
     },
-    { label: "TOOLS", techs: ["Git", "GitHub", "VS Code", "Postman"] },
+    { label: "TOOLS", techs: ["GitHub", "VS Code", "Postman", "IntelliJ IDEA"] },
 ];
 
 const TECH_ICONS = {
-    // Frontend
-    "HTML5": htmlIcon,
-    "CSS3": cssIcon,
+    // Languages
+    "Java": jsIcon,
+    "C++": jsIcon,
+    "Python": pythonIcon,
     "JavaScript": jsIcon,
     "TypeScript": tsIcon,
-    "React.js": reactIcon,
-    "Next.js": reactIcon, // Reusing React icon
-    "Tailwind CSS": tailwindIcon,
+    "SQL": sqlIcon,
+    "HTML5": htmlIcon,
+    "CSS3": cssIcon,
     
-    // Backend
+    // Frameworks
+    "React.js": reactIcon,
+    "Next.js": reactIcon,
     "Node.js": nodeIcon,
     "Express.js": expressIcon,
+    "Tailwind CSS": tailwindIcon,
+    "Socket.IO": socketIcon,
     
     // Databases
     "PostgreSQL": postgresIcon,
@@ -98,7 +112,6 @@ const TECH_ICONS = {
     "MySQL": mysqlIcon,
     
     // AI/ML
-    "Python": pythonIcon,
     "Pandas": pythonIcon,
     "NumPy": pythonIcon,
     "Scikit-learn": pythonIcon,
@@ -106,20 +119,21 @@ const TECH_ICONS = {
     // Cloud & DevOps
     "AWS": awsIcon,
     "Docker": dockerIcon,
+    "Git": gitIcon,
     "GitHub Actions": githubActionsIcon,
     
     // Tools
-    "Git": gitIcon,
     "GitHub": githubIcon,
     "VS Code": vscodeIcon,
     "Postman": postmanIcon,
+    "IntelliJ IDEA": intellijIcon,
 };
 
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 
 /**
- * @author Sisvanthkumar Sathivadivel
- * @returns TechStack component that creates an interactive 3D showcase of technologies. As the user scrolls, they navigate through a virtual space filled with tech cards and stars. The cards display technology names, icons, and metadata, while the stars create a dynamic background. The component uses GSAP for smooth animations and ScrollTrigger for scroll-based interactions, creating an engaging way to present the tech stack.
+ * @author Vivek Verma
+ * @returns TechStack component that creates an interactive 3D showcase of technologies. As the user scrolls, users navigate through a virtual space filled with tech cards and stars. The cards display technology names, icons, and metadata, while the stars create a dynamic background. The component uses GSAP for smooth animations and ScrollTrigger for scroll-based interactions, creating an engaging way to present the tech stack.
  */
 export default function TechStack() {
     const sectionRef = useRef(null);
