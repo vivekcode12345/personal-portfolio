@@ -34,6 +34,17 @@ const PROJECTS = [
       { label: "GitHub", href: "#" },
     ],
   },
+  {
+    title: "Book Discovery",
+    subtitle: "Google Books API Integration Platform",
+    desc: "Built a React 19 + Tailwind CSS book discovery platform integrating the Google Books API to surface up to 12 search results per query. Engineered lazy-loaded book cover images, live loading-skeleton states, and an accessible book-detail modal with escape-to-close and click-outside dismissal. Curated 5 quick-pick discovery chips and implemented a responsive 2–3 column grid for an editorial-style browsing experience. Deployed to production on Vercel.",
+    image: "/assets/images/common/book.png",
+    tags: ["React 19", "Tailwind CSS", "Google Books API", "Vercel"],
+    links: [
+      { label: "Live Demo", href: "https://book-discovery-one.vercel.app" },
+      { label: "GitHub", href: "https://github.com/vivekcode12345/book-discovery" },
+    ],
+  },
 ];
 
 export default function Projects() {
