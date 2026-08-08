@@ -17,8 +17,6 @@ const tailwindIcon = "/assets/images/tech-icons/tailwindIcon.svg";
 // Backend icons
 const nodeIcon = "/assets/images/tech-icons/javascriptIcon.svg";
 const expressIcon = "/assets/images/tech-icons/apiIcon.svg";
-const djangoIcon = "/assets/images/tech-icons/pythonIcon.svg";
-const apiIcon = "/assets/images/tech-icons/apiIcon.svg";
 
 // Database icons
 const postgresIcon = "/assets/images/tech-icons/postgresIcon.svg";
@@ -38,7 +36,6 @@ const gitIcon = "/assets/images/tech-icons/githubActionsIcon.svg";
 const githubIcon = "/assets/images/tech-icons/githubActionsIcon.svg";
 const vscodeIcon = "/assets/images/tech-icons/vscodeIcon.svg";
 const postmanIcon = "/assets/images/tech-icons/postmanIcon.svg";
-const dbeaverIcon = "/assets/images/tech-icons/postgresIcon.svg";
 
 const SECTIONS = [
     {
@@ -58,8 +55,6 @@ const SECTIONS = [
         techs: [
             "Node.js",
             "Express.js",
-            "Django",
-            "Django REST Framework",
         ],
     },
     { label: "DATABASES", techs: ["PostgreSQL", "MongoDB", "MySQL"] },
@@ -69,11 +64,7 @@ const SECTIONS = [
             "Python",
             "Pandas",
             "NumPy",
-            "Matplotlib",
             "Scikit-learn",
-            "Hugging Face",
-            "PyTorch",
-            "spaCy",
         ],
     },
     {
@@ -84,7 +75,7 @@ const SECTIONS = [
             "GitHub Actions",
         ],
     },
-    { label: "TOOLS", techs: ["Git", "GitHub", "VS Code", "Postman", "DBeaver", "Linux"] },
+    { label: "TOOLS", techs: ["Git", "GitHub", "VS Code", "Postman"] },
 ];
 
 const TECH_ICONS = {
@@ -100,8 +91,6 @@ const TECH_ICONS = {
     // Backend
     "Node.js": nodeIcon,
     "Express.js": expressIcon,
-    "Django": djangoIcon,
-    "Django REST Framework": apiIcon, // Reusing API icon
     
     // Databases
     "PostgreSQL": postgresIcon,
@@ -112,11 +101,7 @@ const TECH_ICONS = {
     "Python": pythonIcon,
     "Pandas": pythonIcon,
     "NumPy": pythonIcon,
-    "Matplotlib": pythonIcon,
     "Scikit-learn": pythonIcon,
-    "Hugging Face": pythonIcon,
-    "PyTorch": pythonIcon,
-    "spaCy": pythonIcon,
     
     // Cloud & DevOps
     "AWS": awsIcon,
@@ -128,8 +113,6 @@ const TECH_ICONS = {
     "GitHub": githubIcon,
     "VS Code": vscodeIcon,
     "Postman": postmanIcon,
-    "DBeaver": dbeaverIcon,
-    "Linux": pythonIcon,
 };
 
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
