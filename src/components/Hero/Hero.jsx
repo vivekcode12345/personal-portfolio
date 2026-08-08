@@ -42,6 +42,35 @@ const Hero = () => {
           return;
         }
 
+        // Entrance animation
+        const entranceTl = gsap.timeline({ defaults: { ease: "power3.out" } });
+        
+        entranceTl
+          .from(".hero-title", {
+            y: 60,
+            opacity: 0,
+            duration: 1.2,
+          })
+          .from(".hero-sub", {
+            y: 40,
+            opacity: 0,
+            duration: 1,
+          }, "-=0.8")
+          .from(".hero-description", {
+            y: 30,
+            opacity: 0,
+            duration: 1,
+          }, "-=0.6")
+          .from(".hero-buttons", {
+            y: 20,
+            opacity: 0,
+            duration: 0.8,
+          }, "-=0.5")
+          .from(".scroll-down-indicator", {
+            opacity: 0,
+            duration: 0.8,
+          }, "-=0.3");
+
         // tune these per screen so it feels consistent
         const scaleTo = mobile ? 6 : tablet ? 8 : 10;
         const endDist = short ? "+=55%" : mobile ? "+=70%" : "+=80%";
