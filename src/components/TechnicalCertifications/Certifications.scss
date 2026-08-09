@@ -6,16 +6,14 @@
 }
 
 .certification-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: clamp(16px, 3vw, 24px);
+  display: block;
+  text-align: center;
   margin: 0px auto;
   font-family: "Inter", sans-serif;
   padding: 0 clamp(16px, 4vw, 40px);
 
   .sub-heading {
+    display: block;
     text-align: center;
     font-family: "Inter";
     width: auto;
@@ -23,7 +21,7 @@
     font-size: 0.75rem;
     color: var(--hs-accent, #c46b1f);
     font-weight: 500;
-    margin-top: 0;
+    margin: 0 0 16px;
     opacity: 0.9;
   }
 
@@ -34,10 +32,12 @@
     font-weight: 800;
     letter-spacing: -0.01em;
     text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+    margin: 0 0 16px;
   }
 
   .certification-description {
-    margin: 0;
+    display: block;
+    margin: 0 auto;
     max-width: 65ch;
     color: rgba(255, 255, 255, 0.5);
     font-size: clamp(0.95rem, 1.3vw, 1.05rem);
@@ -94,7 +94,7 @@
   left: 0;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.4s ease, visibility 0.4s ease;
+  pointer-events: none;
 
   img {
     width: 100%;
@@ -128,6 +128,7 @@
   cursor: pointer;
   position: relative;
   border-left: 2px solid transparent;
+  list-style: none;
 
   &::before {
     content: "";

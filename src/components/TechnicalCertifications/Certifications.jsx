@@ -132,6 +132,9 @@ const Certifications = () => {
       <div className="content">
         <ul className="certification-list">
           <li>MongoDB Certified Developer, Associate</li>
+          <li>Dynamic Programming</li>
+          <li>Naukri Campus</li>
+          <li>Oracle Certified Foundations Associate</li>
         </ul>
 
         <div className="fill" />
@@ -139,6 +142,15 @@ const Certifications = () => {
         <div className="right">
           <div className="slide center">
             <img src="/assets/images/certificates/mongodb-associate-developer.jpg" alt="MongoDB Certified Developer, Associate (C100DEV) certification badge" />
+          </div>
+          <div className="slide center">
+            <img src="/assets/images/certificates/dynamic-programming.jpeg" alt="Dynamic Programming certification" />
+          </div>
+          <div className="slide center">
+            <img src="/assets/images/certificates/naukri-campus.jpg" alt="Naukri Campus certification" />
+          </div>
+          <div className="slide center">
+            <img src="/assets/images/certificates/oracel-certified-foundations-associate.jpg" alt="Oracle Certified Foundations Associate certification" />
           </div>
         </div>
       </div>
