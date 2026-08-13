@@ -86,18 +86,22 @@ body {
 }
 
 #smooth-content {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(48px, 6vw, 96px);
+  position: relative;
 }
 
 section {
+  position: relative;
+  z-index: 1;
   scroll-margin-top: 110px;
 }
 
+#smooth-content > section + section {
+  margin-top: clamp(48px, 6vw, 96px);
+}
+
 @media (max-width: 640px) {
-  #smooth-content {
-    gap: clamp(28px, 8vw, 48px);
+  #smooth-content > section + section {
+    margin-top: clamp(28px, 8vw, 48px);
   }
 
   section {

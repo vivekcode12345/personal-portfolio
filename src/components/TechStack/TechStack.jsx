@@ -1,373 +1,93 @@
-import React, { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollSmoother } from "gsap/all";
+import React from "react";
 import "./TechStack.scss";
 
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+const iconPath = (filename) => `/assets/images/tech-icons/${encodeURIComponent(filename)}`;
 
-// Frontend icons
-const reactIcon = "/assets/images/tech-icons/reactjsIcon.svg";
-const htmlIcon = "/assets/images/tech-icons/htmlIcon.svg";
-const cssIcon = "/assets/images/tech-icons/cssIcon.svg";
-const jsIcon = "/assets/images/tech-icons/javascriptIcon.svg";
-const tsIcon = "/assets/images/tech-icons/typescriptIcon.svg";
-const tailwindIcon = "/assets/images/tech-icons/tailwindIcon.svg";
-
-// Backend icons
-const nodeIcon = "/assets/images/tech-icons/apiIcon.svg";
-const expressIcon = "/assets/images/tech-icons/apiIcon.svg";
-const socketIcon = "/assets/images/tech-icons/apiIcon.svg";
-
-// Database icons
-const postgresIcon = "/assets/images/tech-icons/postgresIcon.svg";
-const mongoIcon = "/assets/images/tech-icons/mongoIcon.svg";
-const mysqlIcon = "/assets/images/tech-icons/mysqlIcon.svg";
-const sqlIcon = "/assets/images/tech-icons/postgresIcon.svg";
-
-// AI/ML icons
-const pythonIcon = "/assets/images/tech-icons/pythonIcon.svg";
-
-// Cloud & DevOps icons
-const awsIcon = "/assets/images/tech-icons/awsIcon.svg";
-const dockerIcon = "/assets/images/tech-icons/dockerIcon.svg";
-const githubActionsIcon = "/assets/images/tech-icons/githubActionsIcon.svg";
-
-// Tools icons
-const gitIcon = "/assets/images/tech-icons/githubActionsIcon.svg";
-const githubIcon = "/assets/images/tech-icons/githubActionsIcon.svg";
-const vscodeIcon = "/assets/images/tech-icons/vscodeIcon.svg";
-const postmanIcon = "/assets/images/tech-icons/postmanIcon.svg";
-const intellijIcon = "/assets/images/tech-icons/vscodeIcon.svg";
+const TECH_ICONS = {
+    C: iconPath("C.svg"),
+    "C++": iconPath("C++ (CPlusPlus).svg"),
+    Java: iconPath("Java.svg"),
+    Python: iconPath("Python.svg"),
+    JavaScript: iconPath("JavaScript.svg"),
+    TypeScript: iconPath("TypeScript.svg"),
+    SQL: iconPath("PostgresSQL.svg"),
+    "HTML5": iconPath("HTML5.svg"),
+    "CSS3": iconPath("CSS3.svg"),
+    "React.js": iconPath("React.svg"),
+    "Next.js": iconPath("Next.js.svg"),
+    "Tailwind CSS": iconPath("Tailwind CSS.svg"),
+    "Node.js": iconPath("Node.js.svg"),
+    "Express.js": iconPath("Express.svg"),
+    "REST APIs": iconPath("Node.js.svg"),
+    PostgreSQL: iconPath("PostgresSQL.svg"),
+    MongoDB: iconPath("MongoDB.svg"),
+    MySQL: iconPath("MySQL.svg"),
+    NumPy: iconPath("NumPy.svg"),
+    Pandas: iconPath("Pandas.svg"),
+    "Scikit-learn": iconPath("scikit-learn.svg"),
+    AWS: iconPath("AWS.svg"),
+    Docker: iconPath("Docker.svg"),
+    Git: iconPath("Git.svg"),
+    GitHub: iconPath("GitHub.svg"),
+    Postman: iconPath("Postman.svg"),
+    "VS Code": iconPath("Visual Studio Code (VS Code).svg"),
+    Vercel: iconPath("Vercel.svg"),
+};
 
 const SECTIONS = [
     {
-        label: "LANGUAGES",
-        techs: [
-            "Java",
-            "C++",
-            "Python",
-            "JavaScript",
-            "TypeScript",
-            "SQL",
-            "HTML5",
-            "CSS3",
-        ],
+        label: "Languages",
+        techs: ["C", "C++", "Java", "Python", "JavaScript", "TypeScript", "SQL"],
     },
     {
-        label: "FRAMEWORKS",
-        techs: [
-            "React.js",
-            "Next.js",
-            "Node.js",
-            "Express.js",
-            "Tailwind CSS",
-            "Socket.IO",
-        ],
+        label: "Frontend",
+        techs: ["HTML5", "CSS3", "React.js", "Next.js", "Tailwind CSS"],
     },
-    { label: "DATABASES", techs: ["PostgreSQL", "MongoDB", "MySQL"] },
+    {
+        label: "Backend & APIs",
+        techs: ["Node.js", "Express.js", "REST APIs"],
+    },
+    {
+        label: "Databases",
+        techs: ["PostgreSQL", "MongoDB", "MySQL"],
+    },
     {
         label: "AI / ML",
-        techs: [
-            "Python",
-            "Pandas",
-            "NumPy",
-            "Scikit-learn",
-        ],
+        techs: ["NumPy", "Pandas", "Scikit-learn"],
     },
     {
-        label: "CLOUD & DEVOPS",
-        techs: [
-            "AWS",
-            "Docker",
-            "Git",
-            "GitHub Actions",
-        ],
+        label: "Cloud, DevOps & Tools",
+        techs: ["AWS", "Docker", "Git", "GitHub", "Postman", "VS Code", "Vercel"],
     },
-    { label: "TOOLS", techs: ["GitHub", "VS Code", "Postman", "IntelliJ IDEA"] },
 ];
 
-const TECH_ICONS = {
-    // Languages
-    "Java": jsIcon,
-    "C++": jsIcon,
-    "Python": pythonIcon,
-    "JavaScript": jsIcon,
-    "TypeScript": tsIcon,
-    "SQL": sqlIcon,
-    "HTML5": htmlIcon,
-    "CSS3": cssIcon,
-    
-    // Frameworks
-    "React.js": reactIcon,
-    "Next.js": reactIcon,
-    "Node.js": nodeIcon,
-    "Express.js": expressIcon,
-    "Tailwind CSS": tailwindIcon,
-    "Socket.IO": socketIcon,
-    
-    // Databases
-    "PostgreSQL": postgresIcon,
-    "MongoDB": mongoIcon,
-    "MySQL": mysqlIcon,
-    
-    // AI/ML
-    "Pandas": pythonIcon,
-    "NumPy": pythonIcon,
-    "Scikit-learn": pythonIcon,
-    
-    // Cloud & DevOps
-    "AWS": awsIcon,
-    "Docker": dockerIcon,
-    "Git": gitIcon,
-    "GitHub Actions": githubActionsIcon,
-    
-    // Tools
-    "GitHub": githubIcon,
-    "VS Code": vscodeIcon,
-    "Postman": postmanIcon,
-    "IntelliJ IDEA": intellijIcon,
-};
-
-const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
-
-/**
- * @author Vivek Verma
- * @returns TechStack component that creates an interactive 3D showcase of technologies. As the user scrolls, users navigate through a virtual space filled with tech cards and stars. The cards display technology names, icons, and metadata, while the stars create a dynamic background. The component uses GSAP for smooth animations and ScrollTrigger for scroll-based interactions, creating an engaging way to present the tech stack.
- */
 export default function TechStack() {
-    const sectionRef = useRef(null);
-    const viewportRef = useRef(null);
-    const worldRef = useRef(null);
-
-    useEffect(() => {
-        const sectionEl = sectionRef.current;
-        const viewportEl = viewportRef.current;
-        const worldEl = worldRef.current;
-        if (!sectionEl || !viewportEl || !worldEl) return;
-
-        const getConfig = () => {
-            const w = window.innerWidth;
-            const h = window.innerHeight;
-            const mobile = w < 640;
-
-            return {
-                starCount: mobile ? 90 : 150,
-                zGap: mobile ? 200 : 300,
-                camSpeed: mobile ? 3.0 : 4.0,
-                internalLerp: 0.12,
-                velLerp: 0.18,
-                velScale: 0.00035,
-                velClamp: mobile ? 1.0 : 1.25,
-                tiltMul: mobile ? 18 : 45,
-                shadowMul: mobile ? 18 : 40,
-
-                radiusX: Math.min(w * (mobile ? 0.22 : 0.32), 520),
-                radiusY: Math.min(h * (mobile ? 0.18 : 0.30), 420),
-
-                baseFov: mobile ? 900 : 1200,
-            };
-        };
-
-        let cleanup = () => { };
-        let raf = 0;
-
-        const build = () => {
-            cleanup();
-            const CONFIG = getConfig();
-
-            worldEl.innerHTML = "";
-
-            const items = [];
-            let idx = 0;
-            const totalCount = SECTIONS.reduce((acc, s) => acc + 1 + s.techs.length, 0);
-
-            const pushText = (label) => {
-                const el = document.createElement("div");
-                el.className = "hs-item";
-                const txt = document.createElement("div");
-                txt.className = "hs-big-text";
-                txt.innerText = label;
-                el.appendChild(txt);
-                worldEl.appendChild(el);
-                items.push({ el, type: "text", x: 0, y: 0, rot: 0, baseZ: -idx * CONFIG.zGap });
-                idx++;
-            };
-
-            const pushCard = (domain, tech) => {
-                const el = document.createElement("div");
-                el.className = "hs-item";
-
-                const card = document.createElement("div");
-                card.className = "hs-card";
-
-                const randId = Math.floor(Math.random() * 9999);
-                const iconSrc = TECH_ICONS[tech];
-
-                card.innerHTML = `
-          <div class="hs-card-header">
-            <span class="hs-card-id">ID-${randId}</span>
-            <div class="hs-dot"></div>
-          </div>
-          <h2>${tech}</h2>
-          <div class="hs-card-meta">DOMAIN: ${domain}</div>
-          ${iconSrc ? `<img class="hs-tech-icon" src="${iconSrc}" alt="${tech} icon" loading="lazy" />` : ""}
-          <div class="hs-card-footer">
-            <span>GRID: ${Math.floor(Math.random() * 10)}x${Math.floor(Math.random() * 10)}</span>
-            <span>DATA_SIZE: ${(Math.random() * 100).toFixed(1)}MB</span>
-          </div>
-          <div class="hs-card-ghost">0${idx}</div>
-        `;
-
-                el.appendChild(card);
-                worldEl.appendChild(el);
-
-                const angle = (idx / totalCount) * Math.PI * 6;
-                const x = Math.cos(angle) * CONFIG.radiusX;
-                const y = Math.sin(angle) * CONFIG.radiusY;
-                const rot = (Math.random() - 0.5) * 30;
-
-                items.push({ el, type: "card", x, y, rot, baseZ: -idx * CONFIG.zGap });
-                idx++;
-            };
-
-            SECTIONS.forEach((s) => {
-                pushText(s.label);
-                s.techs.forEach((t) => pushCard(s.label, t));
-            });
-
-            const totalDepth = Math.max(0, (idx - 1) * CONFIG.zGap);
-            const scrollRangePx = Math.max(1, totalDepth / CONFIG.camSpeed);
-
-            for (let i = 0; i < CONFIG.starCount; i++) {
-                const el = document.createElement("div");
-                el.className = "hs-star";
-                worldEl.appendChild(el);
-                items.push({
-                    el,
-                    type: "star",
-                    x: (Math.random() - 0.5) * 2600,
-                    y: (Math.random() - 0.5) * 2600,
-                    baseZ: -Math.random() * totalDepth,
-                });
-            }
-
-            const internal = { value: 0, target: 0 };
-            const vel = { v: 0, target: 0 };
-            const mouse = { x: 0, y: 0 };
-
-            const onPointerMove = (e) => {
-                mouse.x = (e.clientX / window.innerWidth - 0.5) * 2;
-                mouse.y = (e.clientY / window.innerHeight - 0.5) * 2;
-            };
-            window.addEventListener("pointermove", onPointerMove, { passive: true });
-
-            // Use ScrollSmoother's content element as the scroller.
-            // The wrapper is the scroll container, but ScrollSmoother
-            // moves the content inside it. Using the content element
-            // ensures ScrollTrigger tracks scroll progress correctly.
-            const smoother = ScrollSmoother.get();
-            const scrollerEl = smoother ? smoother.content() : undefined;
-
-            const st = ScrollTrigger.create({
-                trigger: sectionEl,
-                scroller: scrollerEl,
-                start: "top top",
-                end: () => `+=${scrollRangePx}`,
-                pin: true,
-                scrub: true,
-                invalidateOnRefresh: true,
-                onUpdate: (self) => {
-                    internal.target = self.progress * scrollRangePx;
-                    const v = self.getVelocity() * CONFIG.velScale;
-                    vel.target = clamp(v, -CONFIG.velClamp, CONFIG.velClamp);
-                },
-            });
-
-            const render = () => {
-                internal.value += (internal.target - internal.value) * CONFIG.internalLerp;
-                vel.v += (vel.target - vel.v) * CONFIG.velLerp;
-
-                const cameraZ = internal.value * CONFIG.camSpeed;
-
-                const tiltX = mouse.y * 5 - vel.v * CONFIG.tiltMul;
-                const tiltY = mouse.x * 5;
-
-                worldEl.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
-
-                const fov = CONFIG.baseFov - Math.min(Math.abs(vel.v) * 220, 520);
-                viewportEl.style.perspective = `${fov}px`;
-
-                items.forEach((item) => {
-                    const vizZ = item.baseZ + cameraZ;
-
-                    let alpha = 1;
-                    if (vizZ < -3000) alpha = 0;
-                    else if (vizZ < -2000) alpha = (vizZ + 3000) / 1000;
-                    if (vizZ > 100 && item.type !== "star") alpha = 1 - (vizZ - 100) / 400;
-
-                    alpha = clamp(alpha, 0, 1);
-                    item.el.style.opacity = alpha;
-                    if (alpha <= 0) return;
-
-                    let trans = `translate3d(${item.x || 0}px, ${item.y || 0}px, ${vizZ}px)`;
-
-                    if (item.type === "star") {
-                        const stretch = Math.max(1, Math.min(1 + Math.abs(vel.v) * 18, 10));
-                        trans += ` scale3d(1, 1, ${stretch})`;
-                    } else if (item.type === "text") {
-                        trans += ` rotateZ(${item.rot || 0}deg)`;
-                        if (Math.abs(vel.v) > 0.02) {
-                            const offset = clamp(vel.v * CONFIG.shadowMul, -40, 40);
-                            item.el.style.textShadow = `${offset}px 0 var(--hs-accent), ${-offset}px 0 #ffffff`;
-                        } else {
-                            item.el.style.textShadow = "none";
-                        }
-                    } else {
-                        const t = gsap.ticker.time;
-                        const float = Math.sin(t + (item.x || 0)) * 10;
-                        trans += ` rotateZ(${item.rot || 0}deg) rotateY(${float}deg)`;
-                    }
-
-                    item.el.style.transform = trans;
-                });
-            };
-
-            gsap.ticker.add(render);
-
-            raf = requestAnimationFrame(() => ScrollTrigger.refresh());
-
-            cleanup = () => {
-                cancelAnimationFrame(raf);
-                gsap.ticker.remove(render);
-                window.removeEventListener("pointermove", onPointerMove);
-                st.kill();
-                worldEl.innerHTML = "";
-            };
-        };
-
-        build();
-
-        const onResize = () => build();
-        window.addEventListener("resize", onResize);
-
-        return () => {
-            window.removeEventListener("resize", onResize);
-            cleanup();
-        };
-    }, []);
-
     return (
-        <section ref={sectionRef} className="hs-section" id="skills">
-
+        <section className="hs-section" id="skills">
             <div className="hs-header">
-                <p className="hs-kicker">03. TECH STACK</p>
-                <h2 className="hs-title">TECHNICAL EXPERTISE</h2>
-                <p className="hs-desc">A curated set of technologies I use to ship fast, scalable products—clean UI, solid backend, reliable cloud,
-                    and automation.</p>
+                <p className="hs-kicker">03. TECHNICAL SKILLS</p>
+                <h2 className="hs-title">TECH STACK</h2>
             </div>
-            <div ref={viewportRef} className="hs-viewport">
-                <div ref={worldRef} className="hs-world" />
+
+            <div className="hs-groups">
+                {SECTIONS.map((section) => (
+                    <div className="hs-group" key={section.label}>
+                        <h3 className="hs-group-title">{section.label}</h3>
+                        <ul className="hs-skill-list">
+                            {section.techs.map((tech) => (
+                                <li className="hs-skill-item" key={tech}>
+                                    <img
+                                        className="hs-skill-icon"
+                                        src={TECH_ICONS[tech]}
+                                        alt={`${tech} icon`}
+                                        loading="lazy"
+                                    />
+                                    <span>{tech}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                ))}
             </div>
         </section>
     );
