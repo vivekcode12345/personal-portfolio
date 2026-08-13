@@ -54,7 +54,9 @@
 
 html {
   -webkit-text-size-adjust: 100%;
-  scroll-behavior: smooth;
+  /* NOTE: Do NOT set scroll-behavior: smooth here.
+     ScrollSmoother manages scrolling via transforms and
+     setting smooth scroll on html breaks ScrollTrigger pinning. */
 }
 
 html,
@@ -62,10 +64,12 @@ body {
   cursor: none;
   min-height: 100%;
   width: 100%;
-  overflow-x: hidden;
 }
 
+/* Prevent horizontal overflow on body only.
+   Do NOT set overflow-x on html — it breaks ScrollSmoother. */
 body {
+  overflow-x: hidden;
   background: var(--bg-deep-black);
   color: var(--text-primary);
   font-family: var(--font-primary);
@@ -82,15 +86,16 @@ body {
   z-index: 1;
 }
 
-/* ── Media Safety ── */
+/* ── Media Safety ──
+   NOTE: Do NOT set height: auto globally on img/canvas/svg.
+   TechStack's .hs-tech-icon relies on explicit width/height
+   clamp() values that would be overridden. */
 img,
 picture,
 video,
-canvas,
 svg {
   display: block;
   max-width: 100%;
-  height: auto;
 }
 
 /* ── Links ── */
@@ -158,16 +163,11 @@ html {
 
 /* ── Reduced Motion ── */
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
   }
 }
