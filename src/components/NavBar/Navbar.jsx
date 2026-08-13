@@ -48,7 +48,7 @@ const Navbar = () => {
   };
 
   const goTo = (id) => (e) => {
-    e.preventDefault();
+    if (e) e.preventDefault();
     const el = document.getElementById(id);
     if (!el) return;
 
@@ -57,10 +57,18 @@ const Navbar = () => {
       animatePanel(false);
     }
 
+    try {
+      window.history.pushState(null, "", `#${id}`);
+    } catch {
+      window.location.hash = id;
+    }
+
     ScrollTrigger.refresh();
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     gsap.to(window, {
-      duration: 1,
-      ease: "power3.out",
+      duration: prefersReducedMotion ? 0 : 1,
+      ease: prefersReducedMotion ? "none" : "power3.out",
       scrollTo: { y: el, offsetY: 80 },
     });
   };

@@ -31,7 +31,7 @@ const PROJECTS = [
     image: "/assets/images/common/lms.png",
     tags: ["React.js", "Node.js", "Express.js", "MongoDB", "Socket.IO"],
     links: [
-      { label: "GitHub", href: "#" },
+      { label: "GitHub", href: "https://github.com/vivekcode12345/learnhub-lms" },
     ],
   },
   {
@@ -80,14 +80,20 @@ export default function Projects() {
               </div>
 
               <div className="projectFooter">
-                {p.links[0].label === "Live Demo" && (
-                  <a className="projectLink" href={p.links[0].href} target="_blank" rel="noreferrer">
-                    ↗ Live Demo
-                  </a>
-                )}
-                <a className="projectLink" href={p.links[p.links[0].label === "Live Demo" ? 1 : 0].href} target="_blank" rel="noreferrer">
-                  {"</>"} GitHub
-                </a>
+                {p.links.map((link) => {
+                  const isLiveDemo = link.label === "Live Demo";
+                  return (
+                    <a
+                      key={`${p.title}-${link.label}`}
+                      className="projectLink"
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {isLiveDemo ? "↗ Live Demo" : "</> GitHub"}
+                    </a>
+                  );
+                })}
               </div>
             </div>
           </article>

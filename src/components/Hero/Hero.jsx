@@ -19,6 +19,26 @@ const Hero = () => {
   const zoomRef = useRef(null);
   const stRef = useRef(null);
 
+  const scrollToSection = (id) => (e) => {
+    if (e) e.preventDefault();
+
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    try {
+      window.history.pushState(null, "", `#${id}`);
+    } catch {
+      window.location.hash = id;
+    }
+
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    gsap.to(window, {
+      duration: prefersReducedMotion ? 0 : 1,
+      ease: prefersReducedMotion ? "none" : "power3.out",
+      scrollTo: { y: el, offsetY: 80 },
+    });
+  };
+
   useGSAP(() => {
     const heroEl = heroRef.current;
     const zoomEl = zoomRef.current;
@@ -35,7 +55,7 @@ const Hero = () => {
         short: "(max-height: 650px)",
       },
       (ctx) => {
-        const { mobile, tablet, desktop, reduce, short } = ctx.conditions;
+        const { mobile, tablet, reduce, short } = ctx.conditions;
 
         if (reduce) {
           gsap.set(zoomEl, { clearProps: "transform,opacity" });
@@ -128,7 +148,7 @@ const Hero = () => {
             >
               Download Resume
             </a>
-            <a className="view-projects-button" href="#projects">
+            <a className="view-projects-button" href="#projects" onClick={scrollToSection("projects")}>
               View Projects
             </a>
           </div>

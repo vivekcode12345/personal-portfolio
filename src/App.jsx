@@ -17,15 +17,25 @@ gsap.registerPlugin(ScrollTrigger, SplitText, ScrollSmoother);
 
 const App = () => {
   useEffect(() => {
-  ScrollSmoother.create({
-    smooth: 3,
-    effects: true,
-    normalizeScroll: true,
-  });
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  ScrollTrigger.refresh();
-}, []);
+    if (prefersReducedMotion) {
+      ScrollTrigger.refresh();
+      return;
+    }
 
+    ScrollSmoother.create({
+      smooth: 3,
+      effects: true,
+      normalizeScroll: true,
+    });
+
+    ScrollTrigger.refresh();
+
+    return () => {
+      ScrollSmoother.get()?.kill();
+    };
+  }, []);
 
   return (
     <>
