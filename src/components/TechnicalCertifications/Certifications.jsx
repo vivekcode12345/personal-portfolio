@@ -6,9 +6,32 @@ import "./Certifications.scss";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const CERTIFICATIONS = [
+  {
+    title: "MongoDB Certified Developer, Associate",
+    image: "/assets/images/certificates/mongodb-associate-developer.jpg",
+    alt: "MongoDB Certified Developer, Associate (C100DEV) certification badge",
+  },
+  {
+    title: "Dynamic Programming",
+    image: "/assets/images/certificates/dynamic-programming.jpeg",
+    alt: "Dynamic Programming certification",
+  },
+  {
+    title: "Naukri Campus",
+    image: "/assets/images/certificates/naukri-campus.jpg",
+    alt: "Naukri Campus certification",
+  },
+  {
+    title: "Oracle Certified Foundations Associate",
+    image: "/assets/images/certificates/oracel-certified-foundations-associate.jpg",
+    alt: "Oracle Certified Foundations Associate certification",
+  },
+];
+
 /**
  * @author Vivek Verma
- * Certifications component that showcases professional certifications with an interactive scroll experience.
+ * Certifications component that showcases professional certifications with an interactive scroll + hover experience.
  * @returns {JSX.Element} The rendered Certifications component.
  */
 const Certifications = () => {
@@ -22,6 +45,7 @@ const Certifications = () => {
       const imgs = gsap.utils.toArray(".right .slide img", root);
       const cleanups = [];
 
+      // ── 3D pointer tilt on certificate images ──
       imgs.forEach((img) => {
         gsap.set(img, {
           transformPerspective: 650,
@@ -71,6 +95,7 @@ const Certifications = () => {
       const count = Math.min(listItems.length, slides.length);
       if (!count) return;
 
+      // ── Initial state: first certificate visible ──
       gsap.set(slides, { autoAlpha: 0 });
       listItems.forEach((li) => li.classList.remove("active"));
 
@@ -85,6 +110,7 @@ const Certifications = () => {
 
       const showIndex = (next) => {
         if (next === activeIndex) return;
+        if (next < 0 || next >= count) return;
 
         listItems[activeIndex]?.classList.remove("active");
         listItems[next]?.classList.add("active");
@@ -96,10 +122,29 @@ const Certifications = () => {
         activeIndex = next;
       };
 
+      // ── Hover interaction: hover a list item → show its certificate ──
+      listItems.forEach((li, index) => {
+        const onHover = () => showIndex(index);
+        const onLeave = () => {
+          // Keep the last hovered certificate visible
+        };
+
+        li.addEventListener("mouseenter", onHover);
+        li.addEventListener("click", onHover);
+        li.addEventListener("mouseleave", onLeave);
+
+        cleanups.push(() => {
+          li.removeEventListener("mouseenter", onHover);
+          li.removeEventListener("click", onHover);
+          li.removeEventListener("mouseleave", onLeave);
+        });
+      });
+
+      // ── Scroll-driven experience (kept for desktop) ──
       const st = ScrollTrigger.create({
         trigger: root,
         start: "top top",
-        end: () => "+=" + count * 0.8 * window.innerHeight, // refresh-safe
+        end: () => "+=" + count * 0.8 * window.innerHeight,
         pin: true,
         scrub: true,
         anticipatePin: 1,
@@ -131,27 +176,19 @@ const Certifications = () => {
 
       <div className="content">
         <ul className="certification-list">
-          <li>MongoDB Certified Developer, Associate</li>
-          <li>Dynamic Programming</li>
-          <li>Naukri Campus</li>
-          <li>Oracle Certified Foundations Associate</li>
+          {CERTIFICATIONS.map((cert, index) => (
+            <li key={index}>{cert.title}</li>
+          ))}
         </ul>
 
         <div className="fill" />
 
         <div className="right">
-          <div className="slide center">
-            <img src="/assets/images/certificates/mongodb-associate-developer.jpg" alt="MongoDB Certified Developer, Associate (C100DEV) certification badge" />
-          </div>
-          <div className="slide center">
-            <img src="/assets/images/certificates/dynamic-programming.jpeg" alt="Dynamic Programming certification" />
-          </div>
-          <div className="slide center">
-            <img src="/assets/images/certificates/naukri-campus.jpg" alt="Naukri Campus certification" />
-          </div>
-          <div className="slide center">
-            <img src="/assets/images/certificates/oracel-certified-foundations-associate.jpg" alt="Oracle Certified Foundations Associate certification" />
-          </div>
+          {CERTIFICATIONS.map((cert, index) => (
+            <div key={index} className="slide center">
+              <img src={cert.image} alt={cert.alt} />
+            </div>
+          ))}
         </div>
       </div>
     </section>

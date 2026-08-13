@@ -26,26 +26,27 @@ const useTimelineAnimation = (timelineRef) => {
     });
 
     // ── Line fill animation ──
+    let lineTrigger = null;
     if (lineFill) {
       gsap.set(lineFill, { scaleY: 0, transformOrigin: "top" });
-      gsap.to(lineFill, {
-        scaleY: 1,
-        ease: "none",
-        scrollTrigger: {
-          trigger: timeline,
-          start: "top 60%",
-          end: "bottom 60%",
-          scrub: true,
+      lineTrigger = ScrollTrigger.create({
+        trigger: timeline,
+        start: "top 60%",
+        end: "bottom 60%",
+        scrub: true,
+        onUpdate: (self) => {
+          gsap.set(lineFill, { scaleY: self.progress });
         },
       });
     }
 
     // ── Item activation on scroll ──
+    const itemTriggers = [];
     items.forEach((item) => {
       const card = item.querySelector(".tl-card");
       const dot = item.querySelector(".tl-dot");
 
-      ScrollTrigger.create({
+      const st = ScrollTrigger.create({
         trigger: item,
         start: "top 55%",
         end: "bottom 45%",
@@ -83,13 +84,19 @@ const useTimelineAnimation = (timelineRef) => {
           }
         },
       });
+      itemTriggers.push(st);
     });
+
+    // (lineTrigger already created above)
 
     ScrollTrigger.refresh();
 
     // ── Cleanup ──
     return () => {
-      // Only kill ScrollTriggers created by this timeline
+      // Kill ONLY the ScrollTriggers created by this timeline
+      itemTriggers.forEach((st) => st.kill());
+      if (lineTrigger) lineTrigger.kill();
+      
       items.forEach((item) => {
         const card = item.querySelector(".tl-card");
         const dot = item.querySelector(".tl-dot");

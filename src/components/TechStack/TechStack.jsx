@@ -153,8 +153,8 @@ export default function TechStack() {
 
             return {
                 starCount: mobile ? 90 : 150,
-                zGap: mobile ? 520 : 800,
-                camSpeed: mobile ? 2.0 : 2.5,
+                zGap: mobile ? 200 : 300,
+                camSpeed: mobile ? 3.0 : 4.0,
                 internalLerp: 0.12,
                 velLerp: 0.18,
                 velScale: 0.00035,
@@ -165,7 +165,7 @@ export default function TechStack() {
                 radiusX: Math.min(w * (mobile ? 0.22 : 0.32), 520),
                 radiusY: Math.min(h * (mobile ? 0.18 : 0.30), 420),
 
-                baseFov: mobile ? 760 : 1000,
+                baseFov: mobile ? 900 : 1200,
             };
         };
 
@@ -262,8 +262,12 @@ export default function TechStack() {
             };
             window.addEventListener("pointermove", onPointerMove, { passive: true });
 
+            // Use ScrollSmoother's content element as the scroller.
+            // The wrapper is the scroll container, but ScrollSmoother
+            // moves the content inside it. Using the content element
+            // ensures ScrollTrigger tracks scroll progress correctly.
             const smoother = ScrollSmoother.get();
-            const scrollerEl = smoother ? smoother.wrapper() : undefined;
+            const scrollerEl = smoother ? smoother.content() : undefined;
 
             const st = ScrollTrigger.create({
                 trigger: sectionEl,

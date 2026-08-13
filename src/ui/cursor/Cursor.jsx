@@ -23,7 +23,7 @@ export default function Cursor() {
     gsap.set([dotRef.current, glowRef.current], {
       xPercent: -50,
       yPercent: -50,
-      opacity: 0,
+      opacity: 1,
       willChange: "transform, opacity",
     });
 
@@ -62,7 +62,7 @@ export default function Cursor() {
     };
 
     // ── State ──
-    let isVisible = false;
+    let isVisible = true;
     let isInteractiveHover = false;
 
     const showCursor = () => {
@@ -119,12 +119,16 @@ export default function Cursor() {
     };
 
     const handleLeave = () => {
-      hideCursor();
-      setInteractive(false);
+      // Only hide when the pointer genuinely leaves the viewport.
+      // Do NOT hide during scroll operations.
+      if (document.visibilityState === "visible") {
+        hideCursor();
+        setInteractive(false);
+      }
     };
 
     const handleEnter = () => {
-      // Will show on next mousemove
+      showCursor();
     };
 
     // ── Listeners ──
