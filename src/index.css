@@ -62,14 +62,13 @@ html {
 html,
 body {
   cursor: none;
-  min-height: 100%;
-  width: 100%;
 }
 
-/* Prevent horizontal overflow on body only.
-   Do NOT set overflow-x on html — it breaks ScrollSmoother. */
+/* NOTE: Do NOT set overflow-x: hidden on html or body.
+   ScrollSmoother manages overflow internally and setting
+   overflow-x on body breaks its scroll normalization,
+   causing #smooth-content to be clipped/invisible. */
 body {
-  overflow-x: hidden;
   background: var(--bg-deep-black);
   color: var(--text-primary);
   font-family: var(--font-primary);
