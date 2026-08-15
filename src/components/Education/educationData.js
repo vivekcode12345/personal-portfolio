@@ -5,6 +5,15 @@ export const EDUCATION = [
     org: "SRM University AP",
     desc:
       "Computer Science and Engineering. Expected Graduation: 2028. CGPA: 9.64/10.0. Building strong foundations in Full Stack Development, AI/ML, Backend Engineering, Cloud Computing, System Design, and Data Structures & Algorithms.",
+    highlights: [
+      "CGPA: 9.64/10.0",
+      "Full Stack Development",
+      "AI/ML",
+      "Backend Engineering",
+      "Cloud Computing",
+      "System Design",
+      "Data Structures & Algorithms",
+    ],
   },
   {
     date: "2022 – 2024",

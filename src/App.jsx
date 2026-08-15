@@ -12,6 +12,7 @@ import Certifications from "./components/TechnicalCertifications/Certifications"
 import TechStack from "./components/TechStack/TechStack";
 import Contact from "./components/Contact/Contact";
 import Projects from "./components/Projects/Projects";
+import BackgroundStars from "./components/BackgroundStars/BackgroundStars";
 
 gsap.registerPlugin(ScrollTrigger, SplitText, ScrollSmoother);
 
@@ -40,10 +41,11 @@ const App = () => {
   return (
     <>
       <Warp />
+      <BackgroundStars />
       <Cursor />
-      <div id="smooth-wrapper">
+      <div id="smooth-wrapper" style={{ position: "relative", zIndex: 2 }}>
           <Navbar />
-        <div id="smooth-content">
+        <div id="smooth-content" style={{ position: "relative", zIndex: 2 }}>
           <Hero />
           <WhoAmI/>
           {/* <DirectionalMarquee /> */}

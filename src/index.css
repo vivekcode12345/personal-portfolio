@@ -61,7 +61,7 @@ html {
 
 html,
 body {
-  cursor: none;
+  cursor: auto;
 }
 
 /* NOTE: Do NOT set overflow-x: hidden on html or body.

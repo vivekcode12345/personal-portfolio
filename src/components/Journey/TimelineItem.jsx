@@ -8,6 +8,21 @@ import React from "react";
 const TimelineItem = ({ item, index }) => {
   const side = index % 2 === 0 ? "left" : "right";
 
+  const renderDescription = () => {
+    const highlights = item.highlights || [];
+
+    if (!highlights.length) {
+      return <p className="tl-desc">{item.desc}</p>;
+    }
+
+    const sortedHighlights = [...highlights].sort((a, b) => b.length - a.length);
+    const escaped = sortedHighlights.map((value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+    const pattern = new RegExp(`(${escaped.join("|")})`, "gi");
+    const formatted = item.desc.replace(pattern, "<mark>$1</mark>");
+
+    return <p className="tl-desc" dangerouslySetInnerHTML={{ __html: formatted }} />;
+  };
+
   return (
     <div className={`tl-item ${side}`} key={`${item.date}-${index}`}>
       <div className="tl-side tl-left">
@@ -16,7 +31,7 @@ const TimelineItem = ({ item, index }) => {
             <div className="tl-date">{item.date}</div>
             <h3 className="tl-h">{item.title}</h3>
             <div className="tl-org">{item.org}</div>
-            <p className="tl-desc">{item.desc}</p>
+            {renderDescription()}
           </article>
         ) : null}
       </div>
@@ -31,7 +46,7 @@ const TimelineItem = ({ item, index }) => {
             <div className="tl-date">{item.date}</div>
             <h3 className="tl-h">{item.title}</h3>
             <div className="tl-org">{item.org}</div>
-            <p className="tl-desc">{item.desc}</p>
+            {renderDescription()}
           </article>
         ) : null}
       </div>

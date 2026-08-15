@@ -21,8 +21,8 @@
     font-size: 0.75rem;
     color: var(--hs-accent, #c46b1f);
     margin: 0 0 16px;
-    font-weight: 500;
-    opacity: 0.9;
+    font-weight: 600;
+    opacity: 1;
   }
 
   &-title {
@@ -31,12 +31,13 @@
     line-height: 0.95;
     font-weight: 800;
     letter-spacing: -0.01em;
+    color: rgba(255, 255, 255, 0.96);
   }
 
   &-sub {
     margin: 0;
     max-width: 65ch;
-    color: rgba(255, 255, 255, 0.55);
+    color: rgba(220, 226, 234, 0.78);
     font-size: clamp(0.95rem, 1.5vw, 1rem);
     line-height: 1.7;
     font-weight: 400;
@@ -97,6 +98,7 @@
   flex: 1;
   display: flex;
   min-width: 0;
+  align-items: center;
 }
 
 .tl-left {
@@ -147,47 +149,60 @@
 }
 
 .tl-card {
-  width: 100%;
-  max-width: 380px;
-  text-align: center;
+  width: min(100%, 380px);
+  text-align: left;
   will-change: transform, filter, opacity;
-  padding: 0 clamp(20px, 3vw, 40px);
+  padding: 20px 22px 18px;
   position: relative;
   z-index: 2;
+  background: linear-gradient(180deg, rgba(17, 17, 17, 0.88), rgba(10, 10, 10, 0.72));
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 18px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .tl-date {
   font-size: 11px;
   letter-spacing: 0.4em;
-  color: var(--hs-accent, #c46b1f);
+  color: #f3b76d;
   margin-bottom: 14px;
-  font-weight: 500;
-  opacity: 0.9;
+  font-weight: 600;
+  opacity: 1;
 }
 
 .tl-h {
-  font-size: clamp(1.5rem, 3.8vw, 3rem);
-  line-height: 1.1;
+  font-size: clamp(1.35rem, 2.8vw, 2.4rem);
+  line-height: 1.15;
   margin: 0 0 12px;
   font-weight: 700;
   letter-spacing: -0.01em;
+  color: rgba(255, 255, 255, 0.96);
 }
 
 .tl-org {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(240, 244, 248, 0.82);
   letter-spacing: 0.06em;
   font-size: 0.88rem;
   margin-bottom: 16px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .tl-desc {
-  margin: 0 auto;
+  margin: 0;
   max-width: 55ch;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(205, 214, 224, 0.8);
   line-height: 1.75;
   font-size: 0.92rem;
   font-weight: 400;
+}
+
+.tl-desc mark {
+  background: rgba(196, 107, 31, 0.14);
+  color: #f9d6aa;
+  padding: 0.08em 0.34em;
+  border-radius: 0.35em;
+  font-weight: 600;
+  box-shadow: inset 0 0 0 1px rgba(196, 107, 31, 0.2);
 }
 
 .tl-section-heading {

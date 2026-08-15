@@ -22,10 +22,12 @@ export default function WarpSpeed() {
         // ── Performance / device detection ──
         const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         const isMobile = window.innerWidth <= 640;
-        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const isLowPower = (navigator.hardwareConcurrency || 8) <= 4;
+        const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+        const targetFrameTime = prefersReducedMotion ? 1000 / 20 : 1000 / 32;
 
         // ── Constants ──
-        const STAR_COUNT = prefersReducedMotion ? 0 : isMobile ? 80 : 200;
+        const STAR_COUNT = prefersReducedMotion ? 0 : isMobile ? 45 : isLowPower ? 70 : 95;
         const ACCENT = { r: 196, g: 107, b: 31 }; // #c46b1f
         const MAX_WARP = 1;
         const WARP_EASE = 0.04;      // progressive warp transition
@@ -35,6 +37,8 @@ export default function WarpSpeed() {
 
         let w = 0;
         let h = 0;
+        let isRunning = true;
+        let lastFrameTime = 0;
 
         const resize = () => {
             w = window.innerWidth;
@@ -162,7 +166,15 @@ export default function WarpSpeed() {
         };
 
         // ── Draw loop ──
-        const draw = () => {
+        const draw = (timestamp) => {
+            if (!isRunning) return;
+
+            if (timestamp - lastFrameTime < targetFrameTime) {
+                rafRef.current = requestAnimationFrame(draw);
+                return;
+            }
+            lastFrameTime = timestamp;
+
             // Smooth warp transition (progressive, not instant)
             warpSpeed += (targetWarp - warpSpeed) * WARP_EASE;
             if (Math.abs(warpSpeed - targetWarp) < 0.01) warpSpeed = targetWarp;
@@ -203,6 +215,17 @@ export default function WarpSpeed() {
             rafRef.current = requestAnimationFrame(draw);
         };
 
+        const onVisibilityChange = () => {
+            if (document.hidden) {
+                isRunning = false;
+                cancelAnimationFrame(rafRef.current);
+            } else {
+                isRunning = true;
+                lastFrameTime = 0;
+                rafRef.current = requestAnimationFrame(draw);
+            }
+        };
+
         // ── Start / reduced motion ──
         if (!prefersReducedMotion) {
             rafRef.current = requestAnimationFrame(draw);
@@ -227,9 +250,11 @@ export default function WarpSpeed() {
         window.addEventListener("mouseup", onMouseUp);
         canvas.addEventListener("touchstart", onTouchStart, { passive: false });
         canvas.addEventListener("touchend", onTouchEnd);
+        document.addEventListener("visibilitychange", onVisibilityChange);
 
         // ── Cleanup ──
         return () => {
+            isRunning = false;
             cancelAnimationFrame(rafRef.current);
             window.removeEventListener("resize", resize);
             window.removeEventListener("keydown", onKeyDown);
@@ -238,6 +263,7 @@ export default function WarpSpeed() {
             window.removeEventListener("mouseup", onMouseUp);
             canvas.removeEventListener("touchstart", onTouchStart);
             canvas.removeEventListener("touchend", onTouchEnd);
+            document.removeEventListener("visibilitychange", onVisibilityChange);
         };
     }, []);
 

@@ -6,12 +6,13 @@
   overflow: hidden;
   pointer-events: none;
   z-index: 0;
+  background: transparent;
 }
 
 .warp-canvas {
   position: fixed;
   inset: 0;
-  background: #000;
+  background: transparent;
   display: block;
   z-index: 0;
   pointer-events: none;

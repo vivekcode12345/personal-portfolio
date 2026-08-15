@@ -5,7 +5,7 @@ const iconPath = (filename) => `/assets/images/tech-icons/${encodeURIComponent(f
 
 const TECH_ICONS = {
     C: iconPath("C.svg"),
-    "C++": iconPath("C++ (CPlusPlus).svg"),
+    "C++": iconPath("C++.svg"),
     Java: iconPath("Java.svg"),
     Python: iconPath("Python.svg"),
     JavaScript: iconPath("JavaScript.svg"),
