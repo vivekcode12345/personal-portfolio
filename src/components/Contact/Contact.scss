@@ -1,58 +1,77 @@
 .contact {
   position: relative;
-  color: #fff;
+  color: var(--ink);
   overflow: hidden;
   padding: clamp(56px, 8vw, 90px) 0 clamp(24px, 6vw, 40px);
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  background: radial-gradient(ellipse at 50% 80%, rgba(196, 107, 31, 0.04) 0%, transparent 60%);
+  font-family: var(--font-primary);
+  background: var(--surface-2);
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 26%;
+    right: -18vw;
+    width: min(52vw, 720px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--primary-soft);
+    opacity: 0.7;
+    pointer-events: none;
+    z-index: 0;
+  }
 
   &__bg {
     position: absolute;
     inset: -20%;
     pointer-events: none;
     filter: blur(6px);
-    opacity: 0.9;
+    opacity: 0;
   }
 
   &__container {
     position: relative;
-    width: min(1200px, 92vw);
+    z-index: 1;
+    width: min(1120px, 88vw);
     margin: clamp(18px, 5vw, 50px) auto 0;
 
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+    align-items: start;
 
     gap: clamp(24px, 5vw, 64px);
     padding: 0 0 clamp(32px, 6vw, 70px);
   }
 
   &__left {
-    flex: 1 1 58%;
-    max-width: 680px;
+    max-width: 700px;
     min-width: 0;
+    padding-top: clamp(8px, 2vw, 28px);
   }
 
   &__title {
     margin: 0 0 clamp(16px, 3vw, 24px);
-    font-size: clamp(2.4rem, 5.5vw, 5.8rem);
+    font-size: clamp(2.8rem, 5.8vw, 6.4rem);
     line-height: 0.92;
     font-weight: 800;
     letter-spacing: -0.03em;
+    font-family: var(--font-display);
+    color: var(--ink);
   }
 
   &__titleAccent {
-    color: var(--hs-accent, #c46b1f);
+    color: inherit;
     font-weight: 800;
-    text-shadow: 0 0 40px rgba(196, 107, 31, 0.3);
+    background-image: linear-gradient(transparent 62%, var(--accent-soft) 62%);
+    background-repeat: no-repeat;
+    padding: 0 2px;
   }
 
   &__desc {
     margin: 0 0 clamp(20px, 4vw, 36px);
     max-width: 56ch;
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--ink-muted);
     line-height: 1.7;
-    font-size: clamp(0.95rem, 1.4vw, 1rem);
+    font-size: clamp(1rem, 1.5vw, 1.12rem);
   }
 
   &__info {
@@ -63,24 +82,24 @@
   }
 
   &__email {
-    color: rgba(255, 255, 255, 0.95);
+    color: var(--ink);
     text-decoration: none;
     font-size: clamp(1.1rem, 3.2vw, 1.4rem);
     width: fit-content;
-    border-bottom: 2px solid var(--hs-accent, #c46b1f);
+    border-bottom: 2px solid var(--primary);
     padding-bottom: 8px;
     font-weight: 600;
     transition: all 0.3s ease;
 
     &:hover {
-      color: var(--hs-accent, #c46b1f);
-      border-bottom-color: var(--hs-accent, #c46b1f);
+      color: var(--primary);
+      border-bottom-color: var(--primary);
       transform: translateX(4px);
     }
   }
 
   &__phone {
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--ink-muted);
     font-size: 0.95rem;
     letter-spacing: 0.02em;
     text-decoration: none;
@@ -93,17 +112,17 @@
       content: "→";
       position: absolute;
       left: 0;
-      color: var(--hs-accent, #c46b1f);
+      color: var(--primary);
       opacity: 0.6;
     }
 
     &:hover {
-      color: rgba(255, 255, 255, 0.75);
+      color: var(--ink);
     }
   }
 
   &__location {
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--ink-muted);
     font-size: 0.95rem;
     letter-spacing: 0.02em;
     font-style: normal;
@@ -115,25 +134,19 @@
       content: "◎";
       position: absolute;
       left: 0;
-      color: var(--hs-accent, #c46b1f);
+      color: var(--primary);
       opacity: 0.6;
     }
   }
 
   &__card {
-    flex: 0 0 420px;
-    max-width: 420px;
+    max-width: 460px;
     width: 100%;
     border-radius: 16px;
     padding: clamp(20px, 4vw, 28px);
-    background: rgba(18, 18, 18, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 
-      0 24px 70px rgba(0, 0, 0, 0.6),
-      0 0 0 1px rgba(0, 0, 0, 0.3),
-      inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-lg);
     position: relative;
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
                 box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -144,7 +157,7 @@
       inset: -1px;
       border-radius: 17px;
       padding: 1px;
-      background: linear-gradient(135deg, rgba(196, 107, 31, 0.2), transparent 50%);
+      background: linear-gradient(135deg, var(--primary-soft), transparent 50%);
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
@@ -171,10 +184,11 @@
 
     &__label {
       font-size: 11px;
-      letter-spacing: 0.25em;
-      color: var(--hs-accent, #c46b1f);
+      letter-spacing: 0.1em;
+      color: var(--primary);
       font-weight: 600;
-      text-transform: uppercase;
+      font-family: var(--font-mono);
+      text-transform: none;
       opacity: 0.9;
     }
 
@@ -182,9 +196,9 @@
     &__textarea {
       width: 100%;
       border-radius: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(8, 8, 8, 0.6);
-      color: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--line);
+      background: var(--surface-2);
+      color: var(--ink);
       padding: 14px 16px;
       outline: none;
       font-size: 14px;
@@ -192,13 +206,13 @@
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
       &::placeholder {
-        color: rgba(255, 255, 255, 0.3);
+        color: var(--ink-faint);
       }
 
       &:focus {
-        border-color: var(--hs-accent, #c46b1f);
-        box-shadow: 0 0 0 3px rgba(196, 107, 31, 0.15), 0 0 20px rgba(196, 107, 31, 0.1);
-        background: rgba(8, 8, 8, 0.8);
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px var(--primary-soft);
+        background: var(--surface);
       }
     }
 
@@ -215,40 +229,41 @@
     height: 54px;
     border-radius: 8px;
     border: none;
-    background: var(--hs-accent, #c46b1f);
-    color: #0b0b0b;
+    background: var(--primary);
+    color: #fff;
     font-weight: 700;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.06em;
     font-size: 12px;
     cursor: pointer;
     transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
-    text-transform: uppercase;
+    text-transform: none;
 
     &:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(196, 107, 31, 0.35), 0 0 40px rgba(196, 107, 31, 0.2);
-      background: #d4781f;
+      box-shadow: var(--shadow-md);
+      background: var(--primary-dark);
     }
 
     &:active {
       transform: translateY(0);
-      box-shadow: 0 4px 12px rgba(196, 107, 31, 0.25);
+      box-shadow: var(--shadow-sm);
     }
 
     &:focus-visible {
-      outline: 2px solid var(--hs-accent, #c46b1f);
+      outline: 2px solid var(--primary);
       outline-offset: 3px;
     }
   }
 
   &__footer {
     position: relative;
+    z-index: 1;
     width: min(1200px, 92vw);
     margin: 0 auto;
     padding-top: 24px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid var(--line);
   }
 
   &__footerInner {
@@ -256,7 +271,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 16px;
-    color: rgba(255, 255, 255, 0.4);
+    color: var(--ink-faint);
     font-size: 12px;
   }
 
@@ -265,18 +280,18 @@
     gap: 20px;
 
     a {
-      color: rgba(255, 255, 255, 0.4);
+      color: var(--ink-faint);
       text-decoration: none;
       transition: all 0.3s ease;
       position: relative;
 
       &:hover {
-        color: var(--hs-accent, #c46b1f);
+        color: var(--primary);
         transform: translateY(-1px);
       }
 
       &:focus-visible {
-        outline: 2px solid var(--hs-accent, #c46b1f);
+        outline: 2px solid var(--primary);
         outline-offset: 3px;
         border-radius: 2px;
       }
@@ -286,55 +301,59 @@
 
 
 .contact-header {
-  width: min(92vw, 1100px);
+  position: relative;
+  z-index: 1;
+  width: min(1120px, 88vw);
   margin: 0 auto;
   padding-top: clamp(12px, 3vw, 30px);
 
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   flex-direction: column;
 
   gap: clamp(12px, 2.5vw, 22px);
-  font-family: "Inter", sans-serif;
-  text-align: center;
+  font-family: var(--font-primary);
+  text-align: left;
 
   .contact-sub-heading {
     margin: 0;
     width: auto;
-    letter-spacing: 0.35em;
+    letter-spacing: 0.08em;
     font-size: 0.75rem;
-    color: var(--hs-accent, #c46b1f);
+    color: var(--primary);
+    font-family: var(--font-mono);
     font-weight: 500;
-    text-transform: uppercase;
+    text-transform: none;
     opacity: 0.9;
   }
 
   h2 {
     margin: 0;
     line-height: 0.92;
-    color: #fff;
+    color: var(--ink);
+    font-family: var(--font-display);
     font-size: clamp(2.2rem, 6.5vw, 5.25rem);
-    max-width: 18ch;
+    max-width: 16ch;
     word-break: break-word;
     font-weight: 800;
     letter-spacing: -0.02em;
-    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
   }
 
   .contact-description {
     margin: 0;
     max-width: 62ch;
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--ink-muted);
     font-size: clamp(0.95rem, 1.6vw, 1rem);
     line-height: 1.7;
-    padding: 0 clamp(10px, 3vw, 0px);
+    padding: 0;
   }
 }
 
 @media (max-width: 900px) {
   .contact {
     &__container {
+      display: flex;
       flex-direction: column;
       align-items: stretch;
       gap: 24px;
@@ -346,7 +365,6 @@
 
     &__card {
       max-width: 600px;
-      flex: none;
       margin: 0 auto;
     }
 
@@ -355,6 +373,10 @@
       align-items: flex-start;
       gap: 12px;
     }
+  }
+
+  .contact-header {
+    width: min(92vw, 680px);
   }
 }
 
@@ -380,6 +402,21 @@
 
     &__btn {
       height: 50px;
+    }
+  }
+
+  .contact-header {
+    align-items: center;
+    text-align: center;
+
+    .contact-sub-heading,
+    h2,
+    .contact-description {
+      text-align: center;
+    }
+
+    .contact-description {
+      padding: 0 10px;
     }
   }
 }

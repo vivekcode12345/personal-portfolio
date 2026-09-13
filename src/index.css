@@ -1,43 +1,49 @@
 /* ─────────────────────────────────────────────
-   Portfolio Global Design System
-   Dark + Warm-Orange (#c46b1f) Cinematic Theme
+   Portfolio Global Design System — Premium Foundation
+   Sophisticated dark · warm off-white · restrained amber
+   CONTENT / FUNCTIONALITY / ORDER UNCHANGED — tokens + base only
    ───────────────────────────────────────────── */
 
 /* ── Fonts ── */
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap");
 
 /* ── Design Tokens ── */
 :root {
-  /* Backgrounds */
-  --bg-deep-black: #000000;
-  --bg-surface: #0a0a0a;
-  --bg-glass: rgba(18, 18, 18, 0.6);
+  --bg: #F5F6FB;
+  --surface: #FFFFFF;
+  --surface-2: #EEF0FA;
 
-  /* Text */
-  --text-primary: #f5f1eb;
-  --text-secondary: rgba(255, 255, 255, 0.75);
-  --text-muted: rgba(255, 255, 255, 0.5);
-  --text-faint: rgba(255, 255, 255, 0.35);
+  --ink: #12131A;
+  --ink-muted: #5B5E72;
+  --ink-faint: #8B8EA3;
 
-  /* Accent */
-  --hs-accent: #c46b1f;
-  --accent-hover: #d4781f;
-  --accent-glow: rgba(196, 107, 31, 0.3);
+  --primary: #362FDB;
+  --primary-dark: #241CB0;
+  --primary-soft: rgba(54, 47, 219, 0.08);
 
-  /* Borders */
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-strong: rgba(255, 255, 255, 0.15);
+  --accent: #FF5A36;
+  --accent-soft: rgba(255, 90, 54, 0.12);
 
-  /* Typography */
-  --font-primary: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  --font-display: "Playfair Display", Georgia, serif;
+  --line: #E4E5F0;
 
-  /* Layout */
+  --shadow-sm: 0 1px 2px rgba(18, 19, 26, 0.04),
+               0 1px 1px rgba(18, 19, 26, 0.03);
+
+  --shadow-md: 0 12px 32px rgba(18, 19, 26, 0.08);
+
+  --shadow-lg: 0 24px 60px rgba(18, 19, 26, 0.12);
+
+  --font-primary: "Inter", sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
   --container-max: 1200px;
   --container-pad: clamp(16px, 4vw, 40px);
+  --section-stack: clamp(40px, 8vw, 72px);
+  --navbar-offset: 96px;
 
-  /* Transitions */
   --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -54,6 +60,7 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+  scroll-padding-top: var(--navbar-offset);
   /* NOTE: Do NOT set scroll-behavior: smooth here.
      ScrollSmoother manages scrolling via transforms and
      setting smooth scroll on html breaks ScrollTrigger pinning. */
@@ -69,14 +76,35 @@ body {
    overflow-x on body breaks its scroll normalization,
    causing #smooth-content to be clipped/invisible. */
 body {
-  background: var(--bg-deep-black);
-  color: var(--text-primary);
+  background: var(--bg);
+  color: var(--ink);
   font-family: var(--font-primary);
   font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+}
+
+/* ── Base type hierarchy (low specificity; component classes win) ── */
+:where(h1, h2, h3) {
+  font-family: var(--font-primary);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+:where(p) {
+  color: var(--ink-muted);
+  font-weight: 400;
+}
+
+:where(small, .metadata) {
+  font-size: 0.875rem;
+  color: var(--ink-faint);
+  letter-spacing: 0.02em;
 }
 
 /* ── ScrollSmoother Compatibility ── */
@@ -92,20 +120,20 @@ body {
 section {
   position: relative;
   z-index: 1;
-  scroll-margin-top: 110px;
+  scroll-margin-top: var(--navbar-offset);
 }
 
 #smooth-content > section + section {
-  margin-top: clamp(48px, 6vw, 96px);
+  margin-top: var(--section-stack);
 }
 
 @media (max-width: 640px) {
   #smooth-content > section + section {
-    margin-top: clamp(28px, 8vw, 48px);
+    margin-top: clamp(40px, 8vw, 56px);
   }
 
   section {
-    scroll-margin-top: 90px;
+    scroll-margin-top: var(--navbar-offset);
   }
 }
 
@@ -147,8 +175,8 @@ button {
 
 /* ── Selection ── */
 ::selection {
-  background: rgba(196, 107, 31, 0.3);
-  color: var(--text-primary);
+  background: var(--primary-soft);
+  color: var(--ink);
 }
 
 /* ── Scrollbar (WebKit) ── */
@@ -158,30 +186,146 @@ button {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-deep-black);
+  background: var(--bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(196, 107, 31, 0.4);
+  background: rgba(54, 47, 219, 0.4);
   border-radius: 4px;
   transition: background var(--transition-fast);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(196, 107, 31, 0.6);
+  background: rgba(54, 47, 219, 0.6);
 }
 
 /* ── Scrollbar (Firefox) ── */
 html {
   scrollbar-width: thin;
-  scrollbar-color: rgba(196, 107, 31, 0.4) var(--bg-deep-black);
+  scrollbar-color: rgba(54, 47, 219, 0.4) var(--bg);
 }
 
-/* ── Focus Visibility ── */
+/* ── Focus Visibility (accessible, restrained) ── */
 :focus-visible {
-  outline: 2px solid var(--hs-accent);
+  outline: 2px solid var(--primary);
   outline-offset: 3px;
   border-radius: 2px;
+}
+
+/* ─────────────────────────────────────────────
+   Reusable premium foundations (opt-in classes;
+   no existing component markup changed in this step)
+   ───────────────────────────────────────────── */
+
+/* Layout container */
+.ds-container {
+  width: min(var(--container-max), 92vw);
+  margin-inline: auto;
+  padding-inline: 0;
+}
+
+/* Kicker / label / metadata */
+.ds-kicker {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: none;
+  color: var(--primary);
+  font-family: var(--font-mono);
+}
+
+/* Buttons: consistent height, radius, type, subtle accent */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 20px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: none;
+  line-height: 1;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform var(--transition-base), box-shadow var(--transition-base),
+    background var(--transition-base), color var(--transition-base),
+    border-color var(--transition-base);
+}
+
+.btn-primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: transparent;
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+.btn-secondary:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-1px);
+}
+
+/* Cards: clean, slightly dimensional, minimal */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-base), border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary-soft);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Quiet form foundation (applies only when .ds-field used) */
+.ds-field__label {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: none;
+  font-weight: 600;
+  color: var(--primary);
+  font-family: var(--font-mono);
+}
+
+.ds-field__input {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  color: var(--ink);
+}
+
+.ds-field__input::placeholder {
+  color: var(--ink-faint);
+}
+
+.ds-field__input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-soft);
+  outline: none;
 }
 
 /* ── Reduced Motion ── */

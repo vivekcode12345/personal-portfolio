@@ -17,6 +17,7 @@ gsap.registerPlugin(ScrollTrigger);
 const Hero = () => {
   const heroRef = useRef(null);
   const zoomRef = useRef(null);
+  const visualRef = useRef(null);
   const stRef = useRef(null);
 
   const scrollToSection = (id) => (e) => {
@@ -35,13 +36,14 @@ const Hero = () => {
     gsap.to(window, {
       duration: prefersReducedMotion ? 0 : 1,
       ease: prefersReducedMotion ? "none" : "power3.out",
-      scrollTo: { y: el, offsetY: 80 },
+      scrollTo: { y: el, offsetY: 96 },
     });
   };
 
   useGSAP(() => {
     const heroEl = heroRef.current;
     const zoomEl = zoomRef.current;
+    const visualEl = visualRef.current;
     if (!heroEl || !zoomEl) return;
 
     const mm = gsap.matchMedia();
@@ -59,12 +61,13 @@ const Hero = () => {
 
         if (reduce) {
           gsap.set(zoomEl, { clearProps: "transform,opacity" });
+          if (visualEl) gsap.set(visualEl, { clearProps: "transform,opacity" });
           return;
         }
 
         // Entrance animation
         const entranceTl = gsap.timeline({ defaults: { ease: "power3.out" } });
-        
+
         entranceTl
           .from(".hero-title", {
             y: 60,
@@ -86,6 +89,11 @@ const Hero = () => {
             opacity: 0,
             duration: 0.8,
           }, "-=0.5")
+          .from(".hero-visual", {
+            x: 40,
+            opacity: 0,
+            duration: 1,
+          }, "-=0.9")
           .from(".scroll-down-indicator", {
             opacity: 0,
             duration: 0.8,
@@ -111,8 +119,9 @@ const Hero = () => {
 
         // make sure we start clean when switching breakpoints
         gsap.set(zoomEl, { scale: 1, opacity: 1, force3D: true });
+        if (visualEl) gsap.set(visualEl, { scale: 1, opacity: 1, force3D: true });
 
-        tl.to(zoomEl, { scale: scaleTo, opacity: 0 });
+        tl.to(zoomEl, { scale: scaleTo, opacity: 0 }, 0).to(visualEl, { scale: 1.25, opacity: 0 }, 0);
 
         stRef.current = tl.scrollTrigger;
         return () => {
@@ -155,6 +164,13 @@ const Hero = () => {
           <div className="scroll-down-indicator">
             <img src="/assets/images/common/scroll-down.png" alt="scroll" />
             <p>{scrollIndicator}</p>
+          </div>
+        </div>
+
+        <div ref={visualRef} className="hero-visual" aria-label="Vivek Verma portrait" role="img">
+          <div className="hero-photo-frame">
+            <img src="/assets/images/common/caricature.png" alt="Illustrated portrait of Vivek Verma" className="hero-photo" />
+            <div className="hero-role-badge">Full-Stack · AI/ML</div>
           </div>
         </div>
       </div>

@@ -2,51 +2,52 @@
   position: relative;
   width: 100%;
   padding: clamp(60px, 7vw, 90px) 0 clamp(50px, 6vw, 80px);
-  color: #fff;
-  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  background: #030303;
+  color: var(--ink);
+  font-family: var(--font-primary);
+  background: transparent;
 }
 
 .sectionHeader {
-  width: min(1200px, 92%);
+  width: min(1080px, 88vw);
   margin: 0 auto 40px;
-  text-align: center;
+  text-align: left;
 }
 
 .sectionKicker {
   margin: 0 0 16px;
   font-size: 0.8rem;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: #f5a623;
+  letter-spacing: 0.1em;
+  text-transform: none;
+  color: var(--primary);
   opacity: 0.96;
   font-weight: 700;
+  font-family: var(--font-mono);
 }
 
 .sectionTitle {
   margin: 0;
-  font-weight: 900;
-  letter-spacing: -0.08em;
+  font-weight: 800;
+  letter-spacing: -0.02em;
   line-height: 0.82;
-  font-size: clamp(5rem, 12vw, 18rem);
-  color: #f2f2f2;
+  font-size: clamp(2.75rem, 6vw, 5rem);
+  color: var(--ink);
+  font-family: var(--font-display);
   text-transform: none;
   text-shadow: none;
 }
 
 .sectionSub {
-  margin: 18px auto 0;
-  max-width: 1200px;
-  color: rgba(255, 255, 255, 0.7);
+  margin: 18px 0 0;
+  max-width: 700px;
+  color: var(--ink-muted);
   line-height: 1.35;
-  font-size: clamp(1.2rem, 2vw, 2rem);
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
   font-weight: 400;
-  letter-spacing: -0.02em;
 }
 
 /* ── Cards Grid ── */
 .projectsGrid {
-  width: min(1200px, 92%);
+  width: min(1160px, 92%);
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -58,18 +59,44 @@
   flex-direction: column;
   border-radius: 16px;
   overflow: hidden;
-  background: rgba(18, 18, 18, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 
-    0 20px 60px rgba(0, 0, 0, 0.5),
-    0 0 0 1px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-md);
   transform: translateZ(0);
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
               box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
               border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+}
+
+.projectCard.featured {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(280px, 1fr);
+  min-height: 360px;
+
+  .projectMedia {
+    height: 100%;
+    min-height: 360px;
+  }
+
+  .projectBody {
+    justify-content: center;
+    padding: clamp(24px, 4vw, 44px);
+  }
+
+  .projectTitle {
+    font-size: clamp(1.5rem, 3vw, 2.35rem);
+  }
+
+  .projectSubtitle {
+    font-size: 0.95rem;
+  }
+
+  .projectDesc {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
 }
 
 /* ── Media ── */
@@ -91,10 +118,9 @@
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    to bottom, 
-    rgba(0, 0, 0, 0.1) 0%, 
-    rgba(0, 0, 0, 0.4) 40%, 
-    rgba(0, 0, 0, 0.75) 100%
+    to bottom,
+    transparent 70%,
+    rgba(18, 19, 26, 0.06) 100%
   );
   transition: opacity 0.4s ease;
   pointer-events: none;
@@ -115,20 +141,20 @@
   letter-spacing: -0.01em;
   line-height: 1.3;
   transition: color 0.3s ease;
-  color: rgba(255, 255, 255, 0.95);
+  color: var(--ink);
 }
 
 .projectSubtitle {
   margin: 0 0 10px;
   font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.45);
+  color: var(--ink-faint);
   letter-spacing: 0.02em;
   font-weight: 500;
 }
 
 .projectDesc {
   margin: 0 0 14px;
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--ink-muted);
   line-height: 1.6;
   font-size: 0.85rem;
   display: -webkit-box;
@@ -151,9 +177,9 @@
   font-size: 0.7rem;
   padding: 4px 10px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.55);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  color: var(--ink-muted);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   font-weight: 500;
   letter-spacing: 0.02em;
@@ -164,12 +190,12 @@
   display: flex;
   gap: 16px;
   padding-top: 14px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid var(--line);
 }
 
 .projectLink {
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--ink-muted);
   font-size: 0.82rem;
   font-weight: 600;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -181,12 +207,12 @@
 }
 
 .projectLink:hover {
-  color: var(--hs-accent, #c46b1f);
+  color: var(--primary);
   transform: translateX(3px);
 }
 
 .projectLink:focus-visible {
-  outline: 2px solid var(--hs-accent, #c46b1f);
+  outline: 2px solid var(--primary);
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -195,11 +221,8 @@
 .projectCard:hover,
 .projectCard:focus-within {
   transform: translateY(-6px);
-  border-color: rgba(196, 107, 31, 0.3);
-  box-shadow:
-    0 24px 70px rgba(0, 0, 0, 0.6),
-    0 0 0 1px rgba(196, 107, 31, 0.15),
-    0 0 30px rgba(196, 107, 31, 0.08);
+  border-color: var(--primary-soft);
+  box-shadow: var(--shadow-lg);
 }
 
 .projectCard:hover .projectMedia img,
@@ -209,19 +232,19 @@
 
 .projectCard:hover .projectTitle,
 .projectCard:focus-within .projectTitle {
-  color: rgba(255, 255, 255, 1);
+  color: var(--ink);
 }
 
 .projectCard:hover .projectDesc,
 .projectCard:focus-within .projectDesc {
-  color: rgba(255, 255, 255, 0.65);
+  color: var(--ink-muted);
 }
 
 .projectCard:hover .tag,
 .projectCard:focus-within .tag {
-  background: rgba(196, 107, 31, 0.12);
-  border-color: rgba(196, 107, 31, 0.25);
-  color: rgba(255, 255, 255, 0.75);
+  background: var(--primary-soft);
+  border-color: var(--primary);
+  color: var(--primary);
 }
 
 /* ── Responsive ── */
@@ -232,12 +255,40 @@
   }
   .sectionTitle {
     max-width: 16ch;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 0;
+    margin-right: 0;
   }
   .projectCard {
     max-width: 600px;
     margin: 0 auto;
+  }
+
+  .projectCard.featured {
+    display: flex;
+    grid-column: auto;
+    min-height: 0;
+
+    .projectMedia {
+      height: clamp(160px, 14vw, 220px);
+      min-height: 0;
+    }
+
+    .projectBody {
+      padding: 18px 20px 20px;
+    }
+
+    .projectTitle {
+      font-size: clamp(1rem, 1.5vw, 1.2rem);
+    }
+
+    .projectSubtitle {
+      font-size: 0.8rem;
+    }
+
+    .projectDesc {
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
   }
 }
 
@@ -247,6 +298,12 @@
   }
   .sectionHeader {
     margin-bottom: 32px;
+    text-align: center;
+  }
+
+  .sectionSub {
+    margin-left: auto;
+    margin-right: auto;
   }
   .projectBody {
     padding: 16px 18px;

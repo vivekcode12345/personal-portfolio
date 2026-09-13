@@ -59,8 +59,8 @@ export default function Projects() {
       </div>
 
       <div className="projectsGrid">
-        {PROJECTS.map((p) => (
-          <article className="projectCard" key={p.title}>
+        {PROJECTS.map((p, index) => (
+          <article className={`projectCard ${index === 0 ? "featured" : ""}`} key={p.title}>
             <div className="projectMedia">
               <img src={p.image} alt={p.title} loading="lazy" />
               <div className="projectMediaOverlay" />

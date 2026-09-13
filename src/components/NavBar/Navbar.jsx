@@ -69,7 +69,7 @@ const Navbar = () => {
     gsap.to(window, {
       duration: prefersReducedMotion ? 0 : 1,
       ease: prefersReducedMotion ? "none" : "power3.out",
-      scrollTo: { y: el, offsetY: 80 },
+      scrollTo: { y: el, offsetY: 96 },
     });
   };
 

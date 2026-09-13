@@ -1,43 +1,48 @@
 .journey {
   position: relative;
   width: 100%;
-  color: #fff;
-  font-family: "Inter", sans-serif;
+  color: var(--ink);
+  font-family: var(--font-primary);
 
-  padding: clamp(40px, 6vw, 90px) 0 clamp(60px, 8vw, 110px);
-  background: radial-gradient(ellipse at 50% 30%, rgba(196, 107, 31, 0.03) 0%, transparent 60%);
+  padding: clamp(52px, 7vw, 96px) 0 clamp(64px, 8vw, 112px);
+  background: transparent;
 
   &-hero {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 0 clamp(16px, 4vw, 40px);
+    align-items: flex-start;
+    text-align: left;
+    width: min(1040px, 88vw);
+    padding: 0;
+    margin: 0 auto;
     margin-bottom: clamp(24px, 5vw, 56px);
   }
 
   &-kicker {
-    letter-spacing: 0.35em;
-    font-size: 0.75rem;
-    color: var(--hs-accent, #c46b1f);
+    letter-spacing: 0.05em;
+    font-size: 0.8rem;
+    color: var(--primary);
     margin: 0 0 16px;
     font-weight: 600;
     opacity: 1;
+    font-family: var(--font-mono);
+    text-transform: none;
   }
 
   &-title {
     margin: 0 0 18px;
     font-size: clamp(2.2rem, 6vw, 5.25rem);
     line-height: 0.95;
-    font-weight: 800;
-    letter-spacing: -0.01em;
-    color: rgba(255, 255, 255, 0.96);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    font-family: var(--font-display);
   }
 
   &-sub {
     margin: 0;
-    max-width: 65ch;
-    color: rgba(220, 226, 234, 0.78);
+    max-width: 58ch;
+    color: var(--ink-muted);
     font-size: clamp(0.95rem, 1.5vw, 1rem);
     line-height: 1.7;
     font-weight: 400;
@@ -46,8 +51,9 @@
 
 .timeline {
   position: relative;
-  width: 100%;
-  padding: 0 clamp(14px, 4vw, 60px);
+  width: min(1120px, 92vw);
+  margin: 0 auto;
+  padding: 0 clamp(8px, 2vw, 24px);
 
   &-line {
     position: absolute;
@@ -70,19 +76,19 @@
   }
 
   &-line-bg {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--line);
   }
 
   &-line-fill {
     background: linear-gradient(
       to bottom,
-      var(--hs-accent, #c46b1f) 0%,
-      rgba(196, 107, 31, 0.6) 50%,
-      rgba(196, 107, 31, 0.15) 100%
+      var(--primary) 0%,
+      rgba(54, 47, 219, 0.75) 50%,
+      var(--primary-soft) 100%
     );
     transform: scaleY(0);
     transform-origin: top;
-    box-shadow: 0 0 8px rgba(196, 107, 31, 0.3);
+    box-shadow: 0 0 8px rgba(54, 47, 219, 0.2);
   }
 }
 
@@ -134,17 +140,17 @@
   width: 14px;
   height: 14px;
   border-radius: 999px;
-  border: 2px solid var(--hs-accent, #c46b1f);
-  background: rgba(5, 5, 5, 0.9);
+  border: 2px solid var(--primary);
+  background: var(--surface);
   flex-shrink: 0;
   position: relative;
   z-index: 2;
 
-  box-shadow: 0 0 0 4px rgba(196, 107, 31, 0.1);
+  box-shadow: 0 0 0 4px var(--primary-soft);
 
   .tl-item.is-active & {
-    background: var(--hs-accent, #c46b1f);
-    box-shadow: 0 0 0 4px rgba(196, 107, 31, 0.15), 0 0 12px rgba(196, 107, 31, 0.4);
+    background: var(--primary);
+    box-shadow: 0 0 0 4px var(--primary-soft), 0 0 12px rgba(54, 47, 219, 0.2);
   }
 }
 
@@ -155,19 +161,20 @@
   padding: 20px 22px 18px;
   position: relative;
   z-index: 2;
-  background: linear-gradient(180deg, rgba(17, 17, 17, 0.88), rgba(10, 10, 10, 0.72));
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 18px;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  box-shadow: var(--shadow-md);
 }
 
 .tl-date {
   font-size: 11px;
-  letter-spacing: 0.4em;
-  color: #f3b76d;
+  letter-spacing: 0.15em;
+  color: var(--accent);
   margin-bottom: 14px;
   font-weight: 600;
   opacity: 1;
+  font-family: var(--font-mono);
 }
 
 .tl-h {
@@ -176,11 +183,12 @@
   margin: 0 0 12px;
   font-weight: 700;
   letter-spacing: -0.01em;
-  color: rgba(255, 255, 255, 0.96);
+  color: var(--ink);
+  font-family: var(--font-display);
 }
 
 .tl-org {
-  color: rgba(240, 244, 248, 0.82);
+  color: var(--ink-muted);
   letter-spacing: 0.06em;
   font-size: 0.88rem;
   margin-bottom: 16px;
@@ -190,19 +198,19 @@
 .tl-desc {
   margin: 0;
   max-width: 55ch;
-  color: rgba(205, 214, 224, 0.8);
+  color: var(--ink-muted);
   line-height: 1.75;
   font-size: 0.92rem;
   font-weight: 400;
 }
 
 .tl-desc mark {
-  background: rgba(196, 107, 31, 0.14);
-  color: #f9d6aa;
+  background: var(--accent-soft);
+  color: var(--ink);
   padding: 0.08em 0.34em;
   border-radius: 0.35em;
   font-weight: 600;
-  box-shadow: inset 0 0 0 1px rgba(196, 107, 31, 0.2);
+  box-shadow: inset 0 0 0 1px var(--accent-soft);
 }
 
 .tl-section-heading {
@@ -220,14 +228,15 @@
   display: inline-block;
   font-size: clamp(1rem, 2.5vw, 1.5rem);
   font-weight: 700;
-  letter-spacing: 0.15em;
-  color: var(--hs-accent, #c46b1f);
+  letter-spacing: 0.08em;
+  color: var(--primary);
   margin: 0;
   padding: 8px 24px;
-  border: 2px solid var(--hs-accent, #c46b1f);
-  border-radius: 4px;
-  background: rgba(196, 107, 31, 0.1);
-  text-transform: uppercase;
+  border: 1.5px solid var(--primary);
+  border-radius: 999px;
+  background: var(--primary-soft);
+  text-transform: none;
+  font-family: var(--font-mono);
 }
 
 .timeline-section {
@@ -240,7 +249,7 @@
 }
 
 .timeline-heading {
-  text-align: center;
+  text-align: left;
   margin-bottom: clamp(40px, 6vw, 80px);
   position: relative;
   z-index: 2;
@@ -250,14 +259,15 @@
   display: inline-block;
   font-size: clamp(1.2rem, 3vw, 1.8rem);
   font-weight: 700;
-  letter-spacing: 0.15em;
-  color: var(--hs-accent, #c46b1f);
+  letter-spacing: 0.08em;
+  color: var(--primary);
   margin: 0;
   padding: 12px 32px;
-  border: 2px solid var(--hs-accent, #c46b1f);
-  border-radius: 4px;
-  background: rgba(196, 107, 31, 0.1);
-  text-transform: uppercase;
+  border: 1.5px solid var(--primary);
+  border-radius: 999px;
+  background: var(--primary-soft);
+  text-transform: none;
+  font-family: var(--font-mono);
 }
 
 @media (max-width: 900px) {
@@ -289,6 +299,13 @@
   .tl-card {
     text-align: center;
     max-width: none;
+  }
+
+  .journey-hero,
+  .timeline-heading {
+    width: min(92vw, 680px);
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
