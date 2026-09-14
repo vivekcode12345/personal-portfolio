@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { scrollIndicator } from "../../constants/landingPageConstants";
 import { email } from "../../constants/contactConstants";
+import BackgroundStars from "../BackgroundStars/BackgroundStars";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -166,6 +167,7 @@ const Hero = () => {
 
   return (
     <section className="hero" id="home" ref={heroRef}>
+      <BackgroundStars />
       <div className="hero-overlay" />
       <div className="hero-content">
         <div ref={zoomRef} className="hero-zoom">

@@ -1,4 +1,5 @@
 import React from "react";
+import { useTiltHover } from "../../hooks/useTiltHover";
 import "./Projects.scss";
 
 const PROJECTS = [
@@ -47,6 +48,55 @@ const PROJECTS = [
   },
 ];
 
+function ProjectCard({ project, featured }) {
+  const tiltRef = useTiltHover({ max: 6, scale: 1.02, liftY: -6 });
+
+  return (
+    <article
+      ref={tiltRef}
+      className={`projectCard${featured ? " featured" : ""}`}
+      key={project.title}
+    >
+      <div className="card-spotlight" />
+      <div className="projectMedia">
+        <img src={project.image} alt={project.title} loading="lazy" />
+        <div className="projectMediaOverlay" />
+      </div>
+
+      <div className="projectBody">
+        <h3 className="projectTitle">{project.title}</h3>
+        <p className="projectSubtitle">{project.subtitle}</p>
+        <p className="projectDesc">{project.desc}</p>
+
+        <div className="projectTags">
+          {project.tags.map((t) => (
+            <span className="tag" key={t}>
+              {t}
+            </span>
+          ))}
+        </div>
+
+        <div className="projectFooter">
+          {project.links.map((link) => {
+            const isLiveDemo = link.label === "Live Demo";
+            return (
+              <a
+                key={`${project.title}-${link.label}`}
+                className="projectLink"
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {isLiveDemo ? "↗ Live Demo" : "</> GitHub"}
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </article>
+  );
+}
+
 export default function Projects() {
   return (
     <section className="projects" id="projects">
@@ -59,43 +109,7 @@ export default function Projects() {
 
       <div className="projectsGrid">
         {PROJECTS.map((p, index) => (
-          <article className={`projectCard ${index === 0 ? "featured" : ""}`} key={p.title}>
-            <div className="projectMedia">
-              <img src={p.image} alt={p.title} loading="lazy" />
-              <div className="projectMediaOverlay" />
-            </div>
-
-            <div className="projectBody">
-              <h3 className="projectTitle">{p.title}</h3>
-              <p className="projectSubtitle">{p.subtitle}</p>
-              <p className="projectDesc">{p.desc}</p>
-
-              <div className="projectTags">
-                {p.tags.map((t) => (
-                  <span className="tag" key={t}>
-                    {t}
-                  </span>
-                ))}
-              </div>
-
-              <div className="projectFooter">
-                {p.links.map((link) => {
-                  const isLiveDemo = link.label === "Live Demo";
-                  return (
-                    <a
-                      key={`${p.title}-${link.label}`}
-                      className="projectLink"
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {isLiveDemo ? "↗ Live Demo" : "</> GitHub"}
-                    </a>
-                  );
-                })}
-              </div>
-            </div>
-          </article>
+          <ProjectCard key={p.title} project={p} featured={index === 0} />
         ))}
       </div>
     </section>

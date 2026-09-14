@@ -1,5 +1,5 @@
-import React, { useRef } from "react";
-import gsap from "gsap";
+import React from "react";
+import { useTiltHover } from "../../hooks/useTiltHover";
 
 /**
  * Reusable timeline item component
@@ -7,7 +7,7 @@ import gsap from "gsap";
  * @param {number} index - Item index for stable item identity
  */
 const TimelineItem = ({ item, index }) => {
-  const cardRef = useRef(null);
+  const tiltRef = useTiltHover({ max: 5, scale: 1.015, liftY: -4 });
   const cardClassName = `tl-card${item.image ? " has-photo" : ""}`;
 
   const renderPhoto = () => item.image ? (
@@ -31,37 +31,13 @@ const TimelineItem = ({ item, index }) => {
     return <p className="tl-desc" dangerouslySetInnerHTML={{ __html: formatted }} />;
   };
 
-  // ── Hover lift via GSAP (to override inline styles from scroll animation) ──
-  const handleEnter = () => {
-    gsap.to(cardRef.current, {
-      y: -6,
-      boxShadow: "0 24px 60px rgba(18,19,26,0.12)",
-      background: "var(--surface)",
-      duration: 0.25,
-      ease: "power2.out",
-      overwrite: "auto",
-    });
-  };
-
-  const handleLeave = () => {
-    gsap.to(cardRef.current, {
-      y: 0,
-      boxShadow: "0 1px 2px rgba(18,19,26,0.04)",
-      background: "var(--surface-2)",
-      duration: 0.25,
-      ease: "power2.out",
-      overwrite: "auto",
-    });
-  };
-
   return (
     <div className="tl-item" key={`${item.date}-${index}`}>
       <article
-        ref={cardRef}
+        ref={tiltRef}
         className={cardClassName}
-        onMouseEnter={handleEnter}
-        onMouseLeave={handleLeave}
       >
+        <div className="card-spotlight" />
         {renderPhoto()}
         <div className="tl-card-content">
           <h3 className="tl-h">{item.title}</h3>

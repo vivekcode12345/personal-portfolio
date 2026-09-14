@@ -537,8 +537,8 @@
   .contact__kicker {
     margin: 0;
     font-family: var(--font-mono);
-    font-size: 0.85rem;
-    font-weight: 700;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    font-weight: 800;
     letter-spacing: 0.1em;
     color: var(--primary);
     text-transform: uppercase;
@@ -548,7 +548,8 @@
     margin: 0;
     max-width: 62ch;
     color: var(--ink-muted);
-    font-size: clamp(0.95rem, 1.6vw, 1rem);
+    font-size: clamp(1.1rem, 2vw, 1.25rem);
+    font-weight: 600;
     line-height: 1.7;
     padding: 0;
   }

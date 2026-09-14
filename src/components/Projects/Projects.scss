@@ -41,6 +41,7 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px;
+  perspective: 1000px;
 }
 
 .projectCard {
@@ -52,10 +53,34 @@
   border: 1px solid var(--line);
   box-shadow: var(--shadow-md);
   transform: translateZ(0);
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
-              box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
-              border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   position: relative;
+}
+
+.card-spotlight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  border-radius: inherit;
+  background: radial-gradient(
+    500px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(var(--primary-rgb), 0.12),
+    transparent 60%
+  );
+}
+
+.projectCard:hover .card-spotlight {
+  opacity: 1;
+}
+
+.projectCard > *:not(.card-spotlight) {
+  position: relative;
+  z-index: 1;
 }
 
 .projectCard.featured {
@@ -169,7 +194,7 @@
   background: var(--surface-2);
   border: 1px solid var(--line);
   color: var(--ink-muted);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   font-weight: 500;
   letter-spacing: 0.02em;
 }
@@ -206,12 +231,11 @@
   border-radius: 2px;
 }
 
-/* ── Card Hover ── */
+/* ── Card Hover (border + shadow only; tilt transform is JS-driven) ── */
 .projectCard:hover,
 .projectCard:focus-within {
-  transform: translateY(-6px);
   border-color: var(--primary-soft);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 12px 28px rgba(18, 19, 26, 0.08);
 }
 
 .projectCard:hover .projectMedia img,
