@@ -4,33 +4,6 @@
   background: var(--primary-soft);
 }
 
-.whoami-kicker {
-  margin: 0 0 0.85rem;
-  color: var(--primary);
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.whoami-sub-heading {
-  font-family: var(--font-display);
-  letter-spacing: -0.02em;
-  font-size: clamp(2rem, 3.5vw, 2.75rem);
-  line-height: 1.15;
-  color: var(--ink);
-  font-weight: 700;
-
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  width: 100%;
-  margin: 0 0 0.5rem;
-  text-transform: none;
-  opacity: 1;
-}
-
 .whoami-heading {
   color: var(--ink);
   font-family: var(--font-display);
@@ -296,11 +269,6 @@
 @media (max-width: 640px) {
   .whoami-section {
     padding: 56px 0;
-  }
-
-  .whoami-sub-heading {
-    justify-content: center;
-    margin: 0 auto 30px;
   }
 
   .whoami-inner {

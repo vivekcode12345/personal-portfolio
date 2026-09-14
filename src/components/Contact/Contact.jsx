@@ -15,7 +15,6 @@ export default function Contact() {
       <div className="contact__bg" aria-hidden="true" />
 
       <div className="contact-header">
-        <p className="contact-sub-heading">06. Contact</p>
         <h2>GET IN TOUCH</h2>
         <p className="contact-description">
           I’m open to discussing product ideas, collaborations, and internship opportunities.

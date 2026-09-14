@@ -51,7 +51,6 @@ export default function Projects() {
   return (
     <section className="projects" id="projects">
       <div className="sectionHeader">
-        <p className="sectionKicker">04. PROJECTS</p>
         <h2 className="sectionTitle">Projects</h2>
         <p className="sectionSub">
           A selection of builds showcasing full-stack development, cloud architecture, and motion design.

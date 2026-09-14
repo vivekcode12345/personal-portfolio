@@ -89,7 +89,6 @@ export default function TechStack() {
     return (
         <section className="hs-section" id="skills">
             <div className="hs-header">
-                <p className="hs-kicker">02. TECHNICAL SKILLS</p>
                 <h2 className="hs-title">
                     <svg className="hs-title-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                         <path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16" />

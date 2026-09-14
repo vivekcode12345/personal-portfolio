@@ -316,18 +316,6 @@
   font-family: var(--font-primary);
   text-align: left;
 
-  .contact-sub-heading {
-    margin: 0;
-    width: auto;
-    letter-spacing: 0.08em;
-    font-size: 0.75rem;
-    color: var(--primary);
-    font-family: var(--font-mono);
-    font-weight: 500;
-    text-transform: none;
-    opacity: 0.9;
-  }
-
   h2 {
     margin: 0;
     line-height: 0.92;
@@ -409,7 +397,6 @@
     align-items: center;
     text-align: center;
 
-    .contact-sub-heading,
     h2,
     .contact-description {
       text-align: center;

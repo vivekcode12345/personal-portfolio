@@ -88,8 +88,7 @@ const WhoAmI = () => {
       <div className="whoami-content " ref={sectionRef}>
         <div className="whoami-inner">
           <div className="whoami-text">
-            <p className="whoami-kicker">01. ABOUT ME</p>
-            <h1 className="whoami-sub-heading whoami-heading">
+            <h1 className="whoami-heading">
               <svg className="whoami-heading-icon" viewBox="0 0 24 24" aria-hidden="true">
                 <circle cx="12" cy="8" r="3.5" />
                 <path d="M5.5 20c.7-3.5 3-5.5 6.5-5.5s5.8 2 6.5 5.5" />
