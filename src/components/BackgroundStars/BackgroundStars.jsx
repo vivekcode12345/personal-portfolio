@@ -43,7 +43,7 @@ export default function BackgroundStars() {
       x: Math.random() * width,
       y: Math.random() * height,
       radius: Math.random() * 0.8 + 0.7,
-      alpha: Math.random() * 0.04 + 0.04,
+      alpha: Math.random() * 0.04 + 0.07,
       driftX: (Math.random() - 0.5) * 0.08,
       driftY: (Math.random() - 0.5) * 0.08,
     });
@@ -98,7 +98,7 @@ export default function BackgroundStars() {
 
           if (distance < connectionDistance) {
             ctx.beginPath();
-            ctx.globalAlpha = (1 - distance / connectionDistance) * 0.05;
+            ctx.globalAlpha = (1 - distance / connectionDistance) * 0.1;
             ctx.moveTo(first.x, first.y);
             ctx.lineTo(second.x, second.y);
             ctx.stroke();

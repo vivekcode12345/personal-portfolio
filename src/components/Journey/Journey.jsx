@@ -14,7 +14,7 @@ export default function Journey() {
     <section className="journey" id="timeline">
       {/* Hero heading like your video */}
       <div className="journey-hero">
-        <p className="journey-kicker">02. JOURNEY</p>
+        <p className="journey-kicker">03. JOURNEY</p>
         <h2 className="journey-title">Professional Path</h2>
         <p className="journey-sub">
           A timeline of key milestones—education, internships, and projects

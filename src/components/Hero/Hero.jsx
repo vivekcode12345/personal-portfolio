@@ -1,14 +1,15 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Hero.scss";
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { name } from "../../constants/landingPageConstants";
-import { tagline } from "../../constants/landingPageConstants";
 import { scrollIndicator } from "../../constants/landingPageConstants";
+import { email } from "../../constants/contactConstants";
 
 gsap.registerPlugin(ScrollTrigger);
+
+const roles = ["Full-Stack Development", "AI/ML", "AI Automation Engineering"];
 
 /**
  * @author Vivek Verma
@@ -19,6 +20,34 @@ const Hero = () => {
   const zoomRef = useRef(null);
   const visualRef = useRef(null);
   const stRef = useRef(null);
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [typedRole, setTypedRole] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentRole = roles[roleIndex];
+    const isComplete = typedRole === currentRole;
+    const isEmpty = typedRole === "";
+    const delay = isComplete ? 1600 : isEmpty && isDeleting ? 400 : isDeleting ? 45 : 85;
+
+    const timer = window.setTimeout(() => {
+      if (!isDeleting && isComplete) {
+        setIsDeleting(true);
+        return;
+      }
+
+      if (isDeleting && isEmpty) {
+        setIsDeleting(false);
+        setRoleIndex((currentIndex) => (currentIndex + 1) % roles.length);
+        return;
+      }
+
+      setTypedRole((currentText) => currentText.slice(0, -1));
+      if (!isDeleting) setTypedRole(currentRole.slice(0, typedRole.length + 1));
+    }, delay);
+
+    return () => window.clearTimeout(timer);
+  }, [isDeleting, roleIndex, typedRole]);
 
   const scrollToSection = (id) => (e) => {
     if (e) e.preventDefault();
@@ -79,7 +108,7 @@ const Hero = () => {
             opacity: 0,
             duration: 1,
           }, "-=0.8")
-          .from(".hero-description", {
+          .from(".hero-tagline", {
             y: 30,
             opacity: 0,
             duration: 1,
@@ -140,36 +169,54 @@ const Hero = () => {
       <div className="hero-overlay" />
       <div className="hero-content">
         <div ref={zoomRef} className="hero-zoom">
-          <h1 className="hero-title">{name}</h1>
-          <div className="hero-sub">
-            <span className="line" />
-            <span className="tag-line">{tagline}</span>
-            <span className="line" />
+          <h1 className="hero-title">
+            <span className="hero-title-greeting">Hi There,</span>
+            <span className="hero-title-name">I'm Vivek <span className="hero-title-accent">Verma</span></span>
+          </h1>
+          <div className="hero-tagline" aria-live="polite">
+            <span>i am into </span>
+            <span className="hero-typed-role">{typedRole}</span>
+            <span className="hero-cursor" aria-hidden="true">|</span>
           </div>
-          <p className="hero-description">
-            Computer Science undergraduate and Full Stack Developer focused on building scalable web applications, AI-powered solutions, and production-ready systems. I combine strong foundations in software engineering, data structures, and modern web technologies to turn ideas into impactful products.
-          </p>
           <div className="hero-buttons">
             <a
-              className="download-button"
-              href="/assets/files/vivek_verma_resume.pdf"
-              download="vivek_verma_resume.pdf"
+              className="about-button"
+              href="#aboutMe"
+              onClick={scrollToSection("aboutMe")}
             >
-              Download Resume
+              About Me
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v11M4 9l4 4 4-4" /></svg>
             </a>
             <a className="view-projects-button" href="#projects" onClick={scrollToSection("projects")}>
               View Projects
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4 2.5 8l3 4M10.5 4l3 4-3 4M9 3.5 7 12.5" /></svg>
+            </a>
+          </div>
+          <div className="hero-socials" aria-label="Social profiles">
+            <a href="https://www.linkedin.com/in/vivekcode12345/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8.5V18M6 5.5v.01M10 18v-5.2a3 3 0 0 1 6 0V18M10 10v8" /></svg>
+            </a>
+            <a href="https://github.com/vivekcode12345" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4 .9-4-2-5-2m10 4v-3.5c0-1 .1-1.4-.5-2 1.8-.2 3.5-.9 3.5-4a3 3 0 0 0-.8-2.2A2.8 2.8 0 0 0 16 7s-.7-1.2-3 0a8 8 0 0 0-4 0C6.7 5.8 6 7 6 7a2.8 2.8 0 0 0-.2 2.3A3 3 0 0 0 5 12c0 3.1 1.7 3.8 3.5 4-.6.5-.6 1.1-.5 2V21" /></svg>
+            </a>
+            <a href="https://github.com/vivekcode12345" target="_blank" rel="noopener noreferrer" aria-label="Coding profile">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16" /></svg>
+            </a>
+            <a href={`mailto:${email}`} aria-label="Email Vivek Verma">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m4 7 8 6 8-6" /></svg>
             </a>
           </div>
           <div className="scroll-down-indicator">
-            <img src="/assets/images/common/scroll-down.png" alt="scroll" />
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M4 8l6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
             <p>{scrollIndicator}</p>
           </div>
         </div>
 
         <div ref={visualRef} className="hero-visual" aria-label="Vivek Verma portrait" role="img">
           <div className="hero-photo-frame">
-            <img src="/assets/images/common/caricature.png" alt="Illustrated portrait of Vivek Verma" className="hero-photo" />
+            <img src="/assets/images/hero-photo.png" alt="Illustrated portrait of Vivek Verma" className="hero-photo" />
             <div className="hero-role-badge">Full-Stack · AI/ML</div>
           </div>
         </div>

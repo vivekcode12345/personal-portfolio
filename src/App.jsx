@@ -47,8 +47,8 @@ const App = () => {
           <Hero />
           <WhoAmI/>
           {/* <DirectionalMarquee /> */}
-          <Journey />
           <TechStack/>
+          <Journey />
           <Projects />
           <Certifications />
           <Contact />

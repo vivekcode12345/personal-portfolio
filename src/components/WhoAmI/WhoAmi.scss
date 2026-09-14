@@ -4,6 +4,16 @@
   background: var(--primary-soft);
 }
 
+.whoami-kicker {
+  margin: 0 0 0.85rem;
+  color: var(--primary);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
 .whoami-sub-heading {
   font-family: var(--font-display);
   letter-spacing: -0.02em;
@@ -131,10 +141,8 @@
 .whoami-info-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1px;
+  gap: 16px;
   margin-top: 0.5rem;
-  border: 1px solid var(--line);
-  background: var(--line);
 }
 
 .whoami-info-item {
@@ -142,11 +150,20 @@
   flex-direction: column;
   gap: 0.35rem;
   min-width: 0;
-  padding: 1rem;
+  padding: 20px 22px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
   background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
 
   strong {
-    color: var(--ink-faint);
+    color: var(--ink-muted);
     font-family: var(--font-mono);
     font-size: 0.72rem;
     font-weight: 600;
@@ -162,6 +179,42 @@
     font-weight: 600;
     line-height: 1.45;
   }
+}
+
+.whoami-download-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1.35rem;
+  border: 2px solid var(--primary);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--primary);
+  font-family: var(--font-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+
+  &:hover {
+    background: var(--primary-soft);
+    transform: translateY(-2px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+  }
+}
+
+.whoami-actions .download-button {
+  padding: 0.85rem 1.35rem;
+  border-width: 2px;
+  font-family: var(--font-primary);
+  font-size: 0.85rem;
+  line-height: 1;
 }
 
 .whoami-actions {
@@ -232,7 +285,7 @@
     flex-direction: column;
 
     .download-button,
-    .view-projects-button {
+    .whoami-download-button {
       width: 100%;
       text-align: center;
     }

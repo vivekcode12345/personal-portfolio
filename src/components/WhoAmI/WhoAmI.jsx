@@ -88,6 +88,7 @@ const WhoAmI = () => {
       <div className="whoami-content " ref={sectionRef}>
         <div className="whoami-inner">
           <div className="whoami-text">
+            <p className="whoami-kicker">01. ABOUT ME</p>
             <h1 className="whoami-sub-heading whoami-heading">
               <svg className="whoami-heading-icon" viewBox="0 0 24 24" aria-hidden="true">
                 <circle cx="12" cy="8" r="3.5" />
@@ -126,7 +127,7 @@ const WhoAmI = () => {
               <a className="download-button" href="/assets/files/vivek_verma_resume.pdf" target="_blank" rel="noopener noreferrer">
                 View Resume
               </a>
-              <a className="view-projects-button" href="/assets/files/vivek_verma_resume.pdf" download="vivek_verma_resume.pdf">
+              <a className="whoami-download-button" href="/assets/files/vivek_verma_resume.pdf" download="vivek_verma_resume.pdf">
                 Download
               </a>
             </div>

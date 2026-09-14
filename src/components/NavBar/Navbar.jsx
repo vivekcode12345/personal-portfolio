@@ -76,41 +76,46 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-wrapper">
-        <a className="nav-home" href="#home" onClick={goTo("home")} aria-label="Home">
-          <img src="./assets/images/common/icons8-home.svg" alt="" />
-        </a>
+        <div className="navbar-inner">
+          <a className="nav-home" href="#home" onClick={goTo("home")} aria-label="Vivek Verma - Home">
+            <span className="nav-home-icon" aria-hidden="true">&gt;_</span>
+            <span className="nav-home-name">
+              <span>Vivek</span> <span className="nav-home-accent">Verma</span>
+            </span>
+          </a>
 
-        <ul className="nav-links">
-          {navLinks.map((link) => (
-            <li key={link.id}>
-              <a href={`#${link.id}`} onClick={goTo(link.id)}>
-                {link.label}
+          <ul className="nav-links">
+            {navLinks.map((link) => (
+              <li key={link.id}>
+                <a href={`#${link.id}`} onClick={goTo(link.id)}>
+                  {link.label}
+                </a>
+              </li>
+            ))}
+            <li>
+              <a
+                className="download-button"
+                href="/assets/files/vivek_verma_resume.pdf"
+                download="vivek_verma_resume.pdf"
+              >
+                RESUME
               </a>
             </li>
-          ))}
-          <li>
-            <a
-              className="download-button"
-              href="/assets/files/vivek_verma_resume.pdf"
-              download="vivek_verma_resume.pdf"
-            >
-              RESUME
-            </a>
-          </li>
-        </ul>
+          </ul>
 
-        <button
-          type="button"
-          className={`nav-burger ${open ? "is-open" : ""}`}
-          aria-label="Toggle menu"
-          aria-expanded={open}
-          aria-controls="nav-panel"
-          onClick={toggle}
-        >
-          <span className="bar" />
-          <span className="bar" />
-          <span className="bar" />
-        </button>
+          <button
+            type="button"
+            className={`nav-burger ${open ? "is-open" : ""}`}
+            aria-label="Toggle menu"
+            aria-expanded={open}
+            aria-controls="nav-panel"
+            onClick={toggle}
+          >
+            <span className="bar" />
+            <span className="bar" />
+            <span className="bar" />
+          </button>
+        </div>
       </div>
 
       <div ref={panelRef} id="nav-panel" className="nav-panel">
