@@ -69,6 +69,26 @@
     font-weight: 400;
     text-align: center;
   }
+
+  &-dynamic-heading {
+    margin: 0 0 18px;
+    font-size: clamp(2.5rem, 5vw, 3.75rem);
+    line-height: 1.1;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    font-family: var(--font-rounded);
+    text-align: center;
+  }
+
+  // Second heading ("My Experience") — pushes it away from the Education block
+  &-dynamic-heading + &-dynamic-heading {
+    margin-top: clamp(48px, 8vw, 80px);
+  }
+
+  &-dynamic-heading .accent {
+    color: var(--accent);
+  }
 }
 
 .timeline {

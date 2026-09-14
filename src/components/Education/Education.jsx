@@ -14,11 +14,7 @@ const Education = () => {
   useTimelineAnimation(timelineRef);
 
   return (
-    <TimelineSection
-      ref={timelineRef}
-      title="📚 EDUCATION"
-      items={EDUCATION}
-    />
+    <TimelineSection ref={timelineRef} items={EDUCATION} />
   );
 };
 

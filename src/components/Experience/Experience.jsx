@@ -14,11 +14,7 @@ const Experience = () => {
   useTimelineAnimation(timelineRef);
 
   return (
-    <TimelineSection
-      ref={timelineRef}
-      title="💼 EXPERIENCE"
-      items={EXPERIENCE}
-    />
+    <TimelineSection ref={timelineRef} items={EXPERIENCE} />
   );
 };
 

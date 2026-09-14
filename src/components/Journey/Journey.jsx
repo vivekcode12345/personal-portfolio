@@ -3,34 +3,32 @@ import Education from "../Education/Education";
 import Experience from "../Experience/Experience";
 
 /**
- * Journey – Parent component that renders the hero heading
- * and composes both Education and Experience timelines.
+ * Journey – Renders the intro block and both Education and Experience
+ * timelines as two always-visible, stacked sections.
  *
- * Strictly presentational at this level.
- * No refs. No GSAP. No timeline data.
+ * No toggle state. No tabs. Both lists render at once.
  */
 export default function Journey() {
   return (
     <section className="journey" id="timeline">
-      {/* Hero heading like your video */}
+      {/* Intro block — description appears once, at the very top */}
       <div className="journey-hero">
-        <h2 className="journey-title">
-          <svg className="journey-title-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="m3 9 9-5 9 5-9 5-9-5Z" />
-            <path d="M7 11.2V15c2.8 2.4 7.2 2.4 10 0v-3.8M21 10v5" />
-          </svg>
-          <span>Professional <span className="journey-title-accent">Path</span></span>
-        </h2>
         <p className="journey-sub">
           A timeline of key milestones—education, internships, and projects
           focused on building scalable web platforms.
         </p>
       </div>
 
-      {/* Education Timeline */}
+      {/* Education block */}
+      <h2 className="journey-dynamic-heading">
+        My <span className="accent">Education</span>
+      </h2>
       <Education />
 
-      {/* Experience Timeline */}
+      {/* Experience block */}
+      <h2 className="journey-dynamic-heading">
+        My <span className="accent">Experience</span>
+      </h2>
       <Experience />
     </section>
   );
