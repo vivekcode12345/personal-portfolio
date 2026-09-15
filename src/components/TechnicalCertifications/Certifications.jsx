@@ -2,30 +2,46 @@ import React, { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { Award } from "lucide-react";
 import "./Certifications.scss";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Issuer/date values transcribed from the certificate images themselves.
+// `credential` holds a verification URL — renders a "View Credential" link
+// only for entries that actually have one (none yet: add real URLs when available).
 const CERTIFICATIONS = [
   {
     title: "MongoDB Certified Developer, Associate",
+    issuer: "MongoDB, Inc.",
+    date: "Apr 2026",
     image: "/assets/images/certificates/mongodb-associate-developer.jpg",
     alt: "MongoDB Certified Developer, Associate (C100DEV) certification badge",
+    credential: null,
   },
   {
     title: "Dynamic Programming",
+    issuer: "AlgoUniversity",
+    date: null,
     image: "/assets/images/certificates/dynamic-programming.jpeg",
     alt: "Dynamic Programming certification",
+    credential: null,
   },
   {
     title: "Naukri Campus",
+    issuer: "Naukri Campus",
+    date: "Sep 2025",
     image: "/assets/images/certificates/naukri-campus.jpg",
     alt: "Naukri Campus certification",
+    credential: null,
   },
   {
     title: "Oracle Certified Foundations Associate",
+    issuer: "Oracle",
+    date: "Aug 2023",
     image: "/assets/images/certificates/oracel-certified-foundations-associate.jpg",
     alt: "Oracle Certified Foundations Associate certification",
+    credential: null,
   },
 ];
 
@@ -166,7 +182,12 @@ const Certifications = () => {
   return (
     <section className="section pin-section" id="certification" ref={sectionRef}>
       <div className="certification-header">
-        <h2>CERTIFICATIONS AND HONORS</h2>
+        <h2 className="certification-title">
+          <Award className="certification-title-icon" strokeWidth={1.8} aria-hidden="true" />
+          <span>
+            Certifications &amp; <span className="certification-title-accent">Honors</span>
+          </span>
+        </h2>
         <p className="certification-description">
           Skill milestones that back up the work—verified knowledge in development, architecture, and deployment best
           practices.
@@ -174,11 +195,24 @@ const Certifications = () => {
       </div>
 
       <div className="content">
-        <ul className="certification-list">
-          {CERTIFICATIONS.map((cert, index) => (
-            <li key={index}>{cert.title}</li>
-          ))}
-        </ul>
+        <div className="cert-list-col">
+          <div
+            className="cert-progress"
+            data-total={String(CERTIFICATIONS.length).padStart(2, "0")}
+          />
+          <ul className="certification-list">
+            {CERTIFICATIONS.map((cert, index) => (
+              <li key={index}>
+                <span className="cert-title">{cert.title}</span>
+                {(cert.issuer || cert.date) && (
+                  <span className="cert-meta">
+                    {[cert.issuer, cert.date].filter(Boolean).join(" · ")}
+                  </span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
 
         <div className="fill" />
 
@@ -186,6 +220,16 @@ const Certifications = () => {
           {CERTIFICATIONS.map((cert, index) => (
             <div key={index} className="slide center">
               <img src={cert.image} alt={cert.alt} />
+              {cert.credential && (
+                <a
+                  className="cert-credential-link"
+                  href={cert.credential}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {"↗ View Credential"}
+                </a>
+              )}
             </div>
           ))}
         </div>
