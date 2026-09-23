@@ -4,13 +4,21 @@ import "./Projects.scss";
 
 const PROJECTS = [
   {
+    title: "DealDrop",
+    subtitle: "Automated Price-Drop Monitoring Platform",
+    desc: "Automated price-monitoring platform built on Next.js 16 (App Router) and React 19 that tracks product links, scrapes live listings with Firecrawl, and stores users, products, and price history in Supabase through the @supabase/ssr client/server split. A scheduled API route (app/api/cron/check_prices) re-checks tracked products and fires real-time email drop alerts via Resend, while Recharts renders the price-trend charts and server actions handle mutations behind Supabase session middleware. Ships a shadcn/ui + Tailwind CSS v4 interface with dark-mode theming, route-level auth callbacks, and Sonner toast feedback.",
+    image: "/assets/images/common/dealdrop.png",
+    tags: ["Next.js", "Supabase", "Firecrawl", "Tailwind CSS"],
+    links: [
+      { label: "GitHub", href: "https://github.com/vivekcode12345/DealDrop" },
+    ],
+  },
+
+  {
     title: "AI Article Summarizer",
     subtitle: "Gemini-Powered Chrome Extension",
     desc: "Manifest V3 Chrome extension that extracts readable text from any web page and streams AI summaries straight from the browser toolbar in three modes: brief, detailed, or 5-7 bullet takeaways. Falls back through semantic elements, common content containers, and paragraph-density heuristics for extraction, then dispatches through a pluggable provider layer for Gemini, OpenAI, and Anthropic with live token streaming, word count, and one-click copy. Persists history and favorites in chrome.storage, triggers from a Ctrl+Shift+S / Cmd+Shift+S global shortcut, and requires no build step.",
-    // TODO: replace with a proper popup/summary screenshot once available
-    // (square extension icon placeholder, rendered contained on a soft fill)
     image: "/assets/images/common/ai-article-summarizer.png",
-    imageFit: "contain",
     tags: ["JavaScript", "Chrome Extension", "Gemini API", "Manifest V3"],
     links: [
       {
