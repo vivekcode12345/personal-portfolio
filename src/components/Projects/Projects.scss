@@ -128,6 +128,23 @@
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* ── Contained media (square icon/logo art centered on a soft fill) ── */
+.projectCard.containMedia .projectMedia {
+  background:
+    radial-gradient(120% 120% at 50% 0%, var(--primary-soft), transparent 70%),
+    var(--surface-2);
+}
+
+.projectCard.containMedia .projectMedia img {
+  object-fit: contain;
+  padding: clamp(28px, 6vw, 72px);
+}
+
+.projectCard.containMedia:hover .projectMedia img,
+.projectCard.containMedia:focus-within .projectMedia img {
+  transform: scale(1.03);
+}
+
 .projectMediaOverlay {
   position: absolute;
   inset: 0;

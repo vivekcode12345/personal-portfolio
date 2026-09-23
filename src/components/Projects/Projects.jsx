@@ -4,6 +4,23 @@ import "./Projects.scss";
 
 const PROJECTS = [
   {
+    title: "AI Article Summarizer",
+    subtitle: "Gemini-Powered Chrome Extension",
+    desc: "Manifest V3 Chrome extension that extracts readable text from any web page and streams AI summaries straight from the browser toolbar in three modes: brief, detailed, or 5-7 bullet takeaways. Falls back through semantic elements, common content containers, and paragraph-density heuristics for extraction, then dispatches through a pluggable provider layer for Gemini, OpenAI, and Anthropic with live token streaming, word count, and one-click copy. Persists history and favorites in chrome.storage, triggers from a Ctrl+Shift+S / Cmd+Shift+S global shortcut, and requires no build step.",
+    // TODO: replace with a proper popup/summary screenshot once available
+    // (square extension icon placeholder, rendered contained on a soft fill)
+    image: "/assets/images/common/ai-article-summarizer.png",
+    imageFit: "contain",
+    tags: ["JavaScript", "Chrome Extension", "Gemini API", "Manifest V3"],
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/vivekcode12345/gemini-chrome-article-summarizer",
+      },
+    ],
+  },
+
+  {
     title: "CareerClarity",
     subtitle: "AI-Powered Career Guidance Platform",
     desc: "Full-stack platform pairing a React frontend with a Django REST API and PostgreSQL database, secured by JWT authentication and Google OAuth. Uses EasyOCR and spaCy to extract skills from uploaded CVs, then runs a recommendation engine that maps detected skills to career paths. Implements RESTful CRUD operations for user profiles, assessments, alerts, and college data with pagination and role-based access.",
@@ -50,11 +67,14 @@ const PROJECTS = [
 
 function ProjectCard({ project, featured }) {
   const tiltRef = useTiltHover({ max: 6, scale: 1.02, liftY: -6 });
+  const cardClass = `projectCard${featured ? " featured" : ""}${
+    project.imageFit === "contain" ? " containMedia" : ""
+  }`;
 
   return (
     <article
       ref={tiltRef}
-      className={`projectCard${featured ? " featured" : ""}`}
+      className={cardClass}
       key={project.title}
     >
       <div className="card-spotlight" />
