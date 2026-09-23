@@ -21,6 +21,17 @@ const PROJECTS = [
   },
 
   {
+    title: "ReviewRank",
+    subtitle: "Review-Volume Ranking Browser Extension",
+    desc: "Manifest V3 Chrome extension that reads the live search-results DOM on Amazon, Flipkart, Meesho, and Myntra through per-site adapters, deduplicates and validates every product, then re-ranks them by customer review volume inside a tab-specific Chrome Side Panel. Adds Min/Max budget filtering in rupees, sponsored-result detection, conservative category-relevance filtering, Price Insights, and 4-per-page results with Previous/Next navigation plus Load More and next-page analysis without leaving the tab. Ships 11 node test suites covering extraction, validation, relevance, sponsored detection, pagination, Price Insights, and Side Panel state.",
+    image: "/assets/images/common/review-rank.png",
+    tags: ["JavaScript", "Chrome Extension", "Manifest V3", "Chrome Side Panel"],
+    links: [
+      { label: "GitHub", href: "https://github.com/vivekcode12345/reviewrank" },
+    ],
+  },
+
+  {
     title: "CareerClarity",
     subtitle: "AI-Powered Career Guidance Platform",
     desc: "Full-stack platform pairing a React frontend with a Django REST API and PostgreSQL database, secured by JWT authentication and Google OAuth. Uses EasyOCR and spaCy to extract skills from uploaded CVs, then runs a recommendation engine that maps detected skills to career paths. Implements RESTful CRUD operations for user profiles, assessments, alerts, and college data with pagination and role-based access.",
