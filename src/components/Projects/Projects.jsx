@@ -4,6 +4,18 @@ import "./Projects.scss";
 
 const PROJECTS = [
   {
+    title: "PairPad",
+    subtitle: "Real-Time Collaborative Code Editor",
+    desc: "Real-time collaborative code editor built on React, Node.js, Socket.IO and Yjs CRDTs for conflict-free editing, live cursors and offline-edit merging. Server-side execution for JavaScript, Python, C++ and Java through the Wandbox API, with stdin support, run locking and a 100 KB code limit. Interview Mode adds a server-side timer, hidden-test judging (5 tests per problem with AC/WA/RE/CE/TLE verdicts) and event-sourced session replay with scrubbing and JSON export.",
+    image: "/assets/images/common/pairpad.png",
+    tags: ["React", "Node.js", "Socket.IO", "Yjs"],
+    links: [
+      { label: "Live Demo", href: "https://collaborate-code.onrender.com" },
+      { label: "GitHub", href: "https://github.com/vivekcode12345/pairpad" },
+    ],
+  },
+
+  {
     title: "DealDrop",
     subtitle: "Automated Price-Drop Monitoring Platform",
     desc: "Automated price-monitoring platform built on Next.js 16 (App Router) and React 19 that tracks product links, scrapes live listings with Firecrawl, and stores users, products, and price history in Supabase through the @supabase/ssr client/server split. A scheduled API route (app/api/cron/check_prices) re-checks tracked products and fires real-time email drop alerts via Resend, while Recharts renders the price-trend charts and server actions handle mutations behind Supabase session middleware. Ships a shadcn/ui + Tailwind CSS v4 interface with dark-mode theming, route-level auth callbacks, and Sonner toast feedback.",
@@ -11,6 +23,17 @@ const PROJECTS = [
     tags: ["Next.js", "Supabase", "Firecrawl", "Tailwind CSS"],
     links: [
       { label: "GitHub", href: "https://github.com/vivekcode12345/DealDrop" },
+    ],
+  },
+
+  {
+    title: "PhishGuard ML",
+    subtitle: "On-Device Phishing URL Detector",
+    desc: "Zero-day phishing URL detector: a joint network (character CNN plus 67 handcrafted lexical features, 122,529 parameters) benchmarked against Random Forest, XGBoost, CNN and late-fusion baselines on random, domain-disjoint and chronological splits over 65,843 URLs. Reaches PR-AUC 0.957 and 0.709 recall at 1% false-positive rate on the chronological split. The 481 KB ONNX model runs fully on-device in a Manifest V3 Chrome extension via ONNX Runtime Web, so no URL ever leaves the browser, at about 1-2 ms per inference.",
+    image: "/assets/images/common/phishguard-ml.png",
+    tags: ["Python", "ONNX Runtime Web", "Chrome Extension", "Machine Learning"],
+    links: [
+      { label: "GitHub", href: "https://github.com/vivekcode12345/phishguard-ml" },
     ],
   },
 
