@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { Check } from "lucide-react";
 import { useTiltHover } from "../../hooks/useTiltHover";
 import "./Projects.scss";
 
@@ -13,6 +14,11 @@ const PROJECTS = [
       { label: "Live Demo", href: "https://collaborate-code.onrender.com" },
       { label: "GitHub", href: "https://github.com/vivekcode12345/pairpad" },
     ],
+    highlights: [
+      "Yjs CRDT sync with live cursors and offline-edit merge",
+      "Runs JS, Python, C++ and Java with stdin and run locking",
+      "Interview mode: hidden-test judging and session replay",
+    ],
   },
 
   {
@@ -24,6 +30,11 @@ const PROJECTS = [
     links: [
       { label: "GitHub", href: "https://github.com/vivekcode12345/DealDrop" },
     ],
+    highlights: [
+      "Supabase Row-Level Security: 5 policies across 2 tables",
+      "Scheduled re-checks with real-time Resend price-drop emails",
+      "Live Firecrawl scraping with Recharts price history",
+    ],
   },
 
   {
@@ -34,6 +45,11 @@ const PROJECTS = [
     tags: ["Python", "ONNX Runtime Web", "Chrome Extension", "Machine Learning"],
     links: [
       { label: "GitHub", href: "https://github.com/vivekcode12345/phishguard-ml" },
+    ],
+    highlights: [
+      "PR-AUC 0.957 on a chronological split of 65,843 URLs",
+      "481 KB ONNX model, about 1-2 ms inference, fully in-browser",
+      "Char-CNN plus 67 lexical features, 122,529 parameters",
     ],
   },
 
@@ -49,6 +65,11 @@ const PROJECTS = [
         href: "https://github.com/vivekcode12345/gemini-chrome-article-summarizer",
       },
     ],
+    highlights: [
+      "3 summary modes: brief, detailed, 5-7 bullet takeaways",
+      "3 AI providers with live token streaming",
+      "Global Ctrl/Cmd+Shift+S shortcut, no build step",
+    ],
   },
 
   {
@@ -59,6 +80,11 @@ const PROJECTS = [
     tags: ["JavaScript", "Chrome Extension", "Manifest V3", "Chrome Side Panel"],
     links: [
       { label: "GitHub", href: "https://github.com/vivekcode12345/reviewrank" },
+    ],
+    highlights: [
+      "Per-site adapters for Amazon, Flipkart, Meesho and Myntra",
+      "Min/Max budget filter, sponsored-result detection, Price Insights",
+      "11 node test suites",
     ],
   },
 
@@ -72,6 +98,11 @@ const PROJECTS = [
       { label: "Live Demo", href: "https://career-clarity-three.vercel.app/" },
       { label: "GitHub", href: "https://github.com/vivekcode12345/career-clarity" },
     ],
+    highlights: [
+      "CV skill extraction with EasyOCR and spaCy",
+      "JWT authentication plus Google OAuth",
+      "Skills-to-career-path recommendation engine",
+    ],
   },
   {
     title: "FoodXpress",
@@ -83,6 +114,11 @@ const PROJECTS = [
       { label: "Live Demo", href: "https://foodxpress-platform.onrender.com" },
       { label: "GitHub", href: "https://github.com/vivekcode12345/foodxpress-platform" },
     ],
+    highlights: [
+      "Normalized MySQL schema across 6 tables",
+      "6 controller modules and a 6-stage order lifecycle",
+      "JWT authentication with 2 user roles",
+    ],
   },
   {
     title: "LearnHub LMS",
@@ -92,6 +128,11 @@ const PROJECTS = [
     tags: ["React.js", "Node.js", "Express.js", "MongoDB", "Socket.IO"],
     links: [
       { label: "GitHub", href: "https://github.com/vivekcode12345/learnhub-lms" },
+    ],
+    highlights: [
+      "121 REST endpoints across 22 backend modules",
+      "3 role-based access tiers with RBAC middleware",
+      "Socket.IO and Agora RTC for real-time collaboration",
     ],
   },
   {
@@ -104,14 +145,27 @@ const PROJECTS = [
       { label: "Live Demo", href: "https://book-discovery-one.vercel.app" },
       { label: "GitHub", href: "https://github.com/vivekcode12345/book-discovery" },
     ],
+    highlights: [
+      "Google Books API with up to 12 results per query",
+      "Lazy-loaded covers and loading skeletons",
+      "Accessible detail modal (Esc and click-outside to close)",
+    ],
   },
 ];
 
 function ProjectCard({ project, featured }) {
   const tiltRef = useTiltHover({ max: 6, scale: 1.02, liftY: -6 });
+  const [expanded, setExpanded] = useState(false);
+  const [brokenImage, setBrokenImage] = useState(false);
   const cardClass = `projectCard${featured ? " featured" : ""}${
     project.imageFit === "contain" ? " containMedia" : ""
   }`;
+  const hasLiveDemo = project.links.some((link) => link.label === "Live Demo");
+
+  const toggleDesc = (e) => {
+    e.stopPropagation();
+    setExpanded((prev) => !prev);
+  };
 
   return (
     <article
@@ -121,14 +175,48 @@ function ProjectCard({ project, featured }) {
     >
       <div className="card-spotlight" />
       <div className="projectMedia">
-        <img src={project.image} alt={project.title} loading="lazy" />
+        {brokenImage ? (
+          <div className="projectMediaFallback">{project.title}</div>
+        ) : (
+          <img
+            src={project.image}
+            alt={project.title}
+            loading="lazy"
+            onError={() => setBrokenImage(true)}
+          />
+        )}
         <div className="projectMediaOverlay" />
+        {hasLiveDemo && (
+          <span className="liveBadge" aria-label="Live demo">
+            <span className="liveDot" aria-hidden="true" />
+            Live
+          </span>
+        )}
       </div>
 
       <div className="projectBody">
         <h3 className="projectTitle">{project.title}</h3>
         <p className="projectSubtitle">{project.subtitle}</p>
-        <p className="projectDesc">{project.desc}</p>
+
+        <ul className="projectHighlights">
+          {project.highlights.slice(0, 3).map((highlight, index) => (
+            <li key={index} className="projectHighlight">
+              <Check className="projectHighlightIcon" size={14} strokeWidth={2} />
+              {highlight}
+            </li>
+          ))}
+        </ul>
+
+        <p className={`projectDesc${expanded ? "" : " clampDesc"}`}>
+          {project.desc}
+        </p>
+        <button
+          className="projectReadMore"
+          onClick={toggleDesc}
+          aria-expanded={expanded}
+        >
+          {expanded ? "Show less" : "Read more"}
+        </button>
 
         <div className="projectTags">
           {project.tags.map((t) => (
