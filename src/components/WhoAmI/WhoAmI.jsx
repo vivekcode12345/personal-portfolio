@@ -133,7 +133,7 @@ const WhoAmI = () => {
           </div>
           <div className="whoami-image-wrap">
             <img
-              src="/assets/images/common/caricature.png"
+              src="/assets/images/common/caricature.webp"
               alt="Illustrated portrait of Vivek Verma"
               className="whoami-image"
             />

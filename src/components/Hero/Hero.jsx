@@ -218,7 +218,7 @@ const Hero = () => {
 
         <div ref={visualRef} className="hero-visual" aria-label="Vivek Verma portrait" role="img">
           <div className="hero-photo-frame">
-            <img src="/assets/images/hero-photo.png" alt="Illustrated portrait of Vivek Verma" className="hero-photo" />
+            <img src="/assets/images/hero-photo.webp" alt="Illustrated portrait of Vivek Verma" className="hero-photo" fetchPriority="high" />
             <div className="hero-role-badge">Full-Stack · AI/ML</div>
           </div>
         </div>

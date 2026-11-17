@@ -8,7 +8,7 @@ const PROJECTS = [
     title: "PairPad",
     subtitle: "Real-Time Collaborative Code Editor",
     desc: "Real-time collaborative code editor built on React, Node.js, Socket.IO and Yjs CRDTs for conflict-free editing, live cursors and offline-edit merging. Server-side execution for JavaScript, Python, C++ and Java through the Wandbox API, with stdin support, run locking and a 100 KB code limit. Interview Mode adds a server-side timer, hidden-test judging (5 tests per problem with AC/WA/RE/CE/TLE verdicts) and event-sourced session replay with scrubbing and JSON export.",
-    image: "/assets/images/common/pairpad.png",
+    image: "/assets/images/common/pairpad.webp",
     tags: ["React", "Node.js", "Socket.IO", "Yjs"],
     links: [
       { label: "Live Demo", href: "https://collaborate-code.onrender.com" },
@@ -25,7 +25,7 @@ const PROJECTS = [
     title: "DealDrop",
     subtitle: "Automated Price-Drop Monitoring Platform",
     desc: "Automated price-monitoring platform built on Next.js 16 (App Router) and React 19 that tracks product links, scrapes live listings with Firecrawl, and stores users, products, and price history in Supabase through the @supabase/ssr client/server split. A scheduled API route (app/api/cron/check_prices) re-checks tracked products and fires real-time email drop alerts via Resend, while Recharts renders the price-trend charts and server actions handle mutations behind Supabase session middleware. Ships a shadcn/ui + Tailwind CSS v4 interface with dark-mode theming, route-level auth callbacks, and Sonner toast feedback.",
-    image: "/assets/images/common/dealdrop.png",
+    image: "/assets/images/common/dealdrop.webp",
     tags: ["Next.js", "Supabase", "Firecrawl", "Tailwind CSS"],
     links: [
       { label: "GitHub", href: "https://github.com/vivekcode12345/DealDrop" },
@@ -41,7 +41,7 @@ const PROJECTS = [
     title: "PhishGuard ML",
     subtitle: "On-Device Phishing URL Detector",
     desc: "Zero-day phishing URL detector: a joint network (character CNN plus 67 handcrafted lexical features, 122,529 parameters) benchmarked against Random Forest, XGBoost, CNN and late-fusion baselines on random, domain-disjoint and chronological splits over 65,843 URLs. Reaches PR-AUC 0.957 and 0.709 recall at 1% false-positive rate on the chronological split. The 481 KB ONNX model runs fully on-device in a Manifest V3 Chrome extension via ONNX Runtime Web, so no URL ever leaves the browser, at about 1-2 ms per inference.",
-    image: "/assets/images/common/phishguard-ml.png",
+    image: "/assets/images/common/phishguard-ml.webp",
     tags: ["Python", "ONNX Runtime Web", "Chrome Extension", "Machine Learning"],
     links: [
       { label: "GitHub", href: "https://github.com/vivekcode12345/phishguard-ml" },
@@ -57,7 +57,7 @@ const PROJECTS = [
     title: "AI Article Summarizer",
     subtitle: "Gemini-Powered Chrome Extension",
     desc: "Manifest V3 Chrome extension that extracts readable text from any web page and streams AI summaries straight from the browser toolbar in three modes: brief, detailed, or 5-7 bullet takeaways. Falls back through semantic elements, common content containers, and paragraph-density heuristics for extraction, then dispatches through a pluggable provider layer for Gemini, OpenAI, and Anthropic with live token streaming, word count, and one-click copy. Persists history and favorites in chrome.storage, triggers from a Ctrl+Shift+S / Cmd+Shift+S global shortcut, and requires no build step.",
-    image: "/assets/images/common/ai-article-summarizer.png",
+    image: "/assets/images/common/ai-article-summarizer.webp",
     tags: ["JavaScript", "Chrome Extension", "Gemini API", "Manifest V3"],
     links: [
       {
@@ -76,7 +76,7 @@ const PROJECTS = [
     title: "ReviewRank",
     subtitle: "Review-Volume Ranking Browser Extension",
     desc: "Manifest V3 Chrome extension that reads the live search-results DOM on Amazon, Flipkart, Meesho, and Myntra through per-site adapters, deduplicates and validates every product, then re-ranks them by customer review volume inside a tab-specific Chrome Side Panel. Adds Min/Max budget filtering in rupees, sponsored-result detection, conservative category-relevance filtering, Price Insights, and 4-per-page results with Previous/Next navigation plus Load More and next-page analysis without leaving the tab. Ships 11 node test suites covering extraction, validation, relevance, sponsored detection, pagination, Price Insights, and Side Panel state.",
-    image: "/assets/images/common/review-rank.png",
+    image: "/assets/images/common/review-rank.webp",
     tags: ["JavaScript", "Chrome Extension", "Manifest V3", "Chrome Side Panel"],
     links: [
       { label: "GitHub", href: "https://github.com/vivekcode12345/reviewrank" },
@@ -92,7 +92,7 @@ const PROJECTS = [
     title: "CareerClarity",
     subtitle: "AI-Powered Career Guidance Platform",
     desc: "Full-stack platform pairing a React frontend with a Django REST API and PostgreSQL database, secured by JWT authentication and Google OAuth. Uses EasyOCR and spaCy to extract skills from uploaded CVs, then runs a recommendation engine that maps detected skills to career paths. Implements RESTful CRUD operations for user profiles, assessments, alerts, and college data with pagination and role-based access.",
-    image: "/assets/images/common/career-clarity.png",
+    image: "/assets/images/common/career-clarity.webp",
     tags: ["React", "PostgreSQL", "Tailwind CSS"],
     links: [
       { label: "Live Demo", href: "https://career-clarity-three.vercel.app/" },
@@ -108,7 +108,7 @@ const PROJECTS = [
     title: "FoodXpress",
     subtitle: "Food Delivery Management System",
     desc: "Engineered a secure full-stack monolith featuring JWT authentication with separate middleware for two user roles, a normalized MySQL schema spanning six tables with foreign-key constraints, and RESTful CRUD endpoints for restaurants, menus, orders, and payments. The backend follows an MVC architecture with six controller modules and supports a six-stage order lifecycle from placement to delivery. Deployed on Render.",
-    image: "/assets/images/common/foodxpress.png",
+    image: "/assets/images/common/foodxpress.webp",
     tags: ["Node.js", "Express.js", "MySQL", "HTML5", "CSS3"],
     links: [
       { label: "Live Demo", href: "https://foodxpress-platform.onrender.com" },
@@ -124,7 +124,7 @@ const PROJECTS = [
     title: "LearnHub LMS",
     subtitle: "Full-Stack Learning Management System",
     desc: "Architected a full-stack Learning Management System with 3 role-based access tiers, 22 backend modules, and 121 REST API endpoints using Node.js, Express, and MongoDB/Mongoose. Engineered real-time collaboration via Socket.io (37 event types) and Agora RTC SDK for video calls and messaging. Designed 21 normalized MongoDB schemas with a React 19 + Redux Toolkit frontend spanning 46 role-specific pages. Implemented JWT authentication, Google OAuth 2.0, bcrypt hashing, RBAC middleware, and Helmet security hardening.",
-    image: "/assets/images/common/lms.png",
+    image: "/assets/images/common/lms.webp",
     tags: ["React.js", "Node.js", "Express.js", "MongoDB", "Socket.IO"],
     links: [
       { label: "GitHub", href: "https://github.com/vivekcode12345/learnhub-lms" },
@@ -139,7 +139,7 @@ const PROJECTS = [
     title: "Book Discovery",
     subtitle: "Google Books API Integration Platform",
     desc: "Built a React 19 + Tailwind CSS book discovery platform integrating the Google Books API to surface up to 12 search results per query. Engineered lazy-loaded book cover images, live loading-skeleton states, and an accessible book-detail modal with escape-to-close and click-outside dismissal. Curated 5 quick-pick discovery chips and implemented a responsive 2–3 column grid for an editorial-style browsing experience. Deployed to production on Vercel.",
-    image: "/assets/images/common/book.png",
+    image: "/assets/images/common/book.webp",
     tags: ["React.js", "Tailwind CSS"],
     links: [
       { label: "Live Demo", href: "https://book-discovery-one.vercel.app" },
