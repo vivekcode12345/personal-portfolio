@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Webhook, Database } from "lucide-react";
 import "./TechStack.scss";
 
 const TECH_DATA = {
@@ -8,7 +9,7 @@ const TECH_DATA = {
     Python: { slug: "python", color: "#3776AB" },
     JavaScript: { slug: "javascript", color: "#F7DF1E" },
     TypeScript: { slug: "typescript", color: "#3178C6" },
-    SQL: { slug: "sqlite", color: "#003B57" },
+    SQL: { icon: Database },
     HTML5: { slug: "html5", color: "#E34F26" },
     CSS3: { slug: "css", color: "#663399" },
     "React.js": { slug: "react", color: "#61DAFB" },
@@ -16,10 +17,11 @@ const TECH_DATA = {
     "Tailwind CSS": { slug: "tailwindcss", color: "#06B6D4" },
     "Node.js": { slug: "nodedotjs", color: "#5FA04E" },
     "Express.js": { slug: "express", color: "#000000" },
-    "REST APIs": { slug: "fastapi", color: "#009688" },
+    "REST APIs": { icon: Webhook },
     PostgreSQL: { slug: "postgresql", color: "#4169E1" },
     MongoDB: { slug: "mongodb", color: "#47A248" },
     MySQL: { slug: "mysql", color: "#4479A1" },
+    Supabase: { slug: "supabase", color: "#3FCF8E" },
     NumPy: { slug: "numpy", color: "#013243" },
     Pandas: { slug: "pandas", color: "#150458" },
     "Scikit-learn": { slug: "scikitlearn", color: "#F7931E" },
@@ -28,6 +30,8 @@ const TECH_DATA = {
     Git: { slug: "git", color: "#F05032" },
     GitHub: { slug: "github", color: "#181717" },
     Postman: { slug: "postman", color: "#FF6C37" },
+    Django: { slug: "django", color: "#092E20" },
+    "Socket.IO": { slug: "socketdotio", color: "#010101" },
     "VS Code": { color: "#007ACC", fallback: true },
     Vercel: { slug: "vercel", color: "#000000" },
 };
@@ -43,11 +47,11 @@ const SECTIONS = [
     },
     {
         label: "Backend & APIs",
-        techs: ["Node.js", "Express.js", "REST APIs"],
+        techs: ["Node.js", "Express.js", "REST APIs", "Socket.IO", "Django"],
     },
     {
         label: "Databases",
-        techs: ["PostgreSQL", "MongoDB", "MySQL"],
+        techs: ["PostgreSQL", "MongoDB", "MySQL", "Supabase"],
     },
     {
         label: "AI / ML",
@@ -61,6 +65,19 @@ const SECTIONS = [
 
 function SkillIcon({ tech, details }) {
     const [hasError, setHasError] = useState(details.fallback || false);
+
+    if (details.icon) {
+        const Icon = details.icon;
+        return (
+            <Icon
+                className="hs-skill-icon"
+                size={32}
+                strokeWidth={2}
+                color="var(--primary)"
+                aria-label={`${tech} icon`}
+            />
+        );
+    }
 
     if (hasError) {
         return (
@@ -109,7 +126,7 @@ export default function TechStack() {
                                     <li
                                         className={`hs-skill-item${tech === "C" ? " hs-skill-item--c" : ""}`}
                                         key={tech}
-                                        style={{ "--brand": details.color }}
+                                        style={{ "--brand": details.icon ? "var(--primary)" : details.color }}
                                     >
                                         <div className="icon-wrap">
                                             <SkillIcon tech={tech} details={details} />
